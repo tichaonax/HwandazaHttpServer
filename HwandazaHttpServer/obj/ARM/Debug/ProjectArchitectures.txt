@@ -1,0 +1,1 @@
+D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\HwandazaHttpServer.csproj;arm
