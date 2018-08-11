@@ -9,11 +9,14 @@ namespace HwandazaHttpServer
 
         public void Run(IBackgroundTaskInstance taskInstance)
         {
+            //var installedLocation = Windows.ApplicationModel.Package.Current.InstalledLocation;
+            var path = "Web";
+           
             // Get the deferral object from the task instance
             _backgroundTaskDeferral = taskInstance.GetDeferral();
             //create a reference point to clean up method that will be called in the event an application is cancelled
             taskInstance.Canceled += TaskInstanceCanceled;
-            _hwandazaHttpServer = new HwandazaHttpServer(8100);
+            _hwandazaHttpServer = new HwandazaHttpServer(8100, path);
             _hwandazaHttpServer.StartServer();
         }
 

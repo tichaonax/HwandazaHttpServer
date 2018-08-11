@@ -15,18 +15,15 @@ using Newtonsoft.Json;
 namespace HwandazaHttpServer.ServerUtils
 {
     class RestResponse
-    {
-        private const string okHtmlString = "<html><head><title>Hwandaza Automation</title></head><body>Hi There</body></html>";
-
+    { 
         private readonly StreamSocket _streamSocket;
         private readonly AppServiceConnection _appServiceConnection;
-        private readonly StringBuilder _request;
+        private readonly Request _request;
         private HwandazaCommand _hwandazaCommand;
         private const uint BufferSize = 8192;
-        private string[] _splitRequestAsString;
         private bool _isCommandValid;
 
-        public RestResponse(StreamSocket socket, AppServiceConnection appServiceConnection, StringBuilder request)
+        public RestResponse(StreamSocket socket, AppServiceConnection appServiceConnection, Request request)
         {
             _isCommandValid = false;
             _appServiceConnection = appServiceConnection;
@@ -37,27 +34,9 @@ namespace HwandazaHttpServer.ServerUtils
 
         private void ExtractRequestParameters()
         {
-            var requestAsString = _request.ToString();
-            _splitRequestAsString = requestAsString.Split('\n');
-
-            if (_splitRequestAsString.Length != 0)
-            {
-                string requestMethod = _splitRequestAsString[0]; //{POST /HwandazaAutoMation/ HTTP/1.1
-                string[] requestParts = requestMethod.Split(' ');
-                if (requestParts.Length > 1)
-                {
-                    if (requestParts[1].ToLower().Contains("hwandazaautomation"))
-                    {
-                        var jsonString = requestAsString.Substring(requestAsString.LastIndexOf('{'));
-                        jsonString = jsonString.Substring(0, jsonString.IndexOf('}') + 1);
-                        jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "");
-                        _hwandazaCommand =
-                            JsonConvert.DeserializeObject<HwandazaCommand>(jsonString);
-                        _hwandazaCommand.Method = requestParts[0];
-                        _isCommandValid = true;
-                    }
-                }
-            }
+            _hwandazaCommand =
+                JsonConvert.DeserializeObject<HwandazaCommand>(_request.Content);
+            _hwandazaCommand.Method = _request.Method.ToString();
         }
 
         private void GetGutuAutomationStatus()
@@ -114,6 +93,10 @@ namespace HwandazaHttpServer.ServerUtils
                     //optionally log result from client
                     Send200OK(result);
                 }
+                else
+                {
+                    Send200OK(JsonConvert.SerializeObject(response));
+                }
                 
             }
             catch (Exception ex)
@@ -133,15 +116,10 @@ namespace HwandazaHttpServer.ServerUtils
         
         private void Send200OK(string systemstatus)
         {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(okHtmlString);
-            XmlNodeList elemList = xmlDoc.GetElementsByTagName("body");
-            elemList[0].InnerText = systemstatus;
-            Debug.WriteLine(xmlDoc.OuterXml);
-           // string html = okHtmlString;
-            byte[] bodyArray = Encoding.UTF8.GetBytes(xmlDoc.OuterXml);
-            xmlDoc = null;
-            // Show the html 
+
+            byte[] bodyArray = Encoding.UTF8.GetBytes(systemstatus);
+
+
             using (var outputStream = _streamSocket.OutputStream)
             {
                 using (Stream resp = outputStream.AsStreamForWrite())

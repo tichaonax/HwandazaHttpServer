@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\bin\ARM\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>0E1D3F8D4F2F8E6B042E6F5D93586CD4D3886FA6F458883F4C7ED865DAD1FF42</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>B65952C89AB90B2C5389F6F90218BECA40014A1383D89903A033E4D048015727</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>HwandazaHttpServer-uwp_1.0.0.0_arm__7c1xvdqapnqy0</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>HwandazaHttpServer-uwp_7c1xvdqapnqy0!App</RegisteredUserModeAppID>
     <RegisteredPackageID>HwandazaHttpServer-uwp</RegisteredPackageID>
@@ -31,13 +31,13 @@
     <AppXManifest Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\bin\ARM\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-07-28T21:00:29.551</Modified>
+      <Modified>2018-08-11T19:38:44.927</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\bin\ARM\Debug\HwandazaHttpServer.winmd">
       <PackagePath>HwandazaHttpServer.winmd</PackagePath>
-      <Modified>2018-07-28T21:00:18.721</Modified>
+      <Modified>2018-08-11T19:38:31.956</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tichaona\.nuget\packages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -411,7 +411,7 @@
       <PackagePath>System.Security.Cryptography.Algorithms.dll</PackagePath>
       <Modified>2016-06-12T05:14:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tichaona\.nuget\packages\system.security.cryptography.cng\4.2.0\runtimes\win\lib\netstandard1.6\System.Security.Cryptography.Cng.dll">
+    <AppxPackagedFile Include="C:\Users\tichaona\.nuget\packages\system.security.cryptography.cng\4.2.0\runtimes\win\lib\netstandard1.4\System.Security.Cryptography.Cng.dll">
       <PackagePath>System.Security.Cryptography.Cng.dll</PackagePath>
       <Modified>2016-06-12T05:14:42.000</Modified>
     </AppxPackagedFile>
@@ -495,10 +495,6 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-06-12T05:15:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2016-05-28T23:22:41.000</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2016-03-11T16:35:50.000</Modified>
@@ -533,6 +529,38 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2016-03-11T16:35:50.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2016-05-28T23:22:41.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Web\css\._theme.css">
+      <PackagePath>Web\css\._theme.css</PackagePath>
+      <Modified>2018-08-09T19:42:46.633</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Web\css\theme.css">
+      <PackagePath>Web\css\theme.css</PackagePath>
+      <Modified>2015-05-19T12:24:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Web\index.html">
+      <PackagePath>Web\index.html</PackagePath>
+      <Modified>2015-05-19T12:24:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Web\js\._jquery-latest.min.js">
+      <PackagePath>Web\js\._jquery-latest.min.js</PackagePath>
+      <Modified>2018-08-09T19:42:46.854</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Web\js\._script.js">
+      <PackagePath>Web\js\._script.js</PackagePath>
+      <Modified>2018-08-09T19:42:46.966</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Web\js\jquery-latest.min.js">
+      <PackagePath>Web\js\jquery-latest.min.js</PackagePath>
+      <Modified>2015-05-19T12:24:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\Web\js\script.js">
+      <PackagePath>Web\js\script.js</PackagePath>
+      <Modified>2015-05-19T12:24:22.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2017-11-11T00:15:50.000</Modified>
@@ -540,7 +568,7 @@
     <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\bin\ARM\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-07-28T21:00:20.804</Modified>
+      <Modified>2018-08-11T19:38:34.223</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Visual Studio 2015\Projects\HwandazaHttpServer\HwandazaHttpServer\bin\ARM\Debug\Core\UWPShim.exe">
       <PackagePath>UWPShim.exe</PackagePath>

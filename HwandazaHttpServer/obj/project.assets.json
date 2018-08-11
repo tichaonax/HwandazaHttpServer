@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "UAP,Version=v10.0.16299": {
+    "UAP,Version=v10.0.15063": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -328,7 +328,7 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.AppContext.dll": {}
+          "ref/netstandard1.3/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.AppContext.dll": {}
@@ -903,10 +903,6 @@
           "lib/win8/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.6/System.Net.Http.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
           "runtimes/win/lib/netcore50/System.Net.Http.dll": {
             "assetType": "runtime",
             "rid": "win"
@@ -1423,7 +1419,7 @@
           "System.Runtime.Extensions": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netstandard1.3/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.Reflection.TypeExtensions.dll": {}
@@ -1672,13 +1668,9 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
+          "ref/netstandard1.4/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
           "runtimes/win/lib/netcore50/System.Security.Cryptography.Algorithms.dll": {
             "assetType": "runtime",
             "rid": "win"
@@ -1701,14 +1693,10 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.4/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
+          "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -1788,10 +1776,6 @@
           "ref/netstandard1.4/System.Security.Cryptography.X509Certificates.dll": {}
         },
         "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.X509Certificates.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
           "runtimes/win/lib/netcore50/System.Security.Cryptography.X509Certificates.dll": {
             "assetType": "runtime",
             "rid": "win"
@@ -2166,7 +2150,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.16299/win10-arm": {
+    "UAP,Version=v10.0.15063/win10-arm": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -2747,7 +2731,7 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.AppContext.dll": {}
+          "ref/netstandard1.3/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.AppContext.dll": {}
@@ -3734,7 +3718,7 @@
           "System.Runtime.Extensions": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netstandard1.3/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.Reflection.TypeExtensions.dll": {}
@@ -3954,7 +3938,7 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
+          "ref/netstandard1.4/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Security.Cryptography.Algorithms.dll": {}
@@ -3976,10 +3960,10 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.4/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Encoding/4.0.0": {
@@ -4423,7 +4407,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.16299/win10-arm-aot": {
+    "UAP,Version=v10.0.15063/win10-arm-aot": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -5040,7 +5024,7 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.AppContext.dll": {}
+          "ref/netstandard1.3/System.AppContext.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.AppContext.dll": {}
@@ -6027,7 +6011,7 @@
           "System.Runtime.Extensions": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netstandard1.3/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Reflection.TypeExtensions.dll": {}
@@ -6247,7 +6231,7 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
+          "ref/netstandard1.4/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Security.Cryptography.Algorithms.dll": {}
@@ -6269,10 +6253,10 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.4/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Encoding/4.0.0": {
@@ -6716,7 +6700,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.16299/win10-x64": {
+    "UAP,Version=v10.0.15063/win10-x64": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -7306,7 +7290,7 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.AppContext.dll": {}
+          "ref/netstandard1.3/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.AppContext.dll": {}
@@ -8293,7 +8277,7 @@
           "System.Runtime.Extensions": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netstandard1.3/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.Reflection.TypeExtensions.dll": {}
@@ -8513,7 +8497,7 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
+          "ref/netstandard1.4/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Security.Cryptography.Algorithms.dll": {}
@@ -8535,10 +8519,10 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.4/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Encoding/4.0.0": {
@@ -8982,7 +8966,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.16299/win10-x64-aot": {
+    "UAP,Version=v10.0.15063/win10-x64-aot": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -9608,7 +9592,7 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.AppContext.dll": {}
+          "ref/netstandard1.3/System.AppContext.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.AppContext.dll": {}
@@ -10595,7 +10579,7 @@
           "System.Runtime.Extensions": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netstandard1.3/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Reflection.TypeExtensions.dll": {}
@@ -10815,7 +10799,7 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
+          "ref/netstandard1.4/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Security.Cryptography.Algorithms.dll": {}
@@ -10837,10 +10821,10 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.4/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Encoding/4.0.0": {
@@ -11284,7 +11268,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.16299/win10-x86": {
+    "UAP,Version=v10.0.15063/win10-x86": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -11874,7 +11858,7 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.AppContext.dll": {}
+          "ref/netstandard1.3/System.AppContext.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.AppContext.dll": {}
@@ -12861,7 +12845,7 @@
           "System.Runtime.Extensions": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netstandard1.3/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.Reflection.TypeExtensions.dll": {}
@@ -13081,7 +13065,7 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
+          "ref/netstandard1.4/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Security.Cryptography.Algorithms.dll": {}
@@ -13103,10 +13087,10 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.4/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Encoding/4.0.0": {
@@ -13550,7 +13534,7 @@
         }
       }
     },
-    "UAP,Version=v10.0.16299/win10-x86-aot": {
+    "UAP,Version=v10.0.15063/win10-x86-aot": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -14176,7 +14160,7 @@
           "System.Threading": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.AppContext.dll": {}
+          "ref/netstandard1.3/System.AppContext.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.AppContext.dll": {}
@@ -15163,7 +15147,7 @@
           "System.Runtime.Extensions": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/System.Reflection.TypeExtensions.dll": {}
+          "ref/netstandard1.3/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Reflection.TypeExtensions.dll": {}
@@ -15383,7 +15367,7 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/System.Security.Cryptography.Algorithms.dll": {}
+          "ref/netstandard1.4/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Security.Cryptography.Algorithms.dll": {}
@@ -15405,10 +15389,10 @@
           "System.Text.Encoding": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.4/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Encoding/4.0.0": {
@@ -22046,7 +22030,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "UAP,Version=v10.0.16299": [
+    "UAP,Version=v10.0.15063": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2",
       "Newtonsoft.Json >= 9.0.1",
       "System.Xml.XmlDocument >= 4.0.1"
@@ -22074,20 +22058,20 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "uap10.0.16299"
+        "uap10.0.15063"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "uap10.0.16299": {
+        "uap10.0.15063": {
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
-      "uap10.0.16299": {
+      "uap10.0.15063": {
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
@@ -22101,12 +22085,7 @@
             "target": "Package",
             "version": "[4.0.1, )"
           }
-        },
-        "imports": [
-          "net461"
-        ],
-        "assetTargetFallback": true,
-        "warn": true
+        }
       }
     },
     "runtimes": {
