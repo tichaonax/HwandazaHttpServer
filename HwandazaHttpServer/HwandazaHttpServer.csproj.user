@@ -8,6 +8,9 @@
     <RemoteDebugEnabled>true</RemoteDebugEnabled>
     <DoNotLaunchApp>false</DoNotLaunchApp>
     <CreateCleanLayout>true</CreateCleanLayout>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <BackgroundTaskDebugEngines>
+    </BackgroundTaskDebugEngines>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DoNotLaunchApp>true</DoNotLaunchApp>

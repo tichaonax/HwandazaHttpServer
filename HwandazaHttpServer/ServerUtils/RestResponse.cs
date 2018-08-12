@@ -37,6 +37,7 @@ namespace HwandazaHttpServer.ServerUtils
             _hwandazaCommand =
                 JsonConvert.DeserializeObject<HwandazaCommand>(_request.Content);
             _hwandazaCommand.Method = _request.Method.ToString();
+            _isCommandValid = true;
         }
 
         private void GetGutuAutomationStatus()

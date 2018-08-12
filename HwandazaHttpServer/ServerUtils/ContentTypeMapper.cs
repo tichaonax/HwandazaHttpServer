@@ -1,4 +1,4 @@
-﻿namespace HwandazaHttpServer
+﻿namespace HwandazaHttpServer.ServerUtils
 {
     internal class ContentTypeMapper
     {

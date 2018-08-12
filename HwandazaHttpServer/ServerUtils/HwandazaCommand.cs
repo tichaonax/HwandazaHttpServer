@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HwandazaHttpServer
+namespace HwandazaHttpServer.ServerUtils
 {
     internal class HwandazaCommand
     {

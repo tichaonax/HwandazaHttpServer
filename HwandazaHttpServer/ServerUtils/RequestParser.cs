@@ -4,7 +4,7 @@ using System.Text;
 using Windows.Networking;
 using Windows.Web.Http;
 
-namespace HwandazaHttpServer
+namespace HwandazaHttpServer.ServerUtils
 {
     public sealed class RequestParser
     {

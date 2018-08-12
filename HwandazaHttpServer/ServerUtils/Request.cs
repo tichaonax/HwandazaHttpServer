@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Windows.Web.Http;
 
-namespace HwandazaHttpServer
+namespace HwandazaHttpServer.ServerUtils
 {
     public sealed class Request
     {

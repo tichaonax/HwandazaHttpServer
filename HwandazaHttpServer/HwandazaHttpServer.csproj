@@ -93,12 +93,14 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ContentTypeMapper.cs" />
-    <Compile Include="HttpResponse.cs" />
-    <Compile Include="HwandazaCommand.cs" />
+    <Compile Include="ServerUtils\ContentTypeMapper.cs" />
+    <Compile Include="ServerUtils\HttpResponse.cs" />
+    <Compile Include="ServerUtils\HwandazaCommand.cs" />
     <Compile Include="HwandazaHttpServer.cs" />
-    <Compile Include="Request.cs" />
-    <Compile Include="RequestParser.cs" />
+    <Compile Include="ServerUtils\Request.cs" />
+    <Compile Include="ServerUtils\RequestHandler.cs" />
+    <Compile Include="ServerUtils\RequestParser.cs" />
+    <Compile Include="ServerUtils\RequestUtils.cs" />
     <Compile Include="ServerUtils\RestResponse.cs" />
     <Compile Include="StartupTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
