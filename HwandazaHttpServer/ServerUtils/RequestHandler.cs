@@ -45,32 +45,6 @@ namespace HwandazaHttpServer.ServerUtils
             await ProcessBadRequestAsync();
         }
 
-        //private async Task ProcessRequestAsync()
-        //{
-        //    if (_request.Method.Method == HttpMethod.Get.Method)
-        //    {
-        //        HttpResponse response;
-        //        try
-        //        {
-        //            response = await _staticFileHandler.HandleRequest(_request);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            await RequestUtils.WriteInternalServerErrorResponse(_streamSocket, ex);
-        //            return;
-        //        }
-        //        await RequestUtils.WriteResponse(response, _streamSocket);
-        //    }
-        //    else
-        //    {
-        //        if (_request.Method.Method == HttpMethod.Post.Method)
-        //        {
-        //            var restResponse = new RestResponse(_streamSocket, _appServiceConnection, _request);
-        //            restResponse.ProcessRequest();
-        //        }
-        //    }
-        //}
-
         private async Task ProcessBadRequestAsync()
         {
             await RequestUtils.WriteMethodNotAllowedRequest(_streamSocket);
