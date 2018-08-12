@@ -36,13 +36,20 @@ namespace HwandazaHttpServer.ServerUtils
             return request.ToString();
         }
 
+        public static async Task WriteMethodNotAllowedRequest(StreamSocket socket)
+        {
+            var errorMessage = "Method Not Allowed.";
+            var httpResponse = new HttpResponse(Windows.Web.Http.HttpStatusCode.MethodNotAllowed, errorMessage);
+            await WriteResponse(httpResponse, socket);
+        }
+
         public static async Task WriteInternalServerErrorResponse(StreamSocket socket, Exception ex)
         {
             var httpResponse = GetInternalServerError(ex);
             await WriteResponse(httpResponse, socket);
         }
 
-        public static HttpResponse GetInternalServerError(Exception exception)
+        private static HttpResponse GetInternalServerError(Exception exception)
         {
             var errorMessage = "Internal server error occurred.";
             if (Debugger.IsAttached)

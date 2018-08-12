@@ -1,25 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
 using Windows.Networking.Sockets;
-using Windows.Storage.Streams;
 using HwandazaHttpServer.ServerUtils;
 using Newtonsoft.Json;
-using System.Net.Http;
 
 namespace HwandazaHttpServer
 {
     public sealed class HwandazaHttpServer : IDisposable
     {
-        //private const uint BufferSize = 8192;
         private readonly int _httpServerPort; // = 8100;
         private readonly StreamSocketListener _streamSocketListener;
         private AppServiceConnection _appServiceConnection;

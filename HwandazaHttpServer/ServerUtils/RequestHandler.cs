@@ -30,86 +30,71 @@ namespace HwandazaHttpServer.ServerUtils
 
         public async Task HandleRequestAsync()
         {
-            //Request request;
-            //try
-            //{
-            //    var requestText = await RequestUtils.ReadRequest(_streamSocket);
-            //    request = _requestParser.ParseRequestText(requestText, _streamSocket.Information.LocalAddress, _streamSocket.Information.LocalPort);
-            //}
-            //catch (Exception ex)
-            //{
-            //    await RequestUtils.WriteInternalServerErrorResponse(_streamSocket, ex);
-            //    return;
-            //}
-
-            await ProcessRequestAsync();
-        }
-
-
-        private async Task ProcessRequestAsync()
-        {
             if (_request.Method.Method == HttpMethod.Get.Method)
             {
-                HttpResponse response;
-                try
-                {
-                    response = await _staticFileHandler.HandleRequest(_request);
-                }
-                catch (Exception ex)
-                {
-                    await RequestUtils.WriteInternalServerErrorResponse(_streamSocket, ex);
-                    return;
-                }
-                await RequestUtils.WriteResponse(response, _streamSocket);
+                await ProcessGetRequestAsync();
+                return;
             }
-            else
+
+            if (_request.Method.Method == HttpMethod.Post.Method)
             {
-                if (_request.Method.Method == HttpMethod.Post.Method)
-                {
-                    var restResponse = new RestResponse(_streamSocket, _appServiceConnection, _request);
-                    restResponse.ProcessRequest();
-                }
+                ProcessPostRequest();
+                return;
             }
+
+            await ProcessBadRequestAsync();
         }
 
-
-        //private static async Task WriteInternalServerErrorResponse(StreamSocket socket, Exception ex)
+        //private async Task ProcessRequestAsync()
         //{
-        //    var httpResponse = GetInternalServerError(ex);
-        //    await WriteResponse(httpResponse, socket);
-        //}
-
-        //private static HttpResponse GetInternalServerError(Exception exception)
-        //{
-        //    var errorMessage = "Internal server error occurred.";
-        //    if (Debugger.IsAttached)
-        //        errorMessage += Environment.NewLine + exception;
-
-        //    var httpResponse = new HttpResponse(Windows.Web.Http.HttpStatusCode.InternalServerError, errorMessage);
-        //    return httpResponse;
-        //}
-        //private static async Task WriteResponse(HttpResponse response, StreamSocket socket)
-        //{
-        //    using (var resp = socket.OutputStream.AsStreamForWrite())
+        //    if (_request.Method.Method == HttpMethod.Get.Method)
         //    {
-        //        var bodyArray = Encoding.UTF8.GetBytes(response.Content);
-        //        var stream = new MemoryStream(bodyArray);
-        //        var headerBuilder = new StringBuilder();
-        //        headerBuilder.AppendLine($"HTTP/1.1 {(int)response.StatusCode} {response.StatusCode}");
-        //        headerBuilder.AppendLine("Connection: close");
-        //        headerBuilder.AppendLine($"Content-Length: {stream.Length}");
-
-        //        foreach (var header1 in response.Headers)
+        //        HttpResponse response;
+        //        try
         //        {
-        //            headerBuilder.AppendLine($"{header1.Key}: {header1.Value}");
+        //            response = await _staticFileHandler.HandleRequest(_request);
         //        }
-        //        headerBuilder.AppendLine();
-
-        //        var headerArray = Encoding.UTF8.GetBytes(headerBuilder.ToString());
-        //        await resp.WriteAsync(headerArray, 0, headerArray.Length);
-        //        await stream.CopyToAsync(resp);
-        //        await resp.FlushAsync();
+        //        catch (Exception ex)
+        //        {
+        //            await RequestUtils.WriteInternalServerErrorResponse(_streamSocket, ex);
+        //            return;
+        //        }
+        //        await RequestUtils.WriteResponse(response, _streamSocket);
+        //    }
+        //    else
+        //    {
+        //        if (_request.Method.Method == HttpMethod.Post.Method)
+        //        {
+        //            var restResponse = new RestResponse(_streamSocket, _appServiceConnection, _request);
+        //            restResponse.ProcessRequest();
+        //        }
         //    }
         //}
+
+        private async Task ProcessBadRequestAsync()
+        {
+            await RequestUtils.WriteMethodNotAllowedRequest(_streamSocket);
+        }
+
+        private async Task ProcessGetRequestAsync()
+        {
+            HttpResponse response;
+            try
+            {
+                response = await _staticFileHandler.HandleRequest(_request);
+            }
+            catch (Exception ex)
+            {
+                await RequestUtils.WriteInternalServerErrorResponse(_streamSocket, ex);
+                return;
+            }
+            await RequestUtils.WriteResponse(response, _streamSocket);
+        }
+
+        private void ProcessPostRequest()
+        {
+            var restResponse = new RestResponse(_streamSocket, _appServiceConnection, _request);
+            restResponse.ProcessRequest();
+        }
     }
 }
