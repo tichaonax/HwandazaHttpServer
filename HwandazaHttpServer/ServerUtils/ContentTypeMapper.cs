@@ -2,6 +2,8 @@
 {
     internal class ContentTypeMapper
     {
+        public const string JSON = "application/json";
+
         public string GetContentTypeForExtension(string extension)
         {
             switch (extension)

@@ -14,18 +14,18 @@ namespace HwandazaHttpServer.ServerUtils
     class RequestHandler
     {
         private readonly StreamSocket _streamSocket;
-        private readonly AppServiceConnection _appServiceConnection;
         private readonly Request _request;
         private readonly RequestParser _requestParser;
         private readonly StaticFileHandler _staticFileHandler;
+        private readonly RestHandler _restHandler;
 
         public RequestHandler(StreamSocket socket, AppServiceConnection appServiceConnection, Request request, StaticFileHandler staticFileHandler, RequestParser requestParser)
         {
             _streamSocket = socket;
-            _appServiceConnection = appServiceConnection;
             _request = request;
             _staticFileHandler = staticFileHandler;
             _requestParser = requestParser;
+            _restHandler = new RestHandler(socket, appServiceConnection, request);
         }
 
         public async Task HandleRequestAsync()
@@ -38,7 +38,7 @@ namespace HwandazaHttpServer.ServerUtils
 
             if (_request.Method.Method == HttpMethod.Post.Method)
             {
-                ProcessPostRequest();
+                ProcessPostRequestAsync();
                 return;
             }
 
@@ -65,7 +65,8 @@ namespace HwandazaHttpServer.ServerUtils
                         response = await _staticFileHandler.HandleRequest("index.html");
                         break;
                     case "hwandazaautomation/status":
-                        response = GetsHwandazaAutomationStatus(localpath);
+                        response = GetsHwandazaAutomationStatus();
+                        response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
                     default:
                         response = await _staticFileHandler.HandleRequest(localpath);
@@ -81,15 +82,26 @@ namespace HwandazaHttpServer.ServerUtils
             await RequestUtils.WriteResponse(response, _streamSocket);
         }
 
-        private HttpResponse GetsHwandazaAutomationStatus(string localpath)
+        private HttpResponse GetsHwandazaAutomationStatus()
         {
-            return new HttpResponse(HttpStatusCode.NotFound, $"File: {localpath} not found");
+
+            return _restHandler.GetsHwandazaAutomationStatus();
         }
 
-        private void ProcessPostRequest()
+        private async Task ProcessPostRequestAsync()
         {
-            var restResponse = new RestResponse(_streamSocket, _appServiceConnection, _request);
-            restResponse.ProcessRequest();
+            HttpResponse response;
+            try
+            {
+                response = _restHandler.ProcessPostRequest();
+            }
+            catch(Exception ex)
+            {
+                await RequestUtils.WriteInternalServerErrorResponse(_streamSocket, ex);
+                return;
+            }
+
+            await RequestUtils.WriteResponse(response, _streamSocket);
         }
     }
 }

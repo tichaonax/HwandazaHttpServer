@@ -60,7 +60,6 @@ namespace HwandazaHttpServer
             var stopCommand = new HwandazaCommand()
                               {
                                   Command = "Stop",
-                                  Method = "Post",
                                   Module = "Operations"
                               };
             var hwandazaMessage = new ValueSet {{"HwandazaCommand", JsonConvert.SerializeObject(stopCommand)}};

@@ -101,7 +101,7 @@
     <Compile Include="ServerUtils\RequestHandler.cs" />
     <Compile Include="ServerUtils\RequestParser.cs" />
     <Compile Include="ServerUtils\RequestUtils.cs" />
-    <Compile Include="ServerUtils\RestResponse.cs" />
+    <Compile Include="ServerUtils\RestHandler.cs" />
     <Compile Include="StartupTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticFileHandler.cs" />
