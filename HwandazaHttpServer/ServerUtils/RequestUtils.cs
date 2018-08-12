@@ -82,5 +82,27 @@ namespace HwandazaHttpServer.ServerUtils
                 await resp.FlushAsync();
             }
         }
+
+        //public static string ParseLocalPath(Request request)
+        //{
+        //    var localPath = request.Uri.LocalPath;
+        //    if (localPath.EndsWith("/"))
+        //        localPath += "index.html";
+
+        //    if (localPath.StartsWith("/"))
+        //        localPath = localPath.Substring(1);
+        //    return localPath;
+        //}
+
+        public static string ParseLocalPath(string uriLocalPath)
+        {
+            var localPath = uriLocalPath;
+            if (localPath.EndsWith("/"))
+                localPath += "index.html";
+
+            if (localPath.StartsWith("/"))
+                localPath = localPath.Substring(1);
+            return localPath;
+        }
     }
 }

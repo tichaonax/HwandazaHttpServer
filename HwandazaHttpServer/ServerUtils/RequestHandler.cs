@@ -55,14 +55,35 @@ namespace HwandazaHttpServer.ServerUtils
             HttpResponse response;
             try
             {
-                response = await _staticFileHandler.HandleRequest(_request);
+                var localpath = RequestUtils.ParseLocalPath(_request.Uri.LocalPath);
+
+                switch (localpath)
+                {
+                    case "index.html":
+                    case "hwandazaautomation":
+                    case "hwandazaautomation/index.html":
+                        response = await _staticFileHandler.HandleRequest("index.html");
+                        break;
+                    case "hwandazaautomation/status":
+                        response = GetsHwandazaAutomationStatus(localpath);
+                        break;
+                    default:
+                        response = await _staticFileHandler.HandleRequest(localpath);
+                        break;
+                }
             }
             catch (Exception ex)
             {
                 await RequestUtils.WriteInternalServerErrorResponse(_streamSocket, ex);
                 return;
             }
+
             await RequestUtils.WriteResponse(response, _streamSocket);
+        }
+
+        private HttpResponse GetsHwandazaAutomationStatus(string localpath)
+        {
+            return new HttpResponse(HttpStatusCode.NotFound, $"File: {localpath} not found");
         }
 
         private void ProcessPostRequest()

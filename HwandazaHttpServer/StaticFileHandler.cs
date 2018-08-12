@@ -30,9 +30,9 @@ namespace HwandazaHttpServer
                 return Path.Combine(Package.Current.InstalledLocation.Path, relativeOrAbsoluteBasePath);
         }
 
-        public IAsyncOperation<HttpResponse> HandleRequest(Request headerLine)
+        public IAsyncOperation<HttpResponse> HandleRequest(string uriLocalPath)
         {
-            Task<HttpResponse> task = HandleRequestTask(headerLine);
+            Task<HttpResponse> task = HandleRequestTask(uriLocalPath);
             IAsyncOperation<HttpResponse> httpResponse = task.AsAsyncOperation();
             return httpResponse;
         }
@@ -44,9 +44,9 @@ namespace HwandazaHttpServer
             return httpResponse;
         }
 
-        private async Task<HttpResponse> HandleRequestTask(Request headerLine)
+        private async Task<HttpResponse> HandleRequestTask(string uriLocalPath)
         {
-            var filePath = GetFilePath(headerLine);
+            var filePath = GetFilePath(uriLocalPath);
 
             Task<StorageFile> item = null;
             try
@@ -55,7 +55,7 @@ namespace HwandazaHttpServer
             }
             catch (FileNotFoundException)
             {
-              return new HttpResponse(HttpStatusCode.NotFound, $"File: {headerLine.Uri.LocalPath} not found");
+              return new HttpResponse(HttpStatusCode.NotFound, $"File: {uriLocalPath} not found");
             }
 
             return await GetHttpResponse(item.Result);
@@ -76,23 +76,11 @@ namespace HwandazaHttpServer
             }
         }
 
-        private string GetFilePath(Request headerLine)
+        private string GetFilePath(string uriLocalPath)
         {
-            var localPath = ParseLocalPath(headerLine);
-            var sanitizedLocalPath = localPath.Replace('/', '\\');
+            var sanitizedLocalPath = uriLocalPath.Replace('/', '\\');
             var filePath = Path.Combine(_basePath, sanitizedLocalPath);
             return filePath;
-        }
-
-        private static string ParseLocalPath(Request headerLine)
-        {
-            var localPath = headerLine.Uri.LocalPath;
-            if (localPath.EndsWith("/"))
-                localPath += "index.html";
-
-            if (localPath.StartsWith("/"))
-                localPath = localPath.Substring(1);
-            return localPath;
         }
     }
 }
