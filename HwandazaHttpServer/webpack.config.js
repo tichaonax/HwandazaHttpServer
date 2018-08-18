@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
     mode:'development',
     devtool: 'eval-sore-map',
-    entry: path.resolve(__dirname, 'Web/react/apps/main.js'),
+    entry: path.resolve(__dirname, 'Web/react/src/main.js'),
     output: {
         pathinfo: true,
         path: path.resolve(__dirname, 'Web/js'),
