@@ -16,16 +16,21 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(js|jsx)$/,
                 include: path.resolve(__dirname, 'Web/react'),
+                exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         cacheDirectory: true,
-                        presets: ['react'],
+                        presets: ['env', 'react', 'stage-2'],
                     },
                 },
-                    exclude: /(node_modules|bower_components)/,
+                
+            },
+            {
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ]
             },
         ],
     },

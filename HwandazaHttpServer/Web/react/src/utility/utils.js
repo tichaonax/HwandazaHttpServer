@@ -1,6 +1,6 @@
 const queryString = require("query-string");
 
-export class Utils {
+class Utils {
   static parseUrl(url) {
     let link = document.createElement("a");
     link.setAttribute("href", url);
@@ -35,4 +35,5 @@ export class Utils {
   }
 }
 
-module.exports = { Utils };
+var obj = new Utils();
+module.exports={obj};

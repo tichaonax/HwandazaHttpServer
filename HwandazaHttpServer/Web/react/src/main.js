@@ -10,7 +10,7 @@ const store = getStore();
 const render = store => {
   reactDOM.render(
     <div>
-      <HwandazaAutomation state={store.getState()} />
+      <HwandazaAutomation />
     </div>,
     document.getElementById("hwandaza-automation")
   );

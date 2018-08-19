@@ -145,8 +145,6 @@
     <Content Include="Web\css\theme.css" />
     <Content Include="Web\index.html" />
     <Content Include="Web\js\bundle.js" />
-    <Content Include="Web\js\jquery-latest.min.js" />
-    <Content Include="Web\js\script.js" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">

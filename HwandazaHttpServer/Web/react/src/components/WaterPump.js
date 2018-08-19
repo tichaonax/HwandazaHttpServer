@@ -1,5 +1,5 @@
 import React from "react";
-import SwitchButton from "react-switch-button";
+// import SwitchButton from "react-switch-button";
 import "react-switch-button/dist/react-switch-button.css";
 import "antd/dist/antd.css";
 
@@ -27,12 +27,13 @@ export default class WaterPump extends React.Component {
   render() {
     return (
       <div className="row">
-        <SwitchButton
+      {/*  <SwitchButton
           name="switch-theme"
           label="Water Status"
           checked={this.state.themeChecked}
           onChange={() => this.onChange()}
         />
+      */}
         <span>
           <span>{this.state.themeChecked ? " ON" : " OFF"}</span>
         </span>
