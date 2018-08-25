@@ -10,7 +10,7 @@ namespace HwandazaHttpServer
         public void Run(IBackgroundTaskInstance taskInstance)
         {
             //var installedLocation = Windows.ApplicationModel.Package.Current.InstalledLocation;
-            var path = "Web";
+            var path = "build";
            
             // Get the deferral object from the task instance
             _backgroundTaskDeferral = taskInstance.GetDeferral();

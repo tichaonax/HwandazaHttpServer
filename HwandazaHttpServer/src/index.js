@@ -1,0 +1,32 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import "./index.css";
+import registerServiceWorker from "./registerServiceWorker";
+import { getStore } from "../src/store/getStore";
+import { getStatus } from "./actions";
+import App from "./App";
+import { DevTools } from './components/DevTools/DevTools';
+
+const store = getStore();
+
+const Index = ()=>(
+    <Provider store={store}>
+        <App/>
+    </Provider>
+)
+
+const render = (store)=>{
+    ReactDOM.render(
+        <div>
+            <Index state={store.getState()}/>
+            <DevTools store={store}/>
+        </div>,
+        document.getElementById('hwandaza-automation'));
+};
+
+render(store);
+
+registerServiceWorker();
+
+store.dispatch(getStatus());
