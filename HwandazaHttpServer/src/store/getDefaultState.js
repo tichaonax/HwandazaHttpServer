@@ -2,7 +2,7 @@ import { fromJS } from "immutable";
 
 export const getDefaultState = () => {
   const defaultState = {
-    hwandaStatus: {},
+    automation: {},
     navigation: { navpage: '', shownavpage: false }
   };
 

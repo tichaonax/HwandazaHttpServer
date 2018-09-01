@@ -1,8 +1,8 @@
 import { navigation } from "./navigation";
-import { hwandaStatus } from "./hwandaStatus";
+import { automation } from "./hwandaStatus";
 import { combineReducers } from "../store/combineReducers";
 
 export const reducer = combineReducers({
-  hwandaStatus,
+  automation,
   navigation, 
 });

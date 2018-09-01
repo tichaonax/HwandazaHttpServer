@@ -1,11 +1,12 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
 import { GET_STATUS, setStatus } from "../actions";
-import { getStatusApi } from '../services';
+import { getStatusApi, getMockStatusApi } from '../services';
 
 function* fetchStatus() {
-  const response = yield call(() => getStatusApi());
-  console.log("api response>", response);
+  //const response = yield call(() => getStatusApi());
+  const response = yield call(() => getMockStatusApi());
+  console.log("api response>", JSON.stringify(response));
   yield put(setStatus(response.data));
 }
 

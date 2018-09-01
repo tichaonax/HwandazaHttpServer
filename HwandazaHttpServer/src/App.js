@@ -15,12 +15,28 @@ import Music from "./components/Music/Music";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
 import NotFound from "./components/NotFound/NotFound";
-import { showNavPage, setNavPage } from "./actions";
+import { showNavPage, setNavPage, randomToggleStatus } from "./actions";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
+    this.state = {
+      timer: null,
+    }
+  }
+
+  componentDidMount() {
+    let timer = setInterval(this.pollStatus, 1000);
+    this.setState({ timer });
+  }
+
+  componentWillUnmount() {
+    this.clearInterval(this.state.timer);
+  }
+
+  pollStatus = () => {
+    this.dispatch(randomToggleStatus());
   }
 
   drawerToggleClickHandler = () => {
