@@ -15,7 +15,7 @@ import Music from "./components/Music/Music";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
 import NotFound from "./components/NotFound/NotFound";
-import { showNavPage, setNavPage, randomToggleStatus } from "./actions";
+import { showNavPage, setNavPage, randomToggleStatus, getStatus } from "./actions";
 
 class App extends Component {
   constructor(props) {
@@ -36,7 +36,8 @@ class App extends Component {
   }
 
   pollStatus = () => {
-    this.dispatch(randomToggleStatus());
+    //this.dispatch(randomToggleStatus());
+    this.dispatch(getStatus());
   }
 
   drawerToggleClickHandler = () => {

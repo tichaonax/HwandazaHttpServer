@@ -5,8 +5,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-mock-adapter": "^1.15.0",
+    "es6-promise": "^4.2.4",
     "immer": "^1.5.0",
     "immutable": "^3.8.2",
+    "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.6.2",
     "proptypes": "^1.1.0",
     "react": "^16.4.2",

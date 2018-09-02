@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "./index.css";
-import registerServiceWorker from "./registerServiceWorker";
 import { getStore } from "../src/store/getStore";
 import { getStatus } from "./actions";
 import App from "./App";
@@ -26,7 +25,5 @@ const render = (store)=>{
 };
 
 render(store);
-
-registerServiceWorker();
 
 store.dispatch(getStatus());
