@@ -17,6 +17,13 @@ class Utils {
     return retValue;
   }
 
+  static getBaseUrl() {
+    return this.getUrlAddress(window.location.href).replace(
+      /\/+$/g,
+      ""
+    );
+  }
+
   static getUrlAddress(url) {
     const newUrl = Utils.parseUrl(url);
     return `${newUrl.protocol}//${newUrl.hostname}:${newUrl.port}`;
@@ -33,7 +40,18 @@ class Utils {
   static getQueryString(param) {
     return queryString.parse(window.location.search)[`${param}`];
   }
+
+  static getBoolValue(module) {
+    return (module && module.power == 1) ? true : false;
+  }
+
+  static getCommandString(action) {
+    return (action && action.power) ? "On" : "Off";
+  }
+
 }
 
 //var obj = new Utils();
-module.exports = { Utils };
+module.exports = {
+  Utils
+};

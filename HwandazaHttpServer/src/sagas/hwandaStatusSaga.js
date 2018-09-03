@@ -2,7 +2,8 @@ import {
   apply,
   call,
   put,
-  takeEvery
+  takeEvery,
+  takeLatest,
 } from "redux-saga/effects";
 
 import fetch from 'isomorphic-fetch';
@@ -14,30 +15,31 @@ import {
 
 import {
   GET_STATUS,
-  setStatus
+  setStatus,
+  setApiCallFailed,
 } from "../actions";
 
 import {
   getMockStatusApi
 } from '../services';
 
-const newBaseUrl = Utils.getUrlAddress(window.location.href).replace(
-  /\/+$/g,
-  ""
-);
-
-function* fetchFromMockData(){
+function* fetchFromMockData() {
   const response = yield call(() => getMockStatusApi());
-  console.log('mockdata', JSON.stringify(response.data));
+  //console.log('mockdata', JSON.stringify(response.data));
   yield put(setStatus(response.data));
-} 
+}
 
-function* fetchFromRaspbery(){
-  const url = `${newBaseUrl}/hwandazaautomation/status`;
-  const response = yield call(fetch, url);
-  const data = yield apply(response, response.json);
-  console.log("api response", JSON.stringify(data));
-  yield put(setStatus(data));
+function* fetchFromRaspbery() {
+  const url = `${Utils.getBaseUrl()}/hwandazaautomation/status`;
+  try {
+    const response = yield call(fetch, url);
+    const data = yield apply(response, response.json);
+    //console.log("api response", JSON.stringify(data));
+    yield put(setStatus(data));
+  } catch (error) {
+    console.log('Error API:', error);
+    yield put(setApiCallFailed({error: error.message}));
+  }
 }
 
 export function* hwandaStatusSaga() {

@@ -112,8 +112,8 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.cc584345.css.map" />
-    <None Include="build\static\js\main.ffb4f3a4.js.map" />
+    <None Include="build\static\css\main.f829529b.css.map" />
+    <None Include="build\static\js\main.c760b235.js.map" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -127,8 +127,8 @@
     <Content Include="build\favicon.ico" />
     <Content Include="build\index.html" />
     <Content Include="build\service-worker.js" />
-    <Content Include="build\static\css\main.cc584345.css" />
-    <Content Include="build\static\js\main.ffb4f3a4.js" />
+    <Content Include="build\static\css\main.f829529b.css" />
+    <Content Include="build\static\js\main.c760b235.js" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png">
       <InProject>false</InProject>

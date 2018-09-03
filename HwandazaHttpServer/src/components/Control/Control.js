@@ -1,31 +1,75 @@
 import React from 'react';
-import {
-    connect
-} from "react-redux";
-import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+
 import {
     fishpondSelector,
     waterpumpSelector,
     irrigatorSelector
 } from '../../selectors';
 
+import { Utils } from "../../utility";
 import './Control.css';
+import { HwandaSwitch } from '../HwandaSwitch/HwandaSwitch';
+
+import {
+    setModuleStatus,
+    } from '../../actions';
 
 const control = props => {
+
     const { fishpond, waterpump, irrigator } = props
+
+    function handleWaterPumpSwitchChange(checked) {
+        props.dispatch(setModuleStatus(
+            {
+                Command: Utils.getCommandString(checked),
+                Module: "MainWaterPump",
+            }
+        ));
+    }
+      
+    function handleIrrigatorSwitchChange(checked) {
+        props.dispatch(setModuleStatus(
+            {
+                Command: Utils.getCommandString(checked),
+                Module: "LawnIrrigator",
+            }
+        ));
+    }
+
+    function handleFishpondSwitchChange(checked) {
+        props.dispatch(setModuleStatus(
+            {
+                Command: Utils.getCommandString(checked),
+                Module: "FishPondPump",
+            }
+        ));
+    }
 
     return ( 
     <div> 
-        <div> Water pump is { waterpump && waterpump.power } </div>
-        <div> Fishpond is { fishpond && fishpond.power } </div>
-        <div> Irrigator is { irrigator && irrigator.power } </div>
+        <div>Water Pump <HwandaSwitch 
+                            power={waterpump && Utils.getBoolValue(waterpump)} 
+                            textColor="orange" 
+                            fillColor="red"
+                            handleChange={handleWaterPumpSwitchChange}
+                            >XXXXXXXXX</HwandaSwitch>
+        </div>
+        <div>Irrigator <HwandaSwitch 
+                            power={irrigator && Utils.getBoolValue(irrigator)} 
+                            textColor="orange" 
+                            fillColor="aqua"
+                            handleChange={handleIrrigatorSwitchChange}/>
+        </div>
+        <div>Fishpond <HwandaSwitch 
+                            power={fishpond && Utils.getBoolValue(fishpond)} 
+                            textColor="orange" 
+                            fillColor="yellow"
+                            handleChange={handleFishpondSwitchChange}/>
+        </div>
    </div>
     );
 }
-
-/* control.propTypes = {
- 
-} */
 
 const mapStateToProps = (state) => {
     const fishpond = fishpondSelector(state);
