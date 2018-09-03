@@ -51,7 +51,6 @@ class Utils {
 
 }
 
-//var obj = new Utils();
 module.exports = {
   Utils
 };

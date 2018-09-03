@@ -53,7 +53,7 @@ const control = props => {
                             textColor="orange" 
                             fillColor="red"
                             handleChange={handleWaterPumpSwitchChange}
-                            >XXXXXXXXX</HwandaSwitch>
+                            ></HwandaSwitch>
         </div>
         <div>Irrigator <HwandaSwitch 
                             power={irrigator && Utils.getBoolValue(irrigator)} 
