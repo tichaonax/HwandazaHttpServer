@@ -45,8 +45,8 @@ class Utils {
     return (module && module.power == 1) ? true : false;
   }
 
-  static getCommandString(action) {
-    return (action && action.power) ? "On" : "Off";
+  static getCommandString(checked) {
+    return (checked) ? "On" : "Off";
   }
 
 }
