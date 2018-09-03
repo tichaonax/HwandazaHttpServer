@@ -38,7 +38,7 @@ namespace HwandazaHttpServer.ServerUtils
 
             if (_request.Method.Method == HttpMethod.Post.Method)
             {
-                ProcessPostRequestAsync();
+                await ProcessPostRequestAsync();
                 return;
             }
 
