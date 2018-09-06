@@ -55,17 +55,17 @@ const control = props => {
                             handleChange={handleWaterPumpSwitchChange}
                             ></HwandaSwitch>
         </div>
-        <div>Irrigator <HwandaSwitch 
-                            power={irrigator && Utils.getBoolValue(irrigator)} 
-                            textColor="orange" 
-                            fillColor="aqua"
-                            handleChange={handleIrrigatorSwitchChange}/>
-        </div>
         <div>Fishpond <HwandaSwitch 
                             power={fishpond && Utils.getBoolValue(fishpond)} 
                             textColor="orange" 
                             fillColor="yellow"
                             handleChange={handleFishpondSwitchChange}/>
+        </div>
+        <div>Irrigator <HwandaSwitch 
+                            power={irrigator && Utils.getBoolValue(irrigator)} 
+                            textColor="orange" 
+                            fillColor="aqua"
+                            handleChange={handleIrrigatorSwitchChange}/>
         </div>
    </div>
     );
