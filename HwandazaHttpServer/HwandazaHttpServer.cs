@@ -43,8 +43,8 @@ namespace HwandazaHttpServer
                                _appServiceConnection = new AppServiceConnection
                                                        {
                                                            PackageFamilyName ="HwandazaWebService_7c1xvdqapnqy0",
-                                                           AppServiceName = "HwandazaAppCommunicationService"
-                                                       };
+                                                           AppServiceName = "HwandazaAppCommunicationService",
+                               };
 
                                // Send a initialize request 
                                var res = await _appServiceConnection.OpenAsync();

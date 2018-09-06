@@ -38,7 +38,7 @@ namespace HwandazaHttpServer.ServerUtils
             {
                 if (appServiceResponse.Status == AppServiceResponseStatus.Success)
                 {
-                    responseContent = appServiceResponse.Message["Result"] as string;
+                    responseContent = appServiceResponse.Message["Response"] as string;
                 }
                 else
                 {
