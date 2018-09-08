@@ -75,15 +75,15 @@ namespace HwandazaHttpServer
             {
                 var requestText = await RequestUtils.ReadRequest(socket);
                 request = _requestParser.ParseRequestText(requestText, socket.Information.LocalAddress, socket.Information.LocalPort);
+                var requestHandler = new RequestHandler(socket, _appServiceConnection, request, _staticFileHandler, _requestParser);
+                await requestHandler.HandleRequestAsync();
+                return;
             }
             catch (Exception ex)
             {
                 await RequestUtils.WriteInternalServerErrorResponse(socket, ex);
                 return;
             }
-
-            var requestHandler = new RequestHandler(socket, _appServiceConnection, request, _staticFileHandler, _requestParser);
-            await requestHandler.HandleRequestAsync();
         }
     }
 }

@@ -62,6 +62,13 @@ namespace HwandazaHttpServer.ServerUtils
                     case "index.html":
                     case "hwandazaautomation":
                     case "hwandazaautomation/index.html":
+                    case "status":
+                    case "settings":
+                    case "lights":
+                    case "control":
+                    case "music":
+                    case "gallery":
+                    case "about":
                         response = await _staticFileHandler.HandleRequest("index.html");
                         break;
                     case "hwandazaautomation/status":
