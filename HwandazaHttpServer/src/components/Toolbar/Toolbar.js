@@ -8,7 +8,7 @@ import "./Toolbar.css";
 
 const toolbar = props => {
   const { statusDate } = props;
-  const dateTime = moment(statusDate).format("LLLL");
+  const dateTime = moment(statusDate).format("llll");
   return(
   <header className="toolbar">
     <nav className="toolbar__navigation">
