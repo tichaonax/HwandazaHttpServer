@@ -42,7 +42,7 @@ namespace HwandazaHttpServer.ServerUtils
                 }
                 else
                 {
-                    responseContent = "{Error:" + appServiceResponse.Message + "}";
+                    responseContent = "{}";
                 }
             }
 
