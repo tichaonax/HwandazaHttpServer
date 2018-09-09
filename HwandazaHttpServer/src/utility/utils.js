@@ -49,6 +49,17 @@ class Utils {
     return (checked) ? "On" : "Off";
   }
 
+  static buildPostFetchOptions(body) {
+    const payload = JSON.stringify(body);
+    return {
+      method: "POST",
+      body: payload,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    }
+  }
 }
 
 module.exports = {

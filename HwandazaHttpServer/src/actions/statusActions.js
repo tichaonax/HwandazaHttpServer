@@ -10,4 +10,7 @@ export const RANDOM_TOGGLE_STATUS =  `RANDOM_TOGGLE_STATUS`;
 export const randomToggleStatus = createAction(RANDOM_TOGGLE_STATUS);
 
 export const SET_MODULE_STATUS = `SET_MODULE_STATUS`;
-export const setModuleStatus = createAction(SET_MODULE_STATUS, `command`);
+export const setModuleStatus = createAction(SET_MODULE_STATUS, `request`);
+
+export const SET_SYSTEM_DATE_TIME = `SET_SYSTEM_DATE_TIME`;
+export const setSyatemDateTime = createAction(SET_SYSTEM_DATE_TIME, `request`);

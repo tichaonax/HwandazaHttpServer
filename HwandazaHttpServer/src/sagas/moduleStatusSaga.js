@@ -2,9 +2,7 @@ import {
     apply,
     call,
     put,
-    take,
     takeEvery,
-    takeLatest,
 } from "redux-saga/effects";
 
 import fetch from 'isomorphic-fetch';
@@ -20,26 +18,12 @@ import {
     setApiCallFailed,
 } from "../actions";
 
-function buildFetchOptions(action) {
-    return {
-        method: "POST",
-        body: JSON.stringify(action.command),
-        headers: {
-            "Content-Type": "application/json"
-        },
-        credentials: "same-origin"
-    }
-}
-
-function* sendCommnadToRaspberryPi(action) {
-    //console.log('sendCommnadToRaspberryPi', action);
+function* setModuleStatus(action) {
     try {
         const url = `${Utils.getBaseUrl()}/hwandazaautomation`;
-        const options = buildFetchOptions(action);
-        console.log('fetch options', options);
+        const options = Utils.buildPostFetchOptions(action.request);
         const response = yield call(fetch, url, options);
         const data = yield apply(response, response.json);
-        console.log("Commnad To RaspberryPi response", JSON.stringify(data));
         yield put(setStatus(data));
     } catch (error) {
         console.log('Error API:', error);
@@ -49,5 +33,5 @@ function* sendCommnadToRaspberryPi(action) {
 
 export function* moduleStatusSaga() {
     console.log("moduleStatusSaga saga starterd");
-    yield takeEvery(SET_MODULE_STATUS, sendCommnadToRaspberryPi);
+    yield takeEvery(SET_MODULE_STATUS, setModuleStatus);
 }
