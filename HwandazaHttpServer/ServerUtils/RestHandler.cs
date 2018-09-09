@@ -11,13 +11,13 @@ namespace HwandazaHttpServer.ServerUtils
     class RestHandler
     { 
         private readonly StreamSocket _streamSocket;
-        private readonly AppServiceConnection _appServiceConnection;
+        private AppServiceConnection _appServiceConnection;
         private readonly Request _request;
         private const uint BufferSize = 8192;
 
-        public RestHandler(StreamSocket socket, AppServiceConnection appServiceConnection, Request request)
+        public RestHandler(StreamSocket socket, Request request)
         {
-            _appServiceConnection = appServiceConnection;
+            _appServiceConnection = AppServiceInstance.Instance.GetAppServiceConnection();
             _streamSocket = socket;
             _request = request;
         }
@@ -29,7 +29,7 @@ namespace HwandazaHttpServer.ServerUtils
             return hwandazaCommand;
         }
 
-        private string GetResponseContent(HwandazaCommand command)
+        private async Task<string> GetResponseContentAsync(HwandazaCommand command)
         {
             var responseContent = "{}";
 
@@ -42,7 +42,8 @@ namespace HwandazaHttpServer.ServerUtils
                 }
                 else
                 {
-                    responseContent = "{}";
+                    //attempt a reconnections and resubmit the command the
+                    responseContent = await ResubmitRequestAppServiceAsync(command);
                 }
             }
 
@@ -57,14 +58,14 @@ namespace HwandazaHttpServer.ServerUtils
                 Command = "Status",
             };
 
-            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, GetResponseContent(command));
+            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, GetResponseContentAsync(command).Result);
         }
 
         public HttpResponse ProcessPostRequest()
         {
             var command = ExtractRequestParameters();
             
-            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, GetResponseContent(command));
+            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, GetResponseContentAsync(command).Result);
         }
 
         private async Task<AppServiceResponse> RequestAppServiceAsync(HwandazaCommand command)
@@ -86,5 +87,25 @@ namespace HwandazaHttpServer.ServerUtils
             return response;
         }
 
+        private async Task<string> ResubmitRequestAppServiceAsync(HwandazaCommand command)
+        {
+            //re-establish appservice connection
+            await AppServiceInstance.SetAppServiceConnection();
+
+            _appServiceConnection = AppServiceInstance.Instance.GetAppServiceConnection();
+
+            var responseContent = "{}";
+
+            var appServiceResponse = RequestAppServiceAsync(command).Result;
+            if (appServiceResponse != null)
+            {
+                if (appServiceResponse.Status == AppServiceResponseStatus.Success)
+                {
+                    responseContent = appServiceResponse.Message["Response"] as string;
+                }
+            }
+
+            return (responseContent);
+        }
     }
 }

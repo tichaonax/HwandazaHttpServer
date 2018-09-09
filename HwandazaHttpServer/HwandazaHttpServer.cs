@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
 using Windows.Networking.Sockets;
 using HwandazaHttpServer.ServerUtils;
@@ -12,7 +11,6 @@ namespace HwandazaHttpServer
     {
         private readonly int _httpServerPort; // = 8100;
         private readonly StreamSocketListener _streamSocketListener;
-        private AppServiceConnection _appServiceConnection;
         private readonly RequestParser _requestParser;
         private readonly StaticFileHandler _staticFileHandler;
 
@@ -40,18 +38,8 @@ namespace HwandazaHttpServer
                                await _streamSocketListener.BindServiceNameAsync(_httpServerPort.ToString());
 
                                // Initialize the AppServiceConnection
-                               _appServiceConnection = new AppServiceConnection
-                                                       {
-                                                           PackageFamilyName ="HwandazaWebService_7c1xvdqapnqy0",
-                                                           AppServiceName = "HwandazaAppCommunicationService",
-                               };
+                               await AppServiceInstance.SetAppServiceConnection();
 
-                               // Send a initialize request 
-                               var res = await _appServiceConnection.OpenAsync();
-                               if (res != AppServiceConnectionStatus.Success)
-                               {
-                                   throw new Exception("Failed to connect to the AppService");
-                               }
                            });
         }
 
@@ -64,7 +52,7 @@ namespace HwandazaHttpServer
                               };
             var hwandazaMessage = new ValueSet {{"HwandazaCommand", JsonConvert.SerializeObject(stopCommand)}};
 #pragma warning disable CS4014
-            _appServiceConnection.SendMessageAsync(hwandazaMessage);
+            AppServiceInstance.Instance.GetAppServiceConnection().SendMessageAsync(hwandazaMessage);
 #pragma warning restore CS4014
         }
 
@@ -75,7 +63,7 @@ namespace HwandazaHttpServer
             {
                 var requestText = await RequestUtils.ReadRequest(socket);
                 request = _requestParser.ParseRequestText(requestText, socket.Information.LocalAddress, socket.Information.LocalPort);
-                var requestHandler = new RequestHandler(socket, _appServiceConnection, request, _staticFileHandler, _requestParser);
+                var requestHandler = new RequestHandler(socket, request, _staticFileHandler, _requestParser);
                 await requestHandler.HandleRequestAsync();
                 return;
             }

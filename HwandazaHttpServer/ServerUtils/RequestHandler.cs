@@ -19,13 +19,13 @@ namespace HwandazaHttpServer.ServerUtils
         private readonly StaticFileHandler _staticFileHandler;
         private readonly RestHandler _restHandler;
 
-        public RequestHandler(StreamSocket socket, AppServiceConnection appServiceConnection, Request request, StaticFileHandler staticFileHandler, RequestParser requestParser)
+        public RequestHandler(StreamSocket socket, Request request, StaticFileHandler staticFileHandler, RequestParser requestParser)
         {
             _streamSocket = socket;
             _request = request;
             _staticFileHandler = staticFileHandler;
             _requestParser = requestParser;
-            _restHandler = new RestHandler(socket, appServiceConnection, request);
+            _restHandler = new RestHandler(socket, request);
         }
 
         public async Task HandleRequestAsync()
