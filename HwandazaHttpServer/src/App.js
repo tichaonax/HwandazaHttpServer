@@ -76,18 +76,18 @@ class App extends Component {
           {backdrop}
           <main style={{ marginTop: "64px" }}>
             <p>Hwandaza Automation</p>
-            <Switch>
-              <Route path="/" exact component={Status} />
-              <Route path="/status" component={Status} />
-              <Route path="/lights" component={Lights} />
-              <Route path="/control" component={Control} />
-              <Route path="/music" component={Music} />
-              <Route path="/gallery" component={ImageGallery} />
-              <Route path="/settings" component={Settings} />
-              <Route path="/help" component={Help} />
-              <Route path="/about" component={About} />
-              <Route component={NotFound} />
-            </Switch>
+              <Switch>
+                <Route path="/" exact component={Status} />
+                <Route path="/status" component={Status} />
+                <Route path="/lights" component={Lights} />
+                <Route path="/control" component={Control} />
+                <Route path="/music" component={Music} />
+                <Route path="/gallery" component={ImageGallery} />
+                <Route path="/settings" component={Settings} />
+                <Route path="/help" component={Help} />
+                <Route path="/about" component={About} />
+                <Route component={NotFound} />
+              </Switch>
           </main>
         </div>
       </BrowserRouter>
