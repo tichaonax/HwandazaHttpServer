@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from "react-redux";
 
+import "../../styles/styles.css";
 import './Lights.css';
 
 const lights = props => (
-    <div>Lights goes here</div>
+    <div className="hwandaza-automation">Lights goes here</div>
 );
 
 export default connect()(lights);

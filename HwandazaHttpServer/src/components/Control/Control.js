@@ -8,6 +8,7 @@ import {
 } from '../../selectors';
 
 import { Utils } from "../../utility";
+import "../../styles/styles.css";
 import './Control.css';
 import { HwandaSwitch } from '../HwandaSwitch/HwandaSwitch';
 
@@ -47,7 +48,7 @@ const control = props => {
     }
 
     return ( 
-    <div> 
+    <div className="hwandaza-automation"> 
         <div>Water Pump <HwandaSwitch 
                             power={waterpump && Utils.getBoolValue(waterpump)} 
                             textColor="orange" 

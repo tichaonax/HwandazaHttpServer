@@ -1,10 +1,10 @@
 import React from 'react';
-import { connect } from "react-redux";
 
+import "../../styles/styles.css";
 import './About.css';
 
 const about = props => (
-    <div>About goes here</div>
+    <div className="hwandaza-automation">About goes here</div>
 );
 
-export default connect()(about);
+export default about;

@@ -61,7 +61,7 @@ export class Settings extends React.Component {
     const time = moment(statusDate).format(timeFormat);
 
     return (
-      <div>
+      <div className="hwandaza-automation">
         <h2>System Settings</h2>
         <DatePicker
           selected={this.state.systemDate}

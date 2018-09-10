@@ -8,12 +8,15 @@ import {
   irrigatorSelector,
  } from '../../selectors';
 
-import "./Status.css";
+ import "../../styles/styles.css";
+ import "./Status.css";
+
 
 const status = props => {
     
   return(
-  <div>
+  <div className="hwandaza-automation">
+    <h2>System Settings</h2>
     <StatusLayout Props={props}/>
   </div>
   );
