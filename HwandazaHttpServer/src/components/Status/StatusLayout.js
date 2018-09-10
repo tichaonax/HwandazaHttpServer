@@ -4,11 +4,11 @@ import StatusBox from './StatusBox';
 import "./Status.css";
  
 function getModuleCheckedValue(module) {
-    return (module && module.power == 1) ? "checked" : null;
+    return (module && module.power === 1) ? "checked" : null;
   }
 
   function getCheckedValue(power) {
-    return (power == 1) ? "checked" : null;
+    return (power === 1) ? "checked" : null;
   }
 
 const statuslayout = props => {

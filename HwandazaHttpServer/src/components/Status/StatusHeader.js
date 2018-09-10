@@ -11,7 +11,7 @@ const statusheader = props => {
         fontSize: "15px"
       }}
     >
-      <span style={{ left: "-1px", fontSize: "13px", position: "relative", top: "-1px" }}>
+      <span className="status-header">
         {props.Title}
       </span>
     </div>

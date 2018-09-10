@@ -75,4 +75,12 @@
   height: 60px;
   width: 120px;
   margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.status-header{
+  left: 10px;
+  font-size: 13px;
+  position: relative;
+  top: -1px;
 }

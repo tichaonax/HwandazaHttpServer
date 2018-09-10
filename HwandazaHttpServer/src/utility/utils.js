@@ -42,7 +42,7 @@ class Utils {
   }
 
   static getBoolValue(module) {
-    return (module && module.power == 1) ? true : false;
+    return (module && module.power === 1) ? true : false;
   }
 
   static getCommandString(checked) {

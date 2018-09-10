@@ -75,7 +75,6 @@ class App extends Component {
           />
           {backdrop}
           <main style={{ marginTop: "64px" }}>
-            <p>Hwandaza Automation</p>
               <Switch>
                 <Route path="/" exact component={Status} />
                 <Route path="/status" component={Status} />

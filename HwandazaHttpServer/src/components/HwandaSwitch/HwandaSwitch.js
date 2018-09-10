@@ -2,10 +2,6 @@ import React from "react";
 import Switch from "react-switch";
  
 export class HwandaSwitch extends React.Component {
-  constructor(props) {
-    super(props);
-  }
- 
   render() {
     const { power, textColor, fillColor, handleChange } = this.props;
   

@@ -45,7 +45,7 @@ export class Settings extends React.Component {
     });
 
     const newDate = moment(e).format("YYYY-MM-DD");
-    if(newDate != 'Invalid date'){
+    if(newDate !== 'Invalid date'){
       this.dispatch(setSyatemDateTime(
       {
           Command: "SetSystemDate",
