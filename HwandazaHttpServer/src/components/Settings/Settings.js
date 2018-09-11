@@ -5,7 +5,6 @@ import { DatePicker, TimePicker, Button } from "antd";
 import "antd/dist/antd.css";
 import "../../styles/styles.css";
 import './Settings.css';
-import { statusDateSelector } from '../../selectors';
 import { setSyatemDateTime } from '../../actions';
 
 const timeFormat = "HH:mm:ss";
@@ -55,18 +54,13 @@ export class Settings extends React.Component {
   };
 
   render() {
-    const {statusDate} = this.props;
     const dateFormat = "DD MMM YYYY";
-    const dateTime = moment(statusDate).format(dateFormat);
-    const time = moment(statusDate).format(timeFormat);
-
     return (
       <div className="hwandaza-automation">
         <h2>System Settings</h2>
         <DatePicker
           selected={this.state.systemDate}
           onChange={e => this.handleDateChange(e)}
-          defaultValue={moment(dateTime, dateFormat)}
           format={dateFormat}
         />
         <TimePicker
@@ -78,7 +72,6 @@ export class Settings extends React.Component {
               Ok
             </Button>
           )}
-          defaultValue={moment(time, timeFormat)}
           format={timeFormat}
         />
       </div>
@@ -86,10 +79,4 @@ export class Settings extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-     statusDate : statusDateSelector(state),
-  }
-};
-
-export default connect(mapStateToProps)(Settings);
+export default connect()(Settings);

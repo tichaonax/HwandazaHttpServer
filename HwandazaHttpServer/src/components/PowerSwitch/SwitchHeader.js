@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Status.css";
+import "./PowerSwitch.css";
 
-const statusheader = props => {
+const switchheader = props => {
   return (
     <div
       style={{
@@ -11,11 +11,11 @@ const statusheader = props => {
         fontSize: "15px"
       }}
     >
-      <span className="status-header">
+      <span className="switch-header">
         {props.Title}
       </span>
     </div>
   );
 };
 
-export default statusheader;
+export default switchheader;

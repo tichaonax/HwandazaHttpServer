@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Status.css";
+import "./PowerSwitch.css";
 
-const statusswitch = props => {
+const powerswitch = props => {
   return (
     <div>
       <div className="onoffswitch">
@@ -23,4 +23,4 @@ const statusswitch = props => {
   );
 };
 
-export default statusswitch;
+export default powerswitch;

@@ -48,25 +48,37 @@ const control = props => {
     }
 
     return ( 
-    <div className="hwandaza-automation"> 
-        <div>Water Pump <HwandaSwitch 
+    <div className="hwandaza-automation">
+        <h2>Module Control</h2> 
+        <div>
+            <div className="switch-header">Water Pump </div>
+            <div>
+                <HwandaSwitch 
                             power={waterpump && Utils.getBoolValue(waterpump)} 
                             textColor="orange" 
                             fillColor="red"
-                            handleChange={handleWaterPumpSwitchChange}
-                            ></HwandaSwitch>
+                            handleChange={handleWaterPumpSwitchChange}/>
+            </div>
         </div>
-        <div>Fishpond <HwandaSwitch 
+        <div>
+            <div className="switch-header">Fishpond</div>
+            <div>
+                <HwandaSwitch 
                             power={fishpond && Utils.getBoolValue(fishpond)} 
                             textColor="orange" 
                             fillColor="yellow"
                             handleChange={handleFishpondSwitchChange}/>
+            </div>
         </div>
-        <div>Irrigator <HwandaSwitch 
+        <div>
+            <div className="switch-header">Irrigator</div>
+            <div>
+                <HwandaSwitch 
                             power={irrigator && Utils.getBoolValue(irrigator)} 
                             textColor="orange" 
                             fillColor="aqua"
                             handleChange={handleIrrigatorSwitchChange}/>
+            </div>
         </div>
    </div>
     );

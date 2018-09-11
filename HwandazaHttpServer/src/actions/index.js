@@ -5,6 +5,9 @@ export {
     SET_STATUS,
     setStatus,
 
+    SET_RANDOM_LIGHT_STATUS,
+    setRandomLightStatus,
+
     RANDOM_TOGGLE_STATUS,
     randomToggleStatus,
     

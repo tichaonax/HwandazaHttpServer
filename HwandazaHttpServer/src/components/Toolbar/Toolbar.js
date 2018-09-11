@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom'
 import moment from "moment";
 import NavigationLinks from "../NavigationLinks/NavigationLinks";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
@@ -19,7 +20,7 @@ const toolbar = props => {
         <a href="/">HWANDA</a>
       </div>
       <div className="spacer" />
-      <div className="toolbar_status-date">{dateTime}</div>
+      <div className="toolbar_status-date"><Link to="settings">{dateTime}</Link></div>
       <div className="spacer" />
       <div className="toolbar_navigation-items">
         <NavigationLinks click={props.navClickHandler} drawerCall={false} />
