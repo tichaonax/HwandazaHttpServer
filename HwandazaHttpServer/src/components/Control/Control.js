@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
+import { Flex, Box } from 'rebass';
 
 import {
     fishpondSelector,
@@ -50,36 +51,45 @@ const control = props => {
     return ( 
     <div className="hwandaza-automation">
         <h2>Module Control</h2> 
-        <div>
-            <div className="switch-header">Water Pump </div>
-            <div>
+        <Flex>
+            <Box p={3} width={1/2}>
+                Water Pump
+            </Box>
+            <Box p={3} width={1/4} alignItems='center'>
                 <HwandaSwitch 
-                            power={waterpump && Utils.getBoolValue(waterpump)} 
-                            textColor="orange" 
-                            fillColor="red"
-                            handleChange={handleWaterPumpSwitchChange}/>
-            </div>
-        </div>
-        <div>
-            <div className="switch-header">Fishpond</div>
-            <div>
+                    power={waterpump && Utils.getBoolValue(waterpump)} 
+                    textColor="orange" 
+                    fillColor="red"
+                    handleChange={handleWaterPumpSwitchChange}/>
+            </Box>
+            <Box p={3} width={1/4}></Box>
+        </Flex>
+        <Flex> 
+            <Box p={3} width={1/2} alignItems='center'>
+                Fishpond Pump
+            </Box>
+            <Box p={3} width={1/4}>        
                 <HwandaSwitch 
-                            power={fishpond && Utils.getBoolValue(fishpond)} 
-                            textColor="orange" 
-                            fillColor="yellow"
-                            handleChange={handleFishpondSwitchChange}/>
-            </div>
-        </div>
-        <div>
-            <div className="switch-header">Irrigator</div>
-            <div>
+                    power={fishpond && Utils.getBoolValue(fishpond)} 
+                    textColor="orange" 
+                    fillColor="yellow"
+                    handleChange={handleFishpondSwitchChange}/>
+            </Box>
+            <Box p={3} width={1/4}></Box>
+        </Flex>
+        <Flex>
+            <Box p={3} width={1/2} alignItems='center'>
+                Lawn Irrigator
+            </Box>
+            <Box p={3} width={1/4}>
                 <HwandaSwitch 
-                            power={irrigator && Utils.getBoolValue(irrigator)} 
-                            textColor="orange" 
-                            fillColor="aqua"
-                            handleChange={handleIrrigatorSwitchChange}/>
-            </div>
-        </div>
+                    power={irrigator && Utils.getBoolValue(irrigator)} 
+                    textColor="orange" 
+                    fillColor="aqua"
+                    handleChange={handleIrrigatorSwitchChange}/>
+            </Box>
+            <Box p={3} width={1/4}></Box>
+        </Flex>
    </div>
     );
 }
@@ -94,15 +104,5 @@ const mapStateToProps = (state) => {
         irrigator: irrigator.status,
     }
 };
-
-
-/* const mapDispatchToProps = (dispatch) => ({
-    increaseItemQuantity(id){
-        dispatch(increaseItemQuantity(id));
-    },
-    decreaseItemQuantity(id){
-        dispatch(decreaseItemQuantity(id));
-    }
-}); */
 
 export default connect(mapStateToProps)(control);
