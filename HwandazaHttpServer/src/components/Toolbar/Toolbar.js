@@ -49,7 +49,7 @@ export class Toolbar extends React.Component {
         <DrawerToggleButton click={this.props.drawerClickHandler} />
       </div>
       <div className="toolbar__logo">
-        <a href="/">HWANDA</a>
+        <a href="/">HW</a>
       </div>
       <div className="spacer" />
       <div id="dateTime_div" className="toolbar_status-date"><Link to="settings">{dateTime}</Link></div>
