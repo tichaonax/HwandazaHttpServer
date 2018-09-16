@@ -55,7 +55,7 @@ const control = props => {
             <Box p={3} width={1/2}>
                 Water Pump
             </Box>
-            <Box p={3} width={1/4} alignItems='center'>
+            <Box p={3} width={1/4}>
                 <HwandaSwitch 
                     power={waterpump && Utils.getBoolValue(waterpump)} 
                     textColor="orange" 
@@ -65,7 +65,7 @@ const control = props => {
             <Box p={3} width={1/4}></Box>
         </Flex>
         <Flex> 
-            <Box p={3} width={1/2} alignItems='center'>
+            <Box p={3} width={1/2}>
                 Fishpond Pump
             </Box>
             <Box p={3} width={1/4}>        
@@ -78,7 +78,7 @@ const control = props => {
             <Box p={3} width={1/4}></Box>
         </Flex>
         <Flex>
-            <Box p={3} width={1/2} alignItems='center'>
+            <Box p={3} width={1/2}>
                 Lawn Irrigator
             </Box>
             <Box p={3} width={1/4}>

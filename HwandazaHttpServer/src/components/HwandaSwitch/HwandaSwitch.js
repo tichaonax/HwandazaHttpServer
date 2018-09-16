@@ -4,7 +4,6 @@ import Switch from "react-switch";
 export class HwandaSwitch extends React.Component {
   render() {
     const { power, textColor, fillColor, handleChange } = this.props;
-  
     return (
       <label htmlFor="normal-switch">
         <Switch
