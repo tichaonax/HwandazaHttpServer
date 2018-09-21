@@ -7,7 +7,7 @@ export const waterpumpSelector = createSelector(
     automation => {
         const status = automation.status;
         return (status && status.modules) ? {
-            status: status.modules.WaterPump
+            status: status.modules.waterPump
         } : {
             status: null
         };

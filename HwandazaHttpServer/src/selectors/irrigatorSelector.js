@@ -7,7 +7,7 @@ export const irrigatorSelector = createSelector(
     automation => {
         const status = automation.status;
         return (status && status.modules) ? {
-            status: status.modules.Irrigator
+            status: status.modules.irrigator
         } : {
             status: null
         };

@@ -45,12 +45,12 @@ const lights = props => {
         return (power === 1) ? true : false;
       }
 
-    const m1Checked = (lights) ? getCheckedValue(lights.M1): false;
-    const m2Checked = (lights) ? getCheckedValue(lights.M2): false;
-    const l3Checked = (lights) ? getCheckedValue(lights.L3): false;
-    const l4Checked = (lights) ? getCheckedValue(lights.L4): false;
-    const l5Checked = (lights) ? getCheckedValue(lights.L5): false;
-    const l6Checked = (lights) ? getCheckedValue(lights.L6): false;
+    const m1Checked = (lights) ? getCheckedValue(lights.m1): false;
+    const m2Checked = (lights) ? getCheckedValue(lights.m2): false;
+    const l3Checked = (lights) ? getCheckedValue(lights.l3): false;
+    const l4Checked = (lights) ? getCheckedValue(lights.l4): false;
+    const l5Checked = (lights) ? getCheckedValue(lights.l5): false;
+    const l6Checked = (lights) ? getCheckedValue(lights.l6): false;
 
     return ( 
     <div className="hwandaza-automation">

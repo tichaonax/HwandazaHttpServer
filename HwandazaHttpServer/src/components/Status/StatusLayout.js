@@ -19,12 +19,12 @@ const statuslayout = props => {
     const fishpondChecked = getModuleCheckedValue(fishpond);
     const irrigatorChecked = getModuleCheckedValue(irrigator);
 
-    const m1Checked = (lights) ? getCheckedValue(lights.M1): null;
-    const m2Checked = (lights) ? getCheckedValue(lights.M2) : null;
-    const l3Checked = (lights) ? getCheckedValue(lights.L3) : null;
-    const l4Checked = (lights) ? getCheckedValue(lights.L4) : null;
-    const l5Checked = (lights) ? getCheckedValue(lights.L5) : null;
-    const l6Checked = (lights) ? getCheckedValue(lights.L6) : null;
+    const m1Checked = (lights) ? getCheckedValue(lights.m1): null;
+    const m2Checked = (lights) ? getCheckedValue(lights.m2) : null;
+    const l3Checked = (lights) ? getCheckedValue(lights.l3) : null;
+    const l4Checked = (lights) ? getCheckedValue(lights.l4) : null;
+    const l5Checked = (lights) ? getCheckedValue(lights.l5) : null;
+    const l6Checked = (lights) ? getCheckedValue(lights.l6) : null;
  
   return (
     <div>
