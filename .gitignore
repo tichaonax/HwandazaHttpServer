@@ -12,6 +12,7 @@ node_modules/
 # production
 /build
 build/
+HwandazaHttpServer/public/gallery/
 # misc
 .DS_Store
 .env.local

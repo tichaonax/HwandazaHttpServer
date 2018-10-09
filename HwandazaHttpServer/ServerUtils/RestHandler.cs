@@ -5,6 +5,7 @@ using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
 using Windows.Networking.Sockets;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace HwandazaHttpServer.ServerUtils
 {
@@ -58,14 +59,15 @@ namespace HwandazaHttpServer.ServerUtils
                 Command = "Status",
             };
 
-            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, GetResponseContentAsync(command).Result);
+            byte[] responseData = Encoding.UTF8.GetBytes(GetResponseContentAsync(command).Result);
+            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
         public HttpResponse ProcessPostRequest()
         {
             var command = ExtractRequestParameters();
-            
-            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, GetResponseContentAsync(command).Result);
+            byte[] responseData = Encoding.UTF8.GetBytes(GetResponseContentAsync(command).Result);
+            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
         private async Task<AppServiceResponse> RequestAppServiceAsync(HwandazaCommand command)

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Foundation;
@@ -55,7 +56,7 @@ namespace HwandazaHttpServer
             }
             catch (FileNotFoundException)
             {
-              return new HttpResponse(HttpStatusCode.NotFound, $"File: {uriLocalPath} not found");
+              return new HttpResponse(HttpStatusCode.NotFound, Encoding.ASCII.GetBytes( $"File: {uriLocalPath} not found"));
             }
 
             return await GetHttpResponse(item.Result);
@@ -63,10 +64,18 @@ namespace HwandazaHttpServer
 
         private async Task<HttpResponse> GetHttpResponseTask(StorageFile item)
         {
-            var inputStream = await item.OpenSequentialReadAsync();
-            using (var streamReader = new StreamReader(inputStream.AsStreamForRead()))
+            var inputStream = await item.OpenStreamForReadAsync();
+            byte[] fileContents = null;
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
             {
-                var fileContents = await streamReader.ReadToEndAsync();
+                int read;
+                while ((read = inputStream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                fileContents = ms.ToArray();
+
                 var contentType = _contentTypeMapper.GetContentTypeForExtension(Path.GetExtension(item.Name));
                 var headers = new Dictionary<string, string>();
                 if (!string.IsNullOrWhiteSpace(contentType))
@@ -74,6 +83,7 @@ namespace HwandazaHttpServer
 
                 return new HttpResponse(HttpStatusCode.Ok, headers, fileContents);
             }
+
         }
 
         private string GetFilePath(string uriLocalPath)

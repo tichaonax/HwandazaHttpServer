@@ -115,8 +115,8 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.5b8eaec3.css.map" />
-    <None Include="build\static\js\main.9ce83368.js.map" />
+    <None Include="build\static\css\main.f8a51ef1.css.map" />
+    <None Include="build\static\js\main.a01f2f13.js.map" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -128,10 +128,54 @@
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="build\favicon.ico" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-07-15 at 8.01.27 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-07-19 at 8.09.21 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-07-22 at 8.27.46 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-07-22 at 8.31.57 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-07-27 at 7.43.45 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-07-27 at 8.07.48 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-02 at 5.03.02 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-07 at 9.43.56 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-12 at 8.00.23 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-13 at 8.08.07 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-15 at 10.56.08 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-15 at 5.41.26 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-15 at 8.23.08 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-17 at 5.51.25 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-17 at 7.57.14 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-17 at 8.24.54 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-18 at 10.06.41 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-19 at 10.55.55 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-20 at 1.51.45 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-23 at 5.30.44 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-27 at 6.21.29 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-28 at 12.43.06 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-29 at 7.30.21 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-29 at 7.48.42 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-30 at 6.23.56 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-30 at 6.32.51 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-30 at 9.07.51 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-08-31 at 4.11.30 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-01 at 1.11.01 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-01 at 10.26.13 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-01 at 12.00.57 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-02 at 2.37.06 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-03 at 6.04.30 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-03 at 6.22.24 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-12 at 11.40.18 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-14 at 5.07.29 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-15 at 2.04.40 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-17 at 8.04.36 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-17 at 8.06.35 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-21 at 11.32.25 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-29 at 5.12.47 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-09-30 at 6.29.13 PM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-10-06 at 11.10.56 AM.jpeg" />
+    <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-10-07 at 2.39.12 AM.jpeg" />
     <Content Include="build\index.html" />
     <Content Include="build\service-worker.js" />
-    <Content Include="build\static\css\main.5b8eaec3.css" />
-    <Content Include="build\static\js\main.9ce83368.js" />
+    <Content Include="build\static\css\main.f8a51ef1.css" />
+    <Content Include="build\static\js\main.a01f2f13.js" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png">
       <InProject>false</InProject>

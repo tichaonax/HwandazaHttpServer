@@ -38,7 +38,8 @@ namespace HwandazaHttpServer.ServerUtils
 
         public static async Task WriteMethodNotAllowedRequest(StreamSocket socket)
         {
-            var errorMessage = "Method Not Allowed.";
+            //var errorMessage = "Method Not Allowed.";
+            byte[] errorMessage = Encoding.UTF8.GetBytes("Method Not Allowed.");
             var httpResponse = new HttpResponse(Windows.Web.Http.HttpStatusCode.MethodNotAllowed, errorMessage);
             await WriteResponse(httpResponse, socket);
         }
@@ -51,9 +52,10 @@ namespace HwandazaHttpServer.ServerUtils
 
         private static HttpResponse GetInternalServerError(Exception exception)
         {
-            var errorMessage = "Internal server error occurred.";
-            if (Debugger.IsAttached)
-                errorMessage += Environment.NewLine + exception;
+            //var errorMessage = "Internal server error occurred.";
+            byte[] errorMessage = Encoding.UTF8.GetBytes("Internal server error occurred.");
+            //if (Debugger.IsAttached)
+            //    errorMessage += Environment.NewLine + exception;
 
             var httpResponse = new HttpResponse(Windows.Web.Http.HttpStatusCode.InternalServerError, errorMessage);
             return httpResponse;
@@ -63,8 +65,8 @@ namespace HwandazaHttpServer.ServerUtils
         {
             using (var resp = socket.OutputStream.AsStreamForWrite())
             {
-                var bodyArray = Encoding.UTF8.GetBytes(response.Content);
-                var stream = new MemoryStream(bodyArray);
+                //var bodyArray = Encoding.UTF8.GetBytes(response.Content);
+                var stream = new MemoryStream(response.Content);
                 var headerBuilder = new StringBuilder();
                 headerBuilder.AppendLine($"HTTP/1.1 {(int)response.StatusCode} {response.StatusCode}");
                 headerBuilder.AppendLine("Connection: close");
