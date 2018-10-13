@@ -75,6 +75,10 @@ namespace HwandazaHttpServer.ServerUtils
                         response = GetsHwandazaAutomationStatus();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
+                    case "gallery/filelist":
+                        response = GetRandomaGalleryFileList();
+                        response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
+                        break;
                     default:
                         response = await _staticFileHandler.HandleRequest(localpath);
                         break;
@@ -91,8 +95,12 @@ namespace HwandazaHttpServer.ServerUtils
 
         private HttpResponse GetsHwandazaAutomationStatus()
         {
-
             return _restHandler.GetsHwandazaAutomationStatus();
+        }
+
+        private HttpResponse GetRandomaGalleryFileList()
+        {
+            return _restHandler.GetRandomaGalleryFileList(_staticFileHandler.ImageGalleryList);
         }
 
         private async Task ProcessPostRequestAsync()

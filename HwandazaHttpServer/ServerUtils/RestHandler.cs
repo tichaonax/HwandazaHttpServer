@@ -6,6 +6,7 @@ using Windows.Foundation.Collections;
 using Windows.Networking.Sockets;
 using Newtonsoft.Json;
 using System.Text;
+using System.Collections.Generic;
 
 namespace HwandazaHttpServer.ServerUtils
 {
@@ -60,6 +61,22 @@ namespace HwandazaHttpServer.ServerUtils
             };
 
             byte[] responseData = Encoding.UTF8.GetBytes(GetResponseContentAsync(command).Result);
+            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
+        }
+
+        public HttpResponse GetRandomaGalleryFileList(IList<string> fileList)
+        {
+            var rnd = new Random();
+            var randomList = new List<string>();
+            int rndIndex = 0;
+            while (fileList.Count > 0)
+            {
+                rndIndex = rnd.Next(0, fileList.Count);
+                randomList.Add(fileList[rndIndex]);
+                fileList.RemoveAt(rndIndex);
+            }
+
+            byte[] responseData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(randomList));
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
