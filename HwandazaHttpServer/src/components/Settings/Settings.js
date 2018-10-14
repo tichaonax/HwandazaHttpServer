@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import { DatePicker, TimePicker, Button } from "antd";
 import "antd/dist/antd.css";
-import "../../styles/styles.css";
+import "../../styles/css/styles.css";
 import './Settings.css';
 import { setSyatemDateTime } from '../../actions';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "../../styles/styles.css";
+import "../../styles/css/styles.css";
 import './About.css';
 
 const about = props => (

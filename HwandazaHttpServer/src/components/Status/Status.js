@@ -9,7 +9,7 @@ import {
   irrigatorSelector,
  } from '../../selectors';
 
- import "../../styles/styles.css";
+ import "../../styles/css/styles.css";
  import "./Status.css";
 
 

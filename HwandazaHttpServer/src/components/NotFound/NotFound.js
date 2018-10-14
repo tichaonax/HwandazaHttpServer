@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-import "../../styles/styles.css";
+import "../../styles/css/styles.css";
 import './NotFound.css';
 
 const notfound = props => (

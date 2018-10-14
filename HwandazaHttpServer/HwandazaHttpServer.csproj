@@ -115,8 +115,8 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.6ef7e86e.css.map" />
-    <None Include="build\static\js\main.841dd91f.js.map" />
+    <None Include="build\static\css\main.8e145be6.css.map" />
+    <None Include="build\static\js\main.aa3813c7.js.map" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -174,8 +174,8 @@
     <Content Include="build\gallery\chbby\whatsapp\WhatsApp Image 2018-10-07 at 2.39.12 AM.jpeg" />
     <Content Include="build\index.html" />
     <Content Include="build\service-worker.js" />
-    <Content Include="build\static\css\main.6ef7e86e.css" />
-    <Content Include="build\static\js\main.841dd91f.js" />
+    <Content Include="build\static\css\main.8e145be6.css" />
+    <Content Include="build\static\js\main.aa3813c7.js" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png">
       <InProject>false</InProject>

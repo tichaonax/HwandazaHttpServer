@@ -9,7 +9,7 @@ import {
 } from '../../selectors';
 
 import { Utils } from "../../utility";
-import "../../styles/styles.css";
+import "../../styles/css/styles.css";
 import './Control.css';
 import { HwandaSwitch } from '../HwandaSwitch/HwandaSwitch';
 

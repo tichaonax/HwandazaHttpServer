@@ -4,7 +4,7 @@ import { HwandaSwitch } from '../HwandaSwitch/HwandaSwitch';
 import { lightsSelector } from '../../selectors';
 import { setRandomLightStatus } from '../../actions';
 import { Utils } from "../../utility";
-import "../../styles/styles.css";
+import "../../styles/css/styles.css";
 import './Lights.css';
 
 
