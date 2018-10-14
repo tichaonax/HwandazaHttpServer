@@ -18,14 +18,16 @@ namespace HwandazaHttpServer.ServerUtils
         private readonly RequestParser _requestParser;
         private readonly StaticFileHandler _staticFileHandler;
         private readonly RestHandler _restHandler;
+        private readonly List<string> _imageGalleryList;
 
-        public RequestHandler(StreamSocket socket, Request request, StaticFileHandler staticFileHandler, RequestParser requestParser)
+        public RequestHandler(StreamSocket socket, Request request, StaticFileHandler staticFileHandler, RequestParser requestParser, List<string> imageGalleryList)
         {
             _streamSocket = socket;
             _request = request;
             _staticFileHandler = staticFileHandler;
             _requestParser = requestParser;
             _restHandler = new RestHandler(socket, request);
+            _imageGalleryList = imageGalleryList;
         }
 
         public async Task HandleRequestAsync()
@@ -100,7 +102,7 @@ namespace HwandazaHttpServer.ServerUtils
 
         private HttpResponse GetRandomaGalleryFileList()
         {
-            return _restHandler.GetRandomaGalleryFileList(_staticFileHandler.ImageGalleryList);
+            return _restHandler.GetRandomaGalleryFileList(_imageGalleryList);
         }
 
         private async Task ProcessPostRequestAsync()

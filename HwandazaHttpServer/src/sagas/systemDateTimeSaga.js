@@ -26,7 +26,7 @@ function* setSystemDateTime(action) {
         yield put(getStatus());
     } catch (error) {
         console.log('setSystemDateTime Error API:', error);
-        yield put(setApiCallFailed({error: error.message}));
+        yield put(setApiCallFailed({error: error}));
     }
 }
 

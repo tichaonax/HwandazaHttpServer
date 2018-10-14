@@ -18,6 +18,7 @@ export {
     setSyatemDateTime,
 }
 from "./statusActions";
+
 export {
     setNavPage,
     SET_NAV_PAGE,
@@ -25,8 +26,17 @@ export {
     SHOW_NAV_PAGE
 }
 from "./navActions";
+
 export {
     setApiCallFailed,
     API_CALL_FAILED
 }
 from "./apiErrorActions";
+
+export {
+    getGalleryImages,
+    GET_GALLERY_IMAGES,
+    setGalleryImages,
+    SET_GALLERY_IMAGES
+}
+from "./galleryImageActions";

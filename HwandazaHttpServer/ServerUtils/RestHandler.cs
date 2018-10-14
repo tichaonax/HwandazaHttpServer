@@ -64,16 +64,17 @@ namespace HwandazaHttpServer.ServerUtils
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
-        public HttpResponse GetRandomaGalleryFileList(IList<string> fileList)
+        public HttpResponse GetRandomaGalleryFileList(List<string> fileList)
         {
+            var cloneList = fileList.GetRange(0, fileList.Count);
             var rnd = new Random();
             var randomList = new List<string>();
             int rndIndex = 0;
-            while (fileList.Count > 0)
+            while (cloneList.Count > 0)
             {
-                rndIndex = rnd.Next(0, fileList.Count);
-                randomList.Add(fileList[rndIndex]);
-                fileList.RemoveAt(rndIndex);
+                rndIndex = rnd.Next(0, cloneList.Count);
+                randomList.Add(cloneList[rndIndex]);
+                cloneList.RemoveAt(rndIndex);
             }
 
             byte[] responseData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(randomList));

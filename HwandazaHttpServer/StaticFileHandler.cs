@@ -8,51 +8,17 @@ using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Storage;
 using Windows.Web.Http;
-using System.Security.Cryptography;
-
 namespace HwandazaHttpServer
 {
     public sealed class StaticFileHandler
     {
         private readonly string _basePath;
         private readonly ContentTypeMapper _contentTypeMapper;
-        private static IList<string> _imageGalleryList = new List<string>();
-      
-        public IList<string> ImageGalleryList { get { return _imageGalleryList;} }
 
         public StaticFileHandler(string basePath)
         {
             _basePath = GetAbsoluteBasePathUri(basePath);
             _contentTypeMapper = new ContentTypeMapper();
-            string imageBasePath = GetAbsoluteBasePathUri(basePath + "/gallery");
-            LoadGalleryImages(imageBasePath);
-        }
-        
-        private static void LoadGalleryImages(string path)
-        {
-            ProcessDirectory(path);
-        }
-
-        private static void ProcessDirectory(string targetDirectory)
-        {
-            // Process the list of files found in the directory.
-            string[] fileEntries = Directory.GetFiles(targetDirectory);
-            foreach (string fileName in fileEntries) {
-                var gallerImage = fileName.Split(new string[] { "build" }, StringSplitOptions.None)[1]
-                    .Replace("/", "").Replace("\\", "/");
-                var cleanString = Uri.EscapeUriString(gallerImage);
-                AddGalleryImage(cleanString);
-            }
-
-            // Recurse into subdirectories of this directory.
-            string[] subdirectoryEntries = Directory.GetDirectories(targetDirectory);
-            foreach (string subdirectory in subdirectoryEntries)
-                ProcessDirectory(subdirectory);
-        }
-
-        private static void AddGalleryImage(string path)
-        {
-            _imageGalleryList.Add(path);
         }
         
         private static string GetAbsoluteBasePathUri(string relativeOrAbsoluteBasePath)

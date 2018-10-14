@@ -38,7 +38,7 @@ function* fetchFromRaspbery() {
     yield put(setStatus(data));
   } catch (error) {
     console.log('Error API:', error);
-    yield put(setApiCallFailed({error: error.message}));
+    yield put(setApiCallFailed({error: error}));
   }
 }
 
