@@ -13,6 +13,7 @@ node_modules/
 /build
 build/
 HwandazaHttpServer/public/gallery/
+HwandazaHttpServer/public/music/
 # misc
 .DS_Store
 .env.local
