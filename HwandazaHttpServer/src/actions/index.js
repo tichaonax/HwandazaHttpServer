@@ -40,3 +40,11 @@ export {
     SET_GALLERY_IMAGES
 }
 from "./galleryImageActions";
+
+export {
+    getMusicFiles,
+    GET_MUSIC_FILES,
+    setMusicFiles,
+    SET_MUSIC_FILES
+}
+from "./musicFileActions";

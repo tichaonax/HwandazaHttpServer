@@ -11,6 +11,7 @@ export const getDefaultState = () => {
     },
     apiErrors: {},
     galleryImages: [],
+    musicFiles: [],
   };
 
   return fromJS(defaultState);

@@ -16,6 +16,7 @@ namespace HwandazaHttpServer.ServerUtils
         private AppServiceConnection _appServiceConnection;
         private readonly Request _request;
         private const uint BufferSize = 8192;
+        private readonly Random _rnd = new Random();
 
         public RestHandler(StreamSocket socket, Request request)
         {
@@ -64,20 +65,30 @@ namespace HwandazaHttpServer.ServerUtils
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
-        public HttpResponse GetRandomaGalleryFileList(List<string> fileList)
+        private List<string> Shuffle(List<string> list)
         {
-            var cloneList = fileList.GetRange(0, fileList.Count);
-            var rnd = new Random();
+            var cloneList = list.GetRange(0, list.Count);
             var randomList = new List<string>();
             int rndIndex = 0;
             while (cloneList.Count > 0)
             {
-                rndIndex = rnd.Next(0, cloneList.Count);
+                rndIndex = _rnd.Next(0, cloneList.Count);
                 randomList.Add(cloneList[rndIndex]);
                 cloneList.RemoveAt(rndIndex);
             }
 
-            byte[] responseData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(randomList));
+            return cloneList;
+        }
+
+        public HttpResponse GetRandomaGalleryFileList(List<string> fileList)
+        {
+            byte[] responseData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(Shuffle(fileList)));
+            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
+        }
+
+        public HttpResponse GetRandomaMusicFileList(List<string> fileList)
+        {
+            byte[] responseData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(Shuffle(fileList)));
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 

@@ -19,8 +19,15 @@ namespace HwandazaHttpServer.ServerUtils
         private readonly StaticFileHandler _staticFileHandler;
         private readonly RestHandler _restHandler;
         private readonly List<string> _imageGalleryList;
+        private readonly List<string> _mp3MusicList;
 
-        public RequestHandler(StreamSocket socket, Request request, StaticFileHandler staticFileHandler, RequestParser requestParser, List<string> imageGalleryList)
+        public RequestHandler(
+            StreamSocket socket, 
+            Request request, 
+            StaticFileHandler staticFileHandler, 
+            RequestParser requestParser, 
+            List<string> imageGalleryList,
+            List<string> mp3MusicList)
         {
             _streamSocket = socket;
             _request = request;
@@ -28,6 +35,7 @@ namespace HwandazaHttpServer.ServerUtils
             _requestParser = requestParser;
             _restHandler = new RestHandler(socket, request);
             _imageGalleryList = imageGalleryList;
+            _mp3MusicList = mp3MusicList;
         }
 
         public async Task HandleRequestAsync()
@@ -81,6 +89,10 @@ namespace HwandazaHttpServer.ServerUtils
                         response = GetRandomaGalleryFileList();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
+                    case "music/filelist":
+                        response = GetRandomaMusicFileList();
+                        response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
+                        break;
                     default:
                         response = await _staticFileHandler.HandleRequest(localpath);
                         break;
@@ -103,6 +115,11 @@ namespace HwandazaHttpServer.ServerUtils
         private HttpResponse GetRandomaGalleryFileList()
         {
             return _restHandler.GetRandomaGalleryFileList(_imageGalleryList);
+        }
+
+        private HttpResponse GetRandomaMusicFileList()
+        {
+            return _restHandler.GetRandomaMusicFileList(_mp3MusicList);
         }
 
         private async Task ProcessPostRequestAsync()

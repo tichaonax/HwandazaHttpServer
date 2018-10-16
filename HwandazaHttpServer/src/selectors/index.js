@@ -5,3 +5,4 @@ export { waterpumpSelector } from './waterpumpSelector';
 export { irrigatorSelector } from './irrigatorSelector';
 export { lightsSelector } from './lightsSelector';
 export { galleryImagesSelector } from './galleryImagesSelector';
+export { songsSelector } from './songsSelector'; 
