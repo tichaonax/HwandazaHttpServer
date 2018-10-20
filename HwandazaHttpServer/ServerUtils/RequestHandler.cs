@@ -7,6 +7,13 @@ namespace HwandazaHttpServer.ServerUtils
 {
     class RequestHandler
     {
+        public class Const
+        {
+            public const string DefaultAccountMusicFolder = "C:\\Data\\Users\\DefaultAccount\\Music";
+            public const string DefaultAccountPictureFolder = "C:\\Data\\Users\\DefaultAccount\\Pictures";
+            public const string DefaultAccountVideoFolder = "C:\\Data\\Users\\DefaultAccount\\Videos";
+        }
+
         private readonly StreamSocket _streamSocket;
         private readonly Request _request;
         private readonly RequestParser _requestParser;
@@ -70,23 +77,23 @@ namespace HwandazaHttpServer.ServerUtils
                         response = await _staticFileHandler.HandleRequest("index.html");
                         break;
                     case "hwandazaautomation/status":
-                        response = GetsHwandazaAutomationStatus();
+                        response = GetHwandazaAutomationStatus();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
                     case "hwandazaautomation/songs":
-                        response = GetsHwandazaAutomationSongs();
+                        response = GetHwandazaAutomationSongList();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
                     case "hwandazaautomation/videos":
-                        response = GetsHwandazaAutomationVideos();
+                        response = GetHwandazaAutomationVideoList();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
                     case "hwandazaautomation/pictures":
-                        response = GetsHwandazaAutomationPictures();
+                        response = GetHwandazaAutomationPictureList();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
                     default:
-                        response = await _staticFileHandler.HandleRequest(localpath);
+                        response = await StaticFileHandlerAsync(localpath);
                         break;
                 }
             }
@@ -99,26 +106,67 @@ namespace HwandazaHttpServer.ServerUtils
             await RequestUtils.WriteResponse(response, _streamSocket);
         }
 
-        private HttpResponse GetsHwandazaAutomationStatus()
+        private string GetNewLocalPath(string mediaFilter, string localpath)
         {
-            return _restHandler.GetsHwandazaAutomationStatus();
+            string returnString = "";
+
+            try
+            {
+                returnString = localpath.Split(new string[] { mediaFilter }, StringSplitOptions.None)[1];
+            }
+            catch (Exception)
+            {
+                //do nothing
+            }
+
+            return returnString;
         }
 
-        private HttpResponse GetsHwandazaAutomationSongs()
+        private async Task<HttpResponse> StaticFileHandlerAsync(string localpath)
         {
-            return _restHandler.GetsHwandazaAutomationSongs();
+            HttpResponse response;
+
+            var choice = localpath.Split('/');
+
+            switch (choice[0].ToLower())
+            {
+                case "picture":
+                    response = await _staticFileHandler.HandleRequest(Const.DefaultAccountPictureFolder, GetNewLocalPath("picture/", localpath));
+                    break;
+                case "video":
+                    response = await _staticFileHandler.HandleRequest(Const.DefaultAccountVideoFolder, GetNewLocalPath("video/", localpath));
+                    break;
+                case "song":
+                    response = await _staticFileHandler.HandleRequest(Const.DefaultAccountMusicFolder, GetNewLocalPath("song/", localpath));
+                    break;
+                default:
+                    response = await _staticFileHandler.HandleRequest(localpath);
+                    break;
+            }
+
+            return response;
         }
 
-        private HttpResponse GetsHwandazaAutomationVideos()
+        private HttpResponse GetHwandazaAutomationStatus()
         {
-            return _restHandler.GetsHwandazaAutomationVideos();
+            return _restHandler.GetHwandazaAutomationStatus();
         }
 
-        private HttpResponse GetsHwandazaAutomationPictures()
+        private HttpResponse GetHwandazaAutomationSongList()
         {
-            return _restHandler.GetsHwandazaAutomationPictures();
+            return _restHandler.GetHwandazaAutomationSongList();
         }
 
+        private HttpResponse GetHwandazaAutomationVideoList()
+        {
+            return _restHandler.GetHwandazaAutomationVideoList();
+        }
+
+        private HttpResponse GetHwandazaAutomationPictureList()
+        {
+            return _restHandler.GetHwandazaAutomationPictureList();
+        }
+        
         private async Task ProcessPostRequestAsync()
         {
             HttpResponse response;

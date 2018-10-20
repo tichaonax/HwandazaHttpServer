@@ -32,7 +32,14 @@ namespace HwandazaHttpServer
 
         public IAsyncOperation<HttpResponse> HandleRequest(string uriLocalPath)
         {
-            Task<HttpResponse> task = HandleRequestTask(uriLocalPath);
+            Task<HttpResponse> task = HandleRequestTask(string.Empty, uriLocalPath);
+            IAsyncOperation<HttpResponse> httpResponse = task.AsAsyncOperation();
+            return httpResponse;
+        }
+
+        public IAsyncOperation<HttpResponse> HandleRequest(string mediaPath, string uriLocalPath)
+        {
+            Task<HttpResponse> task = HandleRequestTask(mediaPath, uriLocalPath);
             IAsyncOperation<HttpResponse> httpResponse = task.AsAsyncOperation();
             return httpResponse;
         }
@@ -44,9 +51,15 @@ namespace HwandazaHttpServer
             return httpResponse;
         }
 
-        private async Task<HttpResponse> HandleRequestTask(string uriLocalPath)
+        private async Task<HttpResponse> HandleRequestTask(string mediaPath, string uriLocalPath)
         {
-            var filePath = GetFilePath(uriLocalPath);
+            string filePath = "";
+
+            if (mediaPath == null) { filePath = GetFilePath(uriLocalPath); }
+            else
+            {
+                filePath = GetFilePath(mediaPath, uriLocalPath);
+            }
 
             Task<StorageFile> item = null;
             try
@@ -55,7 +68,7 @@ namespace HwandazaHttpServer
             }
             catch (FileNotFoundException)
             {
-              return new HttpResponse(HttpStatusCode.NotFound, Encoding.ASCII.GetBytes( $"File: {uriLocalPath} not found"));
+                return new HttpResponse(HttpStatusCode.NotFound, Encoding.ASCII.GetBytes($"File: {uriLocalPath} not found"));
             }
 
             return await GetHttpResponse(item.Result);
@@ -87,8 +100,13 @@ namespace HwandazaHttpServer
 
         private string GetFilePath(string uriLocalPath)
         {
+            return GetFilePath(_basePath, uriLocalPath);
+        }
+
+        private string GetFilePath(string mediaPath, string uriLocalPath)
+        {
             var sanitizedLocalPath = uriLocalPath.Replace('/', '\\');
-            var filePath = Path.Combine(_basePath, sanitizedLocalPath);
+            var filePath = Path.Combine(mediaPath, sanitizedLocalPath);
             return filePath;
         }
     }

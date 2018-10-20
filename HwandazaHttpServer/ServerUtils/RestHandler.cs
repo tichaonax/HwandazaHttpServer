@@ -52,7 +52,7 @@ namespace HwandazaHttpServer.ServerUtils
             return responseContent;
         }
 
-        public HttpResponse GetsHwandazaAutomationStatus()
+        public HttpResponse GetHwandazaAutomationStatus()
         {
             //need to create app communication request to get data from HwandazaWebService
             var command = new HwandazaCommand()
@@ -64,7 +64,7 @@ namespace HwandazaHttpServer.ServerUtils
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
-        public HttpResponse GetsHwandazaAutomationSongs()
+        public HttpResponse GetHwandazaAutomationSongList()
         {
             //need to create app communication request to get data from HwandazaWebService
             var command = new HwandazaCommand()
@@ -76,7 +76,7 @@ namespace HwandazaHttpServer.ServerUtils
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
-        public HttpResponse GetsHwandazaAutomationVideos()
+        public HttpResponse GetHwandazaAutomationVideoList()
         {
             //need to create app communication request to get data from HwandazaWebService
             var command = new HwandazaCommand()
@@ -88,7 +88,7 @@ namespace HwandazaHttpServer.ServerUtils
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
-        public HttpResponse GetsHwandazaAutomationPictures()
+        public HttpResponse GetHwandazaAutomationPictureList()
         {
             //need to create app communication request to get data from HwandazaWebService
             var command = new HwandazaCommand()
