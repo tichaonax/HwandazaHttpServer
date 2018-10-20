@@ -6,12 +6,11 @@ using Windows.Foundation.Collections;
 using Windows.Networking.Sockets;
 using Newtonsoft.Json;
 using System.Text;
-using System.Collections.Generic;
 
 namespace HwandazaHttpServer.ServerUtils
 {
     class RestHandler
-    { 
+    {
         private readonly StreamSocket _streamSocket;
         private AppServiceConnection _appServiceConnection;
         private readonly Request _request;
@@ -65,30 +64,39 @@ namespace HwandazaHttpServer.ServerUtils
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
-        private List<string> Shuffle(List<string> list)
+        public HttpResponse GetsHwandazaAutomationSongs()
         {
-            var cloneList = list.GetRange(0, list.Count);
-            var randomList = new List<string>();
-            int rndIndex = 0;
-            while (cloneList.Count > 0)
+            //need to create app communication request to get data from HwandazaWebService
+            var command = new HwandazaCommand()
             {
-                rndIndex = _rnd.Next(0, cloneList.Count);
-                randomList.Add(cloneList[rndIndex]);
-                cloneList.RemoveAt(rndIndex);
-            }
+                Command = "songs",
+            };
 
-            return cloneList;
-        }
-
-        public HttpResponse GetRandomaGalleryFileList(List<string> fileList)
-        {
-            byte[] responseData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(Shuffle(fileList)));
+            byte[] responseData = Encoding.UTF8.GetBytes(GetResponseContentAsync(command).Result);
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 
-        public HttpResponse GetRandomaMusicFileList(List<string> fileList)
+        public HttpResponse GetsHwandazaAutomationVideos()
         {
-            byte[] responseData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(Shuffle(fileList)));
+            //need to create app communication request to get data from HwandazaWebService
+            var command = new HwandazaCommand()
+            {
+                Command = "videos",
+            };
+
+            byte[] responseData = Encoding.UTF8.GetBytes(GetResponseContentAsync(command).Result);
+            return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
+        }
+
+        public HttpResponse GetsHwandazaAutomationPictures()
+        {
+            //need to create app communication request to get data from HwandazaWebService
+            var command = new HwandazaCommand()
+            {
+                Command = "pictures",
+            };
+
+            byte[] responseData = Encoding.UTF8.GetBytes(GetResponseContentAsync(command).Result);
             return new HttpResponse(Windows.Web.Http.HttpStatusCode.Ok, responseData);
         }
 

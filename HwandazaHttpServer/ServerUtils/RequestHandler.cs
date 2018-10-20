@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.AppService;
 using Windows.Networking.Sockets;
 using Windows.Web.Http;
 
@@ -18,24 +12,18 @@ namespace HwandazaHttpServer.ServerUtils
         private readonly RequestParser _requestParser;
         private readonly StaticFileHandler _staticFileHandler;
         private readonly RestHandler _restHandler;
-        private readonly List<string> _imageGalleryList;
-        private readonly List<string> _mp3MusicList;
 
         public RequestHandler(
             StreamSocket socket, 
             Request request, 
             StaticFileHandler staticFileHandler, 
-            RequestParser requestParser, 
-            List<string> imageGalleryList,
-            List<string> mp3MusicList)
+            RequestParser requestParser)
         {
             _streamSocket = socket;
             _request = request;
             _staticFileHandler = staticFileHandler;
             _requestParser = requestParser;
             _restHandler = new RestHandler(socket, request);
-            _imageGalleryList = imageGalleryList;
-            _mp3MusicList = mp3MusicList;
         }
 
         public async Task HandleRequestAsync()
@@ -85,12 +73,16 @@ namespace HwandazaHttpServer.ServerUtils
                         response = GetsHwandazaAutomationStatus();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
-                    case "gallery/filelist":
-                        response = GetRandomaGalleryFileList();
+                    case "hwandazaautomation/songs":
+                        response = GetsHwandazaAutomationSongs();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
-                    case "music/filelist":
-                        response = GetRandomaMusicFileList();
+                    case "hwandazaautomation/videos":
+                        response = GetsHwandazaAutomationVideos();
+                        response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
+                        break;
+                    case "hwandazaautomation/pictures":
+                        response = GetsHwandazaAutomationPictures();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
                     default:
@@ -112,14 +104,19 @@ namespace HwandazaHttpServer.ServerUtils
             return _restHandler.GetsHwandazaAutomationStatus();
         }
 
-        private HttpResponse GetRandomaGalleryFileList()
+        private HttpResponse GetsHwandazaAutomationSongs()
         {
-            return _restHandler.GetRandomaGalleryFileList(_imageGalleryList);
+            return _restHandler.GetsHwandazaAutomationSongs();
         }
 
-        private HttpResponse GetRandomaMusicFileList()
+        private HttpResponse GetsHwandazaAutomationVideos()
         {
-            return _restHandler.GetRandomaMusicFileList(_mp3MusicList);
+            return _restHandler.GetsHwandazaAutomationVideos();
+        }
+
+        private HttpResponse GetsHwandazaAutomationPictures()
+        {
+            return _restHandler.GetsHwandazaAutomationPictures();
         }
 
         private async Task ProcessPostRequestAsync()
