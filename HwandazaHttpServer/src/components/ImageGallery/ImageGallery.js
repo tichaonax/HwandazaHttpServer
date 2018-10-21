@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import ImageGallery from 'react-image-gallery';
-import { galleryImagesSelector } from "../../selectors";
+import { pictureSelector } from "../../selectors";
 
 import '../../styles/css/styles.css';
 import '../../styles/css/image-gallery.css';
@@ -75,14 +75,14 @@ class Gallery extends React.Component {
       this.setState({thumbnailPosition: event.target.value});
     }
   
-    _getStaticImages = images =>{
-        return images.map(image => {
-            return ({
-                    original: image,
-                    thumbnail: image,
-                })
-        });
-    }
+    _getStaticImages = pictures =>{
+      return pictures.map(picture => {
+          return ({
+                  original: `picture/${picture.Path}`,
+                  thumbnail: `picture/${picture.Path}`,
+              })
+      });
+  }
 
     _resetVideo() {
       this.setState({showVideo: {}});
@@ -153,13 +153,14 @@ class Gallery extends React.Component {
     }
   
     render() {
-        const { images } = this.props;
+        const { pictures } = this.props;
+        console.log('ImageGallery-pictures',pictures);
         return (
   
         <section className='app'>
           <ImageGallery
             ref={i => this._imageGallery = i}
-            items={this._getStaticImages(images)}
+            items={this._getStaticImages(pictures)}
             lazyLoad={false}
             onClick={this._onImageClick.bind(this)}
             onImageLoad={this._onImageLoad}
@@ -301,9 +302,9 @@ class Gallery extends React.Component {
   }
 
 const mapStateToProps = (state) => {
-    const images = galleryImagesSelector(state);
+    const pictures = pictureSelector(state);
     return {
-        images: images.imageList,
+        pictures: pictures.pictureList,
     }
 };
 

@@ -10,8 +10,7 @@ export const getDefaultState = () => {
       shownavpage: false
     },
     apiErrors: {},
-    galleryImages: [],
-    musicFiles: [],
+    mediaLibrary: [],
   };
 
   return fromJS(defaultState);

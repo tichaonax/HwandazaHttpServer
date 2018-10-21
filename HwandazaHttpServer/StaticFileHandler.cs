@@ -32,7 +32,7 @@ namespace HwandazaHttpServer
 
         public IAsyncOperation<HttpResponse> HandleRequest(string uriLocalPath)
         {
-            Task<HttpResponse> task = HandleRequestTask(string.Empty, uriLocalPath);
+            Task<HttpResponse> task = HandleRequestTask(null, uriLocalPath);
             IAsyncOperation<HttpResponse> httpResponse = task.AsAsyncOperation();
             return httpResponse;
         }

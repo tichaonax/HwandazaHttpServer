@@ -1,24 +1,19 @@
 import React from 'react';
 import { connect } from "react-redux";
 import ReactMusicPlayer from './ReactMusicPlayer';
-import { songsSelector } from './../../selectors';
-
-import "../../styles/css/styles.css";
-import './Music.css';
-import { getMusicFiles } from '../../actions';
+import { songSelector } from './../../selectors';
+import './ReactMusicPlayer.scss';
+//import "../../styles/css/styles.css";
 
 class Music extends React.Component {
 
     getMusicFiles = songs =>{
-        console.log('songs', songs);
         return songs.map(song => {
-            var res = song.split('/');
-            var fname = res[res.lenght-1].split('.');
             return ({
-                url: song,
+                url: `song/${song.Path}`,
                 artist: {
                   name: '',
-                  song: fname[0],
+                  song: song.DisplayName,
                 }
                 })
         });
@@ -26,16 +21,17 @@ class Music extends React.Component {
 
     render() {
         const { songs } = this.props;
-        return (<div className="hwandaza-automation">
-        <ReactMusicPlayer songs={ this.getMusicFiles(songs) } autoplay={false} />
+        console.log('Music-songs',songs);
+        return (<div>
+        <ReactMusicPlayer songs={ this.getMusicFiles(songs) } autoplay={true} />
     </div>);
     }
 }
 
 const mapStateToProps = (state, {autoplay}) => {
-    const songs = songsSelector(state);
+    const songs = songSelector(state);
     return {
-        songs: songs.mp3List,
+        songs: songs.songList,
         autoplay,
     }
 };

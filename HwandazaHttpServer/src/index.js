@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "./index.css";
 import { getStore } from "../src/store/getStore";
-import { getStatus, getGalleryImages } from "./actions";
+import { getStatus, getPictures, getVideos, getSongs} from "./actions";
 import App from "./App";
 import { DevTools } from './components/DevTools/DevTools';
 
@@ -27,4 +27,6 @@ const render = (store)=>{
 render(store);
 
 store.dispatch(getStatus());
-store.dispatch(getGalleryImages());
+store.dispatch(getPictures());
+store.dispatch(getVideos());
+store.dispatch(getSongs());

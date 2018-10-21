@@ -12,26 +12,26 @@ import {
   } from "../utility";
   
   import {
-    GET_MUSIC_FILES,
-    setMusicFiles,
+    GET_PICTURES,
+    setPictures,
     setApiCallFailed,
   } from "../actions";
   
   function* fetchFromRaspbery() {
-    const url = `${Utils.getBaseUrl()}/music/filelist`;
+    const url = `${Utils.getBaseUrl()}/hwandazaautomation/pictures`;
     try {
       const response = yield call(fetch, url);
       const data = yield apply(response, response.json);
-      console.log("api response", JSON.stringify(data));
-      yield put(setMusicFiles(data));
+      console.log("pictureSaga api response", data);
+      yield put(setPictures(data));
     } catch (error) {
       console.log('Error API:', error);
       yield put(setApiCallFailed({error: error}));
     }
   }
   
-  export function* musicFilesSaga() {
-    console.log("musicFiles saga starterd");  
+  export function* pictureSaga() {
+    console.log("picture saga starterd");  
     //fetch real data
-    yield takeLatest(GET_MUSIC_FILES, fetchFromRaspbery);
+    yield takeLatest(GET_PICTURES, fetchFromRaspbery);
   }

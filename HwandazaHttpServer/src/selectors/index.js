@@ -4,5 +4,6 @@ export { fishpondSelector } from './fishpondSelector';
 export { waterpumpSelector } from './waterpumpSelector';
 export { irrigatorSelector } from './irrigatorSelector';
 export { lightsSelector } from './lightsSelector';
-export { galleryImagesSelector } from './galleryImagesSelector';
-export { songsSelector } from './songsSelector'; 
+export { pictureSelector } from './pictureSelector';
+export { songSelector } from './songSelector'; 
+export { videoSelector } from './videoSelector'; 

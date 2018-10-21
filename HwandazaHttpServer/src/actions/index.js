@@ -34,17 +34,19 @@ export {
 from "./apiErrorActions";
 
 export {
-    getGalleryImages,
-    GET_GALLERY_IMAGES,
-    setGalleryImages,
-    SET_GALLERY_IMAGES
-}
-from "./galleryImageActions";
+    getPictures,
+    GET_PICTURES,
+    setPictures,
+    SET_PICTURES,
 
-export {
-    getMusicFiles,
-    GET_MUSIC_FILES,
-    setMusicFiles,
-    SET_MUSIC_FILES
+    getVideos,
+    GET_VIDEOS,
+    setVideos,
+    SET_VIDEOS,
+
+    getSongs,
+    GET_SONGS,
+    setSongs,
+    SET_SONGS,
 }
-from "./musicFileActions";
+from "./mediaActions";
