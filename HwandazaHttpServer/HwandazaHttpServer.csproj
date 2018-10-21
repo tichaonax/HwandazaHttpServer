@@ -115,9 +115,8 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.8e145be6.css.map" />
-    <None Include="build\static\js\main.fd8a2a10.js.map" />
-    <None Include="build\static\media\ReactMusicPlayer.84ef2549.scss" />
+    <None Include="build\static\css\main.3f6d0704.css.map" />
+    <None Include="build\static\js\main.9d2f76ef.js.map" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -130,8 +129,8 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="build\favicon.ico" />
     <Content Include="build\index.html" />
-    <Content Include="build\static\css\main.8e145be6.css" />
-    <Content Include="build\static\js\main.fd8a2a10.js" />
+    <Content Include="build\static\css\main.3f6d0704.css" />
+    <Content Include="build\static\js\main.9d2f76ef.js" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png">
       <InProject>false</InProject>
@@ -166,7 +165,9 @@
       <Version>4.3.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="build\static\media\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
