@@ -11,7 +11,7 @@ import { DevTools } from '../components/DevTools/DevTools';
 import { getDebugSessionKey } from '../utility';
 import { initSagas } from './initsagas';
 
-const defaultState = fromJS(getDefaultState());
+const defaultState = getDefaultState();
 const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = compose(

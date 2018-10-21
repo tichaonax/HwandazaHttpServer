@@ -10,7 +10,20 @@ export const getDefaultState = () => {
       shownavpage: false
     },
     apiErrors: {},
-    mediaLibrary: [],
+    mediaLibrary: {
+      songList:[{
+        path: 'path/to/mp3',
+        Name: 'Metallica',
+        DisplayName: 'Fuel'
+      },
+      {
+        Path: 'path/to/your/mp3',
+        Name: 'X Japan',
+        DisplayName: 'Art of Life',
+      }],
+      pictureList:[],
+      videoList:[],
+    },
   };
 
   return fromJS(defaultState);

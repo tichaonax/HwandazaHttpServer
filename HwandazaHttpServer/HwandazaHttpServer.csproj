@@ -116,7 +116,7 @@
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
     <None Include="build\static\css\main.8e145be6.css.map" />
-    <None Include="build\static\js\main.111dc878.js.map" />
+    <None Include="build\static\js\main.fd8a2a10.js.map" />
     <None Include="build\static\media\ReactMusicPlayer.84ef2549.scss" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
   </ItemGroup>
@@ -131,7 +131,7 @@
     <Content Include="build\favicon.ico" />
     <Content Include="build\index.html" />
     <Content Include="build\static\css\main.8e145be6.css" />
-    <Content Include="build\static\js\main.111dc878.js" />
+    <Content Include="build\static\js\main.fd8a2a10.js" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png">
       <InProject>false</InProject>

@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
-import ReactMusicPlayer from './ReactMusicPlayer';
+import AudioPlayer from 'react-cl-audio-player';
 import { songSelector } from './../../selectors';
-import './ReactMusicPlayer.scss';
-//import "../../styles/css/styles.css";
+import "../../styles/css/styles.css";
 
 class Music extends React.Component {
 
@@ -22,8 +21,8 @@ class Music extends React.Component {
     render() {
         const { songs } = this.props;
         console.log('Music-songs',songs);
-        return (<div>
-        <ReactMusicPlayer songs={ this.getMusicFiles(songs) } autoplay={true} />
+        return (<div className="hwandaza-automation">
+        <AudioPlayer songs={ this.getMusicFiles(songs) } autoplay={true} />
     </div>);
     }
 }
