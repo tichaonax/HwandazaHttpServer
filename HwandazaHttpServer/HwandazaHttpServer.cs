@@ -20,6 +20,8 @@ namespace HwandazaHttpServer
         public HwandazaHttpServer(int httpServerPort, string staticFilesFolder)
         {
             _streamSocketListener = new StreamSocketListener();
+            var currentSetting = _streamSocketListener.Control.QualityOfService;
+            _streamSocketListener.Control.QualityOfService = SocketQualityOfService.LowLatency;
             _streamSocketListener.Control.KeepAlive = true;
             _streamSocketListener.Control.NoDelay = false;
             _httpServerPort = httpServerPort;
