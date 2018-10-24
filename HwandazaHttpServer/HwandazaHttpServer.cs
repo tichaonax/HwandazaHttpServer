@@ -21,7 +21,7 @@ namespace HwandazaHttpServer
         {
             _streamSocketListener = new StreamSocketListener();
             _streamSocketListener.Control.KeepAlive = true;
-            _streamSocketListener.Control.NoDelay = true;
+            _streamSocketListener.Control.NoDelay = false;
             _httpServerPort = httpServerPort;
             _staticFileHandler = new StaticFileHandler(staticFilesFolder);
             _requestParser = new RequestParser();
