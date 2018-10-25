@@ -59,15 +59,22 @@ namespace HwandazaHttpServer
 
         public void StopServer()
         {
-            var stopCommand = new HwandazaCommand()
-                              {
-                                  Command = "Stop",
-                                  Module = "Operations"
-                              };
-            var hwandazaMessage = new ValueSet {{"HwandazaCommand", JsonConvert.SerializeObject(stopCommand)}};
+            try
+            {
+                var stopCommand = new HwandazaCommand()
+                {
+                    Command = "Stop",
+                    Module = "Operations"
+                };
+                var hwandazaMessage = new ValueSet { { "HwandazaCommand", JsonConvert.SerializeObject(stopCommand) } };
 #pragma warning disable CS4014
-            AppServiceInstance.Instance.GetAppServiceConnection().SendMessageAsync(hwandazaMessage);
+                AppServiceInstance.Instance.GetAppServiceConnection().SendMessageAsync(hwandazaMessage);
 #pragma warning restore CS4014
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private async Task ProcessRequestAsync(StreamSocket socket)

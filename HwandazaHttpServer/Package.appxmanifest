@@ -36,5 +36,6 @@
     <uap:Capability Name="picturesLibrary" />
     <uap:Capability Name="musicLibrary" />
     <uap3:Capability Name="backgroundMediaPlayback" />
+    <iot:Capability Name="systemManagement" />
   </Capabilities>
 </Package>
