@@ -5,19 +5,6 @@ import { songSelector } from './../../selectors';
 import "../../styles/css/styles.css";
 import { getSongs } from '../../actions';
 
-/* propTypes = {
-    songs: PropTypes.array.isRequired,
-    autoplay: PropTypes.bool,
-    onTimeUpdate: PropTypes.func,
-    onEnded: PropTypes.func,
-    onError: PropTypes.func,
-    onPlay: PropTypes.func,
-    onPause: PropTypes.func,
-    onPrevious: PropTypes.func,
-    onNext: PropTypes.func,
-  };
- */
-
 class Music extends React.Component {
     constructor(props){
         super(props);
@@ -27,18 +14,18 @@ class Music extends React.Component {
         }
     }
 
-    loadMoreSongs = () =>{
-        if (this.state.playCount >= 100){
+    loadMoreSongs = (playCount) =>{
+        if (playCount >= 100){
             this.setState({ playCount : 0 }, this.dispatch(getSongs())); 
         }
     }
 
-    countPlayedSongs = (count, countPlay) => {
-        console.log('onEnded', countPlay)
-        let playCount = count;
+    countPlayedSongs = (countPlay) => {
+        console.log('onNext or onPrevious', countPlay)
+        let playCount = this.state.playCount;
         if(countPlay === true){ playCount = playCount + 1;}
         this.setState({ playCount : playCount }, 
-           this.loadMoreSongs());
+           this.loadMoreSongs(playCount));
         }
 
     getMusicFiles = songs =>{
@@ -58,7 +45,7 @@ class Music extends React.Component {
         console.log('Music-songs',songs);
         return (<div className="hwandaza-automation">
         <AudioPlayer songs={ this.getMusicFiles(songs) } 
-        autoplay = {true}  
+        autoplay = {true} 
        />
     </div>);
     }

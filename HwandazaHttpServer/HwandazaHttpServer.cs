@@ -4,7 +4,6 @@ using Windows.Foundation.Collections;
 using Windows.Networking.Sockets;
 using HwandazaHttpServer.ServerUtils;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.IO;
 using Windows.ApplicationModel;
 
@@ -12,7 +11,7 @@ namespace HwandazaHttpServer
 {
     public sealed class HwandazaHttpServer : IDisposable
     {
-        private readonly int _httpServerPort; // = 8100;
+        private readonly int _httpServerPort;
         private readonly StreamSocketListener _streamSocketListener;
         private readonly RequestParser _requestParser;
         private readonly StaticFileHandler _staticFileHandler;
@@ -50,10 +49,8 @@ namespace HwandazaHttpServer
             Task.Run(async () =>
                            {
                                await _streamSocketListener.BindServiceNameAsync(_httpServerPort.ToString());
-
-                               // Initialize the AppServiceConnection
+                                // Initialize the AppServiceConnection
                                await AppServiceInstance.SetAppServiceConnection();
-
                            });
         }
 
@@ -73,7 +70,7 @@ namespace HwandazaHttpServer
             }
             catch (Exception)
             {
-
+                //do nothing
             }
         }
 
@@ -90,7 +87,14 @@ namespace HwandazaHttpServer
             }
             catch (Exception ex)
             {
-                await RequestUtils.WriteInternalServerErrorResponse(socket, ex);
+                try
+                {
+                    await RequestUtils.WriteInternalServerErrorResponse(socket, ex);
+                }
+                catch (Exception)
+                {
+                    //do nothing;
+                }
                 return;
             }
         }
