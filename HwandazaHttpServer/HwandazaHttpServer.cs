@@ -23,7 +23,7 @@ namespace HwandazaHttpServer
             var currentSetting = _streamSocketListener.Control.QualityOfService;
             _streamSocketListener.Control.QualityOfService = SocketQualityOfService.LowLatency;
             _streamSocketListener.Control.KeepAlive = true;
-            _streamSocketListener.Control.NoDelay = false;
+            _streamSocketListener.Control.NoDelay = true;
             _httpServerPort = httpServerPort;
             _staticFileHandler = new StaticFileHandler(staticFilesFolder);
             _requestParser = new RequestParser();
