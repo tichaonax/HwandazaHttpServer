@@ -92,6 +92,7 @@ namespace HwandazaHttpServer
                 var headers = new Dictionary<string, string>();
                 if (!string.IsNullOrWhiteSpace(contentType))
                     headers.Add("Content-Type", contentType);
+                    headers.Add("Content-Length", fileContents.Length.ToString());
 
                 return new HttpResponse(HttpStatusCode.Ok, headers, fileContents);
             }

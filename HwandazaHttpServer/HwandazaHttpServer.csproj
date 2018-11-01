@@ -100,6 +100,7 @@
     <Compile Include="ServerUtils\HttpResponse.cs" />
     <Compile Include="ServerUtils\HwandazaCommand.cs" />
     <Compile Include="HwandazaHttpServer.cs" />
+    <Compile Include="ServerUtils\Logger.cs" />
     <Compile Include="ServerUtils\Request.cs" />
     <Compile Include="ServerUtils\RequestHandler.cs" />
     <Compile Include="ServerUtils\RequestParser.cs" />
@@ -116,8 +117,14 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.3f6d0704.css.map" />
-    <None Include="build\static\js\main.b65e39d7.js.map" />
+    <None Include="build\static\css\main.0c70e766.css.map" />
+    <Content Include="build\static\css\main.0c70e766.css" />
+    <None Include="build\static\js\main.487a486e.js.map" />
+    <None Include="build\static\media\fontawesome-webfont.674f50d2.eot" />
+    <None Include="build\static\media\fontawesome-webfont.af7ae505.woff2" />
+    <Content Include="build\static\js\main.487a486e.js" />
+    <Content Include="build\static\media\fontawesome-webfont.b06871f2.ttf" />
+    <None Include="build\static\media\fontawesome-webfont.fee66e71.woff" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -130,8 +137,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="build\favicon.ico" />
     <Content Include="build\index.html" />
-    <Content Include="build\static\css\main.3f6d0704.css" />
-    <Content Include="build\static\js\main.b65e39d7.js" />
+    <Content Include="build\static\media\fontawesome-webfont.912ec66d.svg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png">
       <InProject>false</InProject>
@@ -169,9 +175,7 @@
       <Version>4.3.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="build\static\media\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

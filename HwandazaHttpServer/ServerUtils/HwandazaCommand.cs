@@ -2,11 +2,13 @@
 
 namespace HwandazaHttpServer.ServerUtils
 {
-    internal class HwandazaCommand
+    public sealed class HwandazaCommand
     {
+        internal HwandazaCommand(){}
+
         public string Command { get; set; }
         public string Module { get; set; }
-        public List<string> Lights { get; set; }
+        public IList<string> Lights { get; set; }
         public string Date { get; set; }
         public string Time { get; set; }
     }

@@ -12,14 +12,14 @@ export const getDefaultState = () => {
     apiErrors: {},
     mediaLibrary: {
       songList:[{
-        path: 'path/to/mp3',
-        Name: 'Metallica',
-        DisplayName: 'Fuel'
+        DisplayName: "Mutoro Warema",
+        ContentType: "audio/mp4",
+        Path: "Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a",
       },
       {
-        Path: 'path/to/your/mp3',
-        Name: 'X Japan',
-        DisplayName: 'Art of Life',
+        DisplayName: "Kugara Newe",
+        ContentType: "audio/mp4",
+        Path: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
       }],
       pictureList:[],
       videoList:[],

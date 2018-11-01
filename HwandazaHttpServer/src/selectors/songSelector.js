@@ -10,16 +10,18 @@ export const songSelector = createSelector(
         return (songs) ? {
             songList: songs
         } : {
-            songList: [{
-                path: 'path/to/mp3',
-                Name: 'Metallica',
-                DisplayName: 'Madzimai Mabika Here'
-              },
-              {
-                Path: 'path/to/your/mp3',
-                Name: 'X Japan',
-                DisplayName: 'Art of Life',
-              }]
+            songList: [
+                {
+                    DisplayName: "Mutoro Warema",
+                    ContentType: "audio/mp4",
+                    Path: "Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a",
+                 },
+                {
+                    DisplayName: "Kugara Newe",
+                    ContentType: "audio/mp4",
+                    Path: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
+                },
+            ]
         };
     }
 );

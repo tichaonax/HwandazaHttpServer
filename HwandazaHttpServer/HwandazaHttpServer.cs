@@ -51,6 +51,7 @@ namespace HwandazaHttpServer
                                await _streamSocketListener.BindServiceNameAsync(_httpServerPort.ToString());
                                 // Initialize the AppServiceConnection
                                await AppServiceInstance.SetAppServiceConnection();
+                               await  Logger.WriteDebugLog("Web Server Started");
                            });
         }
 
@@ -89,11 +90,12 @@ namespace HwandazaHttpServer
             {
                 try
                 {
+                    await Logger.WriteDebugLog("Error ProcessRequestAsync =>" + ex.Message + "Trace" + ex.StackTrace);
                     await RequestUtils.WriteInternalServerErrorResponse(socket, ex);
                 }
-                catch (Exception)
+                catch (Exception innnerException)
                 {
-                    //do nothing;
+                    await Logger.WriteDebugLog("Error WriteInternalServerErrorResponse =>" + ex.Message + "Trace" + innnerException.StackTrace);
                 }
                 return;
             }
