@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Windows.Foundation.Collections;
 using Windows.Networking.Sockets;
 using HwandazaHttpServer.ServerUtils;
-using Newtonsoft.Json;
 using System.IO;
 using Windows.ApplicationModel;
 
@@ -12,20 +10,17 @@ namespace HwandazaHttpServer
     public sealed class HwandazaHttpServer : IDisposable
     {
         private readonly int _httpServerPort;
-        private readonly StreamSocketListener _streamSocketListener;
+        private StreamSocketListener _streamSocketListener;
         private readonly RequestParser _requestParser;
         private readonly StaticFileHandler _staticFileHandler;
-        
+        private string _staticFilesFolder;
+
         public HwandazaHttpServer(int httpServerPort, string staticFilesFolder)
         {
-            _streamSocketListener = new StreamSocketListener();
-            _streamSocketListener.Control.QualityOfService = SocketQualityOfService.LowLatency;
-            _streamSocketListener.Control.KeepAlive = true;
-            _streamSocketListener.Control.NoDelay = true;
             _httpServerPort = httpServerPort;
             _staticFileHandler = new StaticFileHandler(staticFilesFolder);
+            _staticFilesFolder = staticFilesFolder;
             _requestParser = new RequestParser();
-            _streamSocketListener.ConnectionReceived += async (s, e) => { await ProcessRequestAsync(e.Socket); };
         }
         
         private string GetAbsoluteBasePathUri(string relativeOrAbsoluteBasePath)
@@ -46,31 +41,36 @@ namespace HwandazaHttpServer
         public void StartServer()
         {
             Task.Run(async () =>
-                           {
-                               await _streamSocketListener.BindServiceNameAsync(_httpServerPort.ToString());
-                                // Initialize the AppServiceConnection
-                               await AppServiceInstance.SetAppServiceConnection();
-                               await  Logger.WriteDebugLog("Web Server Started");
-                           });
+            {
+                _streamSocketListener = new StreamSocketListener();
+                _streamSocketListener.Control.QualityOfService = SocketQualityOfService.LowLatency;
+                _streamSocketListener.Control.KeepAlive = true;
+                _streamSocketListener.Control.NoDelay = true;
+                _streamSocketListener.ConnectionReceived += async (s, e) => { await ProcessRequestAsync(e.Socket); };
+                await _streamSocketListener.BindServiceNameAsync(_httpServerPort.ToString());
+            });
         }
 
         public void StopServer()
         {
             try
             {
-                var stopCommand = new HwandazaCommand()
+                Task.Run(async () =>
                 {
-                    Command = "Stop",
-                    Module = "Operations"
-                };
-                var hwandazaMessage = new ValueSet { { "HwandazaCommand", JsonConvert.SerializeObject(stopCommand) } };
-#pragma warning disable CS4014
-                AppServiceInstance.Instance.GetAppServiceConnection().SendMessageAsync(hwandazaMessage);
-#pragma warning restore CS4014
+                    if (_streamSocketListener != null)
+                    {
+                        await _streamSocketListener.CancelIOAsync();
+                        _streamSocketListener.Dispose();
+                    }
+                    _streamSocketListener = null;
+                });
             }
-            catch (Exception)
+            catch
             {
-                //do nothing
+            }
+            finally
+            {
+                _streamSocketListener = null;
             }
         }
 
@@ -90,15 +90,14 @@ namespace HwandazaHttpServer
             {
                 try
                 {
-                    await Logger.WriteDebugLog("Error ProcessRequestAsync =>" + ex.Message + "Trace" + ex.StackTrace);
+                    //await Logger.WriteDebugLog("Error ProcessRequestAsync =>" + ex.Message + "Trace" + ex.StackTrace);
                     await RequestUtils.WriteInternalServerErrorResponse(socket, ex);
                 }
                 catch (Exception innnerException)
                 {
-                    await Logger.WriteDebugLog("Error WriteInternalServerErrorResponse =>" + ex.Message + "Trace" + innnerException.StackTrace);
+                    //await Logger.WriteDebugLog("Error WriteInternalServerErrorResponse =>" + ex.Message + "Trace" + innnerException.StackTrace);
                 }
             }
-            catch { }
             finally
             {
                 // Clean up by disposing the socket.

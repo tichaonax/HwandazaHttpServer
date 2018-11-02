@@ -12,20 +12,29 @@ class MusicPlus extends React.Component {
         super(props);
         this.dispatch = props.dispatch;
         this.state = {
-            playCount: 0,
-            songsTotal: 0,
+           songs: [
+            {
+                DisplayName: "Kugara Newe",
+                ContentType: "audio/mp4",
+                Path: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
+            },
+            {
+                DisplayName: "Mutoro Warema",
+                ContentType: "audio/mp4",
+                Path: "Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a",
+             },
+           ],
         }
     }
 
-        componentWillReceiveProps(newProps){
-            if(newProps.songs[0].Path != this.props.songs[0].Path){
+       /*   componentWillReceiveProps(newProps){
+            if(newProps.songs && newProps.songs[0] && newProps.songs[0].Path != this.props.songs[0].Path){
                 console.log('new props');
                 this.setState({
-                    songsTotal: newProps.songs.length,
-                    playCount: 0,
+                    songs: newProps.songs,
                 });
             }
-        }
+        }  */
 
         onTimeUpdate = () => {
             console.log('onTimeUpdate');
@@ -37,7 +46,7 @@ class MusicPlus extends React.Component {
 
         onError = () => {
             console.log('onError');
-            this.dispatch(getSongs());
+/*             this.dispatch(getSongs()); */
         }
 
         onPlay = () => {
@@ -50,17 +59,25 @@ class MusicPlus extends React.Component {
 
         onPrevious = () => {
             console.log('onPrevious');
+           /*  const count = this.state.playCount;
+            console.log('onPrevious:', count);
+            if (count > 0)
+            this.setState({
+                playCount : count - 1,
+            }); */
         }
 
         onNext =() => {
             console.log('onNext');
-            const count = this.state.playCount;
+            /* const count = this.state.playCount;
+            console.log('onNext:', count);
             this.setState({
                 playCount : count + 1,
             });
             if (count > this.state.songsTotal){
+                console.log('loading more songs');
                 this.dispatch(getSongs());
-            }
+            } */
         }
 
       getMusicFiles = songs => songs.map(song => {

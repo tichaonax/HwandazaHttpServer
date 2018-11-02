@@ -1,22 +1,12 @@
-﻿using HwandazaHttpServer.ServerUtils;
-using Newtonsoft.Json;
-using System;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
+﻿using System;
 using Windows.ApplicationModel.Background;
-using Windows.ApplicationModel.Core;
 using Windows.System.Threading;
 
 namespace HwandazaHttpServer
 {
     public sealed class StartupTask : IBackgroundTask
     {
-
-        private const int FiveSecondDelayMs = 10000;
-        private const string SystemsHeartbeatIsRunning = "systemsheartbeatisrunning";
-        private const string Uri = "127.0.0.1";
+        private const int SixtySecondDelayMs = 60000;
         private const int ServerPort = 8100;
         private const string HomeDirectory = "build";
 
@@ -38,66 +28,27 @@ namespace HwandazaHttpServer
             _hwandazaHttpServer.StartServer();
 
             //create a system heart beat check that pings the service applicaation and check that every thing is good.
-            _poolTimerHeartBeat = ThreadPoolTimer.CreatePeriodicTimer(SystemHeartBeatControlAsync, period: TimeSpan.FromMilliseconds(FiveSecondDelayMs));
+            _poolTimerHeartBeat = ThreadPoolTimer.CreatePeriodicTimer(SystemHeartBeatServerControlAsync, period: TimeSpan.FromMilliseconds(SixtySecondDelayMs));
         }
 
-
-        private void SystemHeartBeatControlAsync(ThreadPoolTimer timer)
+        private void SystemHeartBeatServerControlAsync(ThreadPoolTimer timer)
         {
-            var request = new HwandazaCommand { Command = SystemsHeartbeatIsRunning };
-            Uri requestUri = new Uri($"http://{Uri}:{ServerPort}/hwandazaautomation/status");
-            //SystemsHeartbeat systemStatus = new SystemsHeartbeat() { IsRunning = false };
-
-            //Send the GET request asynchronously and retrieve the response as a string.
-            Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
-            string httpResponseBody = "";
             try
             {
-                //using Windows.UI.Core;
-                
-                 Task.Run(async () =>
-                 {
-                     //Send the GET request
-                    //Logger.WriteDebugLog($"SystemsHeartbeat URi => {requestUri.AbsoluteUri}");
-                    httpResponse = await _httpClient.GetAsync(requestUri);
-                    httpResponse.EnsureSuccessStatusCode();
-                    httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Logger.WriteDebugLog($"SystemsHeartbeat SystemStatus *****=> {httpResponseBody}");
-                });
-                // Task.Run(() => { systemStatus = PostData<SystemsHeartbeat, HwandazaCommand>(request, uri, path); });
-                //Task.Run(() => Logger.WriteDebugLog($"SystemsHeartbeat SystemStatus => {JsonConvert.SerializeObject(systemStatus)}"));
+                _hwandazaHttpServer.StopServer();
+                _hwandazaHttpServer.StartServer();
             }
             catch (Exception ex)
             {
-                //systemStatus.IsRunning = false;
-                Task.Run(() => Logger.WriteDebugLog($"Error checking SystemsHeartbeat => {ex.Message} ==Trace== {ex.StackTrace}"));
+                //Do nothing
             }
-
-            //Task.Run(() => Logger.WriteDebugLog($"SystemsHeartbeat SystemStatus *****=> {httpResponseBody}"));
-
-            //AppRestartFailureReason restartResult;
-            //if (!systemStatus.IsRunning)
-            //{
-            //    //reset the webserver
-            //    //System.Diagnostics.Debug.WriteLine("System Heat Beat Down Restarting the Web Server");
-            //    Task.Run(() => Logger.WriteDebugLog("System Heat Beat Down Restarting the Web Server"));
-            //    try
-            //    {
-            //        Task.Run(async () => { restartResult = await CoreApplication.RequestRestartAsync("Server Restarting"); });
-            //    }
-            //    catch (Exception exception)
-            //    {
-            //        Task.Run(() => Logger.WriteDebugLog($"System Restarting Exception: {exception.Message}"));
-            //    }
-                
-            //}
         }
 
         private void TaskInstanceCanceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
         {
             //gracefully stop modules so that we do not leave peripherals like waterpump running after the control application is terminated
 
-            Task.Run(() => Logger.WriteDebugLog("System TaskInstanceCanceled reason: " + reason.ToString()));
+            //Task.Run(() => Logger.WriteDebugLog("System TaskInstanceCanceled reason: " + reason.ToString()));
             //a few reasons that you may be interested in.
             switch (reason)
             {
@@ -122,35 +73,5 @@ namespace HwandazaHttpServer
                     break;
             }
         }
-        
-
-        //private static T PostData<T, P>(P postData, string uri, string path)
-        //{
-        //    var ret = default(T);
-        //    try
-        //    {
-        //        using (var client = new HttpClient())
-        //        {
-        //            client.BaseAddress = new Uri(uri);
-        //            client.DefaultRequestHeaders.Accept.Clear();
-        //            client.DefaultRequestHeaders.Accept.Add(
-        //                new MediaTypeWithQualityHeaderValue("application/json"));
-
-        //            Task.Run(() => Logger.WriteDebugLog($"SystemsHeartbeat URL => {client.BaseAddress}"));//
-        //            var respHttpClientonse = client.PostAsJsonAsync(path, postData);
-
-        //            Task.Run(() => Logger.WriteDebugLog("SystemsHeartbeat SystemStatus Response => " + JsonConvert.SerializeObject(response)));
-        //            //var response = client.PostAsJsonAsync(path, postData).Result; if your endpoint accepts json content
-        //            var data = response.Result;
-        //            Task.Run(() => Logger.WriteDebugLog($"SystemsHeartbeat SystemStatus Response Result {data}"));
-        //            ret = data.Content.ReadAsAsync<T>(new[] { new JsonMediaTypeFormatter()}).Result;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Task.Run(() => Logger.WriteDebugLog("SystemsHeartbeat SystemStatus Exception => " + ex.Message + " Trace " + ex.StackTrace));
-        //    }
-        //    return ret;
-        //}
     }
 }
