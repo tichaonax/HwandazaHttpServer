@@ -104,6 +104,7 @@ namespace HwandazaHttpServer.ServerUtils
             }
 
             await RequestUtils.WriteResponse(response, _streamSocket);
+            response = null;
         }
 
         private string GetNewLocalPath(string mediaFilter, string localpath)

@@ -19,7 +19,6 @@ namespace HwandazaHttpServer
         public HwandazaHttpServer(int httpServerPort, string staticFilesFolder)
         {
             _streamSocketListener = new StreamSocketListener();
-            var currentSetting = _streamSocketListener.Control.QualityOfService;
             _streamSocketListener.Control.QualityOfService = SocketQualityOfService.LowLatency;
             _streamSocketListener.Control.KeepAlive = true;
             _streamSocketListener.Control.NoDelay = true;
@@ -78,13 +77,14 @@ namespace HwandazaHttpServer
         private async Task ProcessRequestAsync(StreamSocket socket)
         {
             Request request;
+            RequestHandler requestHandler = null;
+            string requestText = null;
             try
             {
-                var requestText = await RequestUtils.ReadRequest(socket);
+                requestText = await RequestUtils.ReadRequest(socket);
                 request = _requestParser.ParseRequestText(requestText, socket.Information.LocalAddress, socket.Information.LocalPort);
-                var requestHandler = new RequestHandler(socket, request, _staticFileHandler, _requestParser);
+                requestHandler = new RequestHandler(socket, request, _staticFileHandler, _requestParser);
                 await requestHandler.HandleRequestAsync();
-                return;
             }
             catch (Exception ex)
             {
@@ -97,7 +97,16 @@ namespace HwandazaHttpServer
                 {
                     await Logger.WriteDebugLog("Error WriteInternalServerErrorResponse =>" + ex.Message + "Trace" + innnerException.StackTrace);
                 }
-                return;
+            }
+            catch { }
+            finally
+            {
+                // Clean up by disposing the socket.
+                request = null;
+                requestText = null;
+                requestHandler = null;
+                if (socket != null)
+                    socket.Dispose();
             }
         }
     }
