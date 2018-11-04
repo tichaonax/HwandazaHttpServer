@@ -32,12 +32,15 @@
   <Capabilities>
     <Capability Name="internetClient" />
     <Capability Name="internetClientServer" />
+    <Capability Name="privateNetworkClientServer" />
     <uap:Capability Name="videosLibrary" />
     <uap:Capability Name="picturesLibrary" />
     <uap:Capability Name="musicLibrary" />
     <uap3:Capability Name="backgroundMediaPlayback" />
     <iot:Capability Name="systemManagement" />
+    <uap3:Capability Name="remoteSystem" />
     <rescap:Capability Name="extendedBackgroundTaskTime" />
     <rescap:Capability Name="extendedExecutionUnconstrained" />
+    <DeviceCapability Name="lowLevel" />
   </Capabilities>
 </Package>
