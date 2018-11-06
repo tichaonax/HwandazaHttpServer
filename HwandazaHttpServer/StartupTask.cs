@@ -10,6 +10,7 @@ namespace HwandazaHttpServer
     public sealed class StartupTask : IBackgroundTask
     {
         private const int TwentySecondDelayMs = 20000;
+        private const int Timeout = 10000;
         private const int ServerPort = 8100;
         private const string HomeDirectory = "build";
         private const string Domain = "127.0.0.1";
@@ -58,6 +59,7 @@ namespace HwandazaHttpServer
             CredentialCache credentialCache = new CredentialCache();
             credentialCache.Add(uri, "NTLM", c);
             request.Credentials = c;
+            request.Timeout = Timeout;    //consider timeout if no response in time
             return request;
         }
 
@@ -68,14 +70,6 @@ namespace HwandazaHttpServer
             HttpWebResponse response = null;         
             try
             {
-                //Uri uri = new Uri(address);
-                //request = WebRequest.Create(uri);
-
-                //// Add authentication to request   
-                //NetworkCredential c = new NetworkCredential($"{Domain}\\DefaultAccount", "");
-                //CredentialCache credentialCache = new CredentialCache();
-                //credentialCache.Add(uri, "NTLM", c);
-                //request.Credentials = c;
                 request = GetWebRequestWithDefaultAccountCredentials(address);
                 response = (HttpWebResponse)request.GetResponse();
                 if(response.StatusCode == HttpStatusCode.OK)

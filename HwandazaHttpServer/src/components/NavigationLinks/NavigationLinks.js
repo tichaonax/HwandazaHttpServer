@@ -20,12 +20,12 @@ const navigationlinks = props => {
     <ul>
       <li>
         <Link to="/status" onClick={() => props.click("status", draweractive)}>
-          {STATUS_TITLE}
+          <div className="spacer" >&nbsp;&nbsp;{STATUS_TITLE}</div>
         </Link>
       </li>
       <li>
         <Link to="/lights" onClick={() => props.click("lights", draweractive)}>
-          {LIGHTS_TITLE}
+        <div className="spacer" >&nbsp;&nbsp;{LIGHTS_TITLE}</div>
         </Link>
       </li>
       <li>
@@ -33,12 +33,12 @@ const navigationlinks = props => {
           to="/control"
           onClick={() => props.click("control", draweractive)}
         >
-          {CONTROL_TITLE}
+          <div className="spacer" >&nbsp;&nbsp;{CONTROL_TITLE}</div>
         </Link>
       </li>
       <li>
         <Link to="/music" onClick={() => props.click("music", draweractive)}>
-          {MUSIC_TITLE}
+        <div className="spacer" >&nbsp;&nbsp;{MUSIC_TITLE}</div>
         </Link>
       </li>
       <li>
@@ -46,7 +46,7 @@ const navigationlinks = props => {
           to="/gallery"
           onClick={() => props.click("gallery", draweractive)}
         >
-          {GALLERY_TITLE}
+          <div className="spacer" >&nbsp;&nbsp;{GALLERY_TITLE}</div>
         </Link>
       </li>
       <li>
@@ -54,13 +54,13 @@ const navigationlinks = props => {
           to="/settings"
           onClick={() => props.click("settings", draweractive)}
         >
-          {SETTINGS_TITLE}
+          <div className="spacer" >&nbsp;&nbsp;{SETTINGS_TITLE}</div>
         </Link>
       </li>
 
       <li>
         <Link to="/about" onClick={() => props.click("about", draweractive)}>
-          {ABOUT_TITLE}
+        <div className="spacer" >&nbsp;&nbsp;{ABOUT_TITLE}</div>
         </Link>
       </li>
     </ul>

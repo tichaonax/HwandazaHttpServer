@@ -11,7 +11,7 @@ import Settings from "./components/Settings/Settings";
 import Lights from "./components/Lights/Lights";
 import Help from "./components/Help/Help";
 import About from "./components/About/About";
-import Music from "./components/MusicPlus/MusicPlus";
+import Music from "./components/MusicPlus/MusicContainer";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
 import NotFound from "./components/NotFound/NotFound";

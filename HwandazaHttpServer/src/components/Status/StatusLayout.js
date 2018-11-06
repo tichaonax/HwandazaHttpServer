@@ -14,7 +14,7 @@ function getModuleCheckedValue(module) {
   }
 
 const statuslayout = props => {
-    const { lights, fishpond, waterpump, irrigator } = props.Props;
+    const { lights, fishpond, waterpump, irrigator } = props;
     const waterpumpChecked = getModuleCheckedValue(waterpump);
     const fishpondChecked = getModuleCheckedValue(fishpond);
     const irrigatorChecked = getModuleCheckedValue(irrigator);

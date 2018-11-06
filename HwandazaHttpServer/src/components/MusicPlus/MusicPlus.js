@@ -1,27 +1,22 @@
 import React from 'react';
-import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { songSelector } from './../../selectors';
 import "../../styles/css/styles.css";
-import { getSongs } from '../../actions';
 import 'font-awesome/css/font-awesome.min.css';
 import CLAudioPlayer from 'react-cl-audio-player';';'
  
-class MusicPlus extends React.Component {
+export class MusicPlus extends React.Component {
     constructor(props){
         super(props);
         this.dispatch = props.dispatch;
         this.state = {
            songs: [
             {
-                DisplayName: "Kugara Newe",
-                ContentType: "audio/mp4",
-                Path: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
+                Name: "Kugara Newe",
+                Url: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
             },
             {
-                DisplayName: "Mutoro Warema",
-                ContentType: "audio/mp4",
-                Path: "Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a",
+                Name: "Mutoro Warema",
+                Url: "Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a",
              },
            ],
         }
@@ -82,10 +77,10 @@ class MusicPlus extends React.Component {
 
       getMusicFiles = songs => songs.map(song => {
         return ({
-            url: `song/${song.Path}`,
+            url: `song/${song.Url}`,
             artist: {
-            name: `${song.DisplayName.substring(0,15)}...`,
-            song: song.DisplayName,
+            name: `${song.Name.substring(0,15)}...`,
+            song: song.Name,
         }
     })
 });
@@ -113,12 +108,4 @@ MusicPlus.propTypes = {
     songs: PropTypes.array.isRequired
   };
 
-const mapStateToProps = (state, {autoplay}) => {
-    const songs = songSelector(state);
-    return {
-        songs: songs.songList,
-        autoplay,
-    }
-};
-
-export default connect(mapStateToProps)(MusicPlus);
+export default MusicPlus;

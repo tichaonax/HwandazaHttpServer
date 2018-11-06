@@ -18,7 +18,7 @@ const status = props => {
   return(
   <div className="hwandaza-automation">
     <h2>System Status</h2>
-    <StatusLayout Props={props}/>
+    <StatusLayout props={props}/>
   </div>
   );
 };

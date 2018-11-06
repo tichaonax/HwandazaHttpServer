@@ -19,6 +19,7 @@
     "prop-types": "^15.6.2",
     "proptypes": "^1.1.0",
     "react": "^16.5.1",
+    "react-awesome-button": "^5.0.0",
     "react-cl-audio-player": "^2.2.0",
     "react-dom": "^16.5.1",
     "react-image-gallery": "^0.8.12",
