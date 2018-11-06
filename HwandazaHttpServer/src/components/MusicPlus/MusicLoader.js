@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 import {
     AwesomeButton,
     AwesomeButtonProgress,
@@ -65,4 +66,4 @@ export class MusicLoader extends React.Component {
     }
 }
 
-export default MusicLoader;
+export default connect()(MusicLoader);

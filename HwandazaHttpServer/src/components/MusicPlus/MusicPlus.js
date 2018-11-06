@@ -86,12 +86,12 @@ export class MusicPlus extends React.Component {
 });
 
       render() {
-        const { songs } = this.props;
+        const { songs, autoplay } = this.props;
         console.log('Music-songs',songs);
         return (<div className="hwandaza-automation">
             <CLAudioPlayer 
                 songs={ this.getMusicFiles(songs) } 
-                autoplay
+                autoplay={autoplay}
                 onTimeUpdate={this.onTimeUpdate}
                 onEnded={this.onEnded}
                 onError={this.onError}

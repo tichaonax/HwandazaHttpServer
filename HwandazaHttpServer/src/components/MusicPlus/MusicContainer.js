@@ -11,7 +11,7 @@ import './MusicContainer.css';
 
 const musiccontainer = props => (
     <div>
-        <MusicPlus songs={props.songs} autoplay />
+        <MusicPlus songs={props.songs} autoplay={props.autoplay} />
         <MusicLoader/>
     </div>
 );

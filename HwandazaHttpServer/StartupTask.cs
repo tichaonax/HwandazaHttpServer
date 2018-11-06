@@ -1,6 +1,8 @@
 ﻿using HwandazaHttpServer.ServerUtils;
+using Newtonsoft.Json;
 using System;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.System.Threading;
@@ -9,8 +11,8 @@ namespace HwandazaHttpServer
 {
     public sealed class StartupTask : IBackgroundTask
     {
-        private const int TwentySecondDelayMs = 20000;
-        private const int Timeout = 10000;
+        private const int TwentySecondDelayMs = 30000;
+        private const int Timeout = 20000;
         private const int ServerPort = 8100;
         private const string HomeDirectory = "build";
         private const string Domain = "127.0.0.1";
@@ -67,23 +69,22 @@ namespace HwandazaHttpServer
         {
             bool isAvailble = false;
             WebRequest request = null;
-            HttpWebResponse response = null;         
+            HttpWebResponse response = null;
             try
             {
                 request = GetWebRequestWithDefaultAccountCredentials(address);
                 response = (HttpWebResponse)request.GetResponse();
-                if(response.StatusCode == HttpStatusCode.OK)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    isAvailble = true;
+                    using (var reader = new System.IO.StreamReader(response.GetResponseStream(), Encoding.ASCII))
+                    {
+                        var status = JsonConvert.DeserializeObject<HwandazaAutomation>(reader.ReadToEnd());
+                        if (status.isRunning)
+                        {
+                            isAvailble = true;
+                        }
+                    }
                 }
-                
-                //var encoding = ASCIIEncoding.ASCII;
-                //using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
-                //{
-                //    string responseString = reader.ReadToEnd();
-                //    await Logger.WriteDebugLog($"System IsAddressAvailable=> {responseString}");
-                //}
-                
             }
             catch (Exception ex)
             {

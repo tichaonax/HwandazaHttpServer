@@ -101,6 +101,7 @@
     <Compile Include="ServerUtils\HwandazaCommand.cs" />
     <Compile Include="HwandazaHttpServer.cs" />
     <Compile Include="ServerUtils\Logger.cs" />
+    <Compile Include="ServerUtils\HwandazaAutomation.cs" />
     <Compile Include="ServerUtils\Request.cs" />
     <Compile Include="ServerUtils\RequestHandler.cs" />
     <Compile Include="ServerUtils\RequestParser.cs" />
@@ -117,12 +118,12 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.0c70e766.css.map" />
-    <Content Include="build\static\css\main.0c70e766.css" />
-    <None Include="build\static\js\main.2cf23ef9.js.map" />
+    <None Include="build\static\css\main.62a0f6f6.css.map" />
+    <None Include="build\static\js\main.438183dc.js.map" />
     <None Include="build\static\media\fontawesome-webfont.674f50d2.eot" />
     <None Include="build\static\media\fontawesome-webfont.af7ae505.woff2" />
-    <Content Include="build\static\js\main.2cf23ef9.js" />
+    <Content Include="build\static\css\main.62a0f6f6.css" />
+    <Content Include="build\static\js\main.438183dc.js" />
     <Content Include="build\static\media\fontawesome-webfont.b06871f2.ttf" />
     <None Include="build\static\media\fontawesome-webfont.fee66e71.woff" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
