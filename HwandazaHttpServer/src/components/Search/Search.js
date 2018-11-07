@@ -63,6 +63,10 @@ Search.propTypes = {
     songs: PropTypes.array.isRequired
   };
 
+  Search.defaultProps = {
+    songs: [],
+  }
+
 const mapStateToProps = (state) => {
     const songs = searchSelector(state);
     return {

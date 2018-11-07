@@ -105,33 +105,8 @@ namespace HwandazaHttpServer
         private void TaskInstanceCanceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
         {
             //gracefully stop modules so that we do not leave peripherals like waterpump running after the control application is terminated
-            //_cancelRequested = true;
-            Task.Run(() => Logger.WriteDebugLog("System TaskInstanceCanceled reason: " + reason.ToString()));
-            //a few reasons that you may be interested in.
             _backgroundTaskDeferral.Complete();
             Windows.ApplicationModel.Core.CoreApplication.Exit();
-            //switch (reason)
-            //{
-            //    case BackgroundTaskCancellationReason.Abort:
-            //        //app unregistered background task (amoung other reasons).
-            //        _hwandazaHttpServer.StopServer();
-            //        _backgroundTaskDeferral.Complete();
-            //        break;
-            //    case BackgroundTaskCancellationReason.Terminating:
-            //        //system shutdown
-            //        _hwandazaHttpServer.StopServer();
-            //        _backgroundTaskDeferral.Complete();
-            //        break;
-            //    case BackgroundTaskCancellationReason.ConditionLoss:
-            //        _backgroundTaskDeferral.Complete();
-            //        break;
-            //    case BackgroundTaskCancellationReason.SystemPolicy:
-            //        _backgroundTaskDeferral.Complete();
-            //        break;
-            //    default:
-            //        _backgroundTaskDeferral.Complete();
-            //        break;
-            //}
         }
     }
 }
