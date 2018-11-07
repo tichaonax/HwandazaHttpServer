@@ -9,7 +9,7 @@ import {
 } from '../../selectors';
 
 import {
-    setSearchResult,
+    search,
     } from '../../actions';
 
 export class Search extends Component {
@@ -22,7 +22,7 @@ export class Search extends Component {
   }
 
   getSongs = () => {
-    this.dispatch(setSearchResult(
+    this.dispatch(search(
         {
             Command: "namedsongs",
             Module: this.state.query,

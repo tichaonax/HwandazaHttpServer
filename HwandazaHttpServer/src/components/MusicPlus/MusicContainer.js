@@ -12,7 +12,7 @@ import './MusicContainer.css';
 // import Search from 'antd/lib/transfer/search';
 
 const musiccontainer = props => (
-    <div>
+    <div className="hwandaza-automation">
         <MusicPlus songs={props.songs} autoplay />
         <Search />
         <MusicLoader/>

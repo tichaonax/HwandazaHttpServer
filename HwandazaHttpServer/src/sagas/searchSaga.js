@@ -20,6 +20,7 @@ import {
 
 function* search(action) {
     try {
+        console.log('search saga', action);
         const url = `${Utils.getBaseUrl()}/hwandazaautomation`;
         const options = Utils.buildPostFetchOptions(action.request);
         const response = yield call(fetch, url, options);
