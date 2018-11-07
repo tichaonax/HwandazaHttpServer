@@ -7,3 +7,4 @@ export { lightsSelector } from './lightsSelector';
 export { pictureSelector } from './pictureSelector';
 export { songSelector } from './songSelector'; 
 export { videoSelector } from './videoSelector'; 
+export { searchSelector } from './searchSelector';

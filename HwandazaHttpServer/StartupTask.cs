@@ -11,8 +11,8 @@ namespace HwandazaHttpServer
 {
     public sealed class StartupTask : IBackgroundTask
     {
-        private const int TwentySecondDelayMs = 30000;
-        private const int Timeout = 20000;
+        private const int TwentySecondDelayMs = 300000;
+        private const int Timeout = 60000;
         private const int ServerPort = 8100;
         private const string HomeDirectory = "build";
         private const string Domain = "127.0.0.1";

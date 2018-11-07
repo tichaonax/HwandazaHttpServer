@@ -5,3 +5,4 @@ export { randomLightStatusSaga } from './randomLightStatusSaga';
 export { pictureSaga } from './pictureSaga';
 export { songSaga } from './songSaga';
 export { videoSaga } from './videoSaga';
+export { searchSaga } from './searchSaga';

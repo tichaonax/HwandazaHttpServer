@@ -4,14 +4,17 @@ import PropTypes from 'prop-types';
 
 import { songSelector } from './../../selectors';
 import { MusicPlus } from './MusicPlus';
+import { Search } from '../Search/Search';
 import { MusicLoader } from './MusicLoader';
 
 import "../../styles/css/styles.css";
 import './MusicContainer.css';
+// import Search from 'antd/lib/transfer/search';
 
 const musiccontainer = props => (
     <div>
         <MusicPlus songs={props.songs} autoplay />
+        <Search />
         <MusicLoader/>
     </div>
 );

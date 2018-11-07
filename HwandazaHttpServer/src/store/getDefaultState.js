@@ -22,6 +22,8 @@ export const getDefaultState = () => {
       pictureList:[],
       videoList:[],
     },
+    searchResult: {
+      songList: []},
   };
 
   return fromJS(defaultState);

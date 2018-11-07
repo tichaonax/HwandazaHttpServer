@@ -50,3 +50,11 @@ export {
     SET_SONGS,
 }
 from "./mediaActions";
+
+export {
+    SEARCH_AS_YOU_TYPE,
+    search,
+    SET_SEARCH_RESULT,
+    setSearchResult,
+}
+from "./searchActions";
