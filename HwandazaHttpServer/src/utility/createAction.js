@@ -4,7 +4,7 @@ export const createAction = (type, ...argNames) => {
     argNames.forEach((arg, index) => {
       action[argNames[index]] = args[index];
     });
-    console.log('action =', JSON.stringify(action));
+    //console.log('action =', JSON.stringify(action));
     return action;
   };
 };

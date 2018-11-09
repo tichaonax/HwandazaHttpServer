@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let timer = setInterval(this.pollStatus, 60000);
+    let timer = setInterval(this.pollStatus, 1000);
     this.setState({ timer });
   }
 
