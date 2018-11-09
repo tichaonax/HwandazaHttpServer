@@ -9,36 +9,28 @@ import {
 } from '../../selectors';
 
 import {
-    search,
+  search,
     } from '../../actions';
 
 export class Search extends Component {
-    constructor(props){
-        super(props);
-        this.dispatch = props.dispatch;
-        this.state = {
-        query: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: '',
     }
-  }
-
-  getSongs = () => {
-    this.dispatch(search(
-        {
-            Command: "namedsongs",
-            Module: this.state.query,
-        }
-    ));
 }
-
 
   handleInputChange = () => {
     this.setState({
       query: this.search.value
     }, () => {
       if (this.state.query && this.state.query.length > 1) {
-        if (this.state.query.length % 2 === 0) {
-          this.getSongs()
-        }
+        if (this.state.query.length > 1) {
+          this.props.onSearch({
+            Command: "namedsongs",
+            Module: this.state.query,
+        })}
+
       } 
     })
   }
@@ -60,17 +52,22 @@ export class Search extends Component {
 
 
 Search.propTypes = {
-    songs: PropTypes.array.isRequired
+    songs: PropTypes.array.isRequired,
   };
 
   Search.defaultProps = {
     songs: [],
   }
 
+  const mapDispatchToProps = dispatch => ({
+    onSearch: (command) => dispatch(search(command))
+  })
+  
 const mapStateToProps = (state) => {
     const songs = searchSelector(state);
     return {
         songs: songs.songList,
     }
 };
-export default connect(mapStateToProps)(Search);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
