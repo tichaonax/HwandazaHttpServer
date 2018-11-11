@@ -95,9 +95,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const navigation = state.get(`navigation`);
+  const navigation = state.navigation;
   return {
-    shownavpage: navigation.shownavpage
+    shownavpage: (navigation ? navigation.shownavpage : null)
   };
 };
 

@@ -2,14 +2,13 @@ import {
     createSelector
 } from 'reselect';
 
+import { modulesSelector } from './modulesSelector';
+
 export const waterpumpSelector = createSelector(
-    state => state.get(`automation`),
-    automation => {
-        const status = automation.status;
-        return (status && status.modules) ? {
-            status: status.modules.waterPump
+    modulesSelector,
+    modulesSelector => (modulesSelector && modulesSelector.modules ? {
+            status: modulesSelector.modules.waterPump
         } : {
             status: null
-        };
-    }
+        })
 );

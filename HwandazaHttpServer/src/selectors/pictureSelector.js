@@ -2,15 +2,14 @@ import {
     createSelector
 } from 'reselect';
 
+import { mediaLibrarySelector } from './mediaLibrarySelector';
+
 export const pictureSelector = createSelector(
-    state => state.get(`mediaLibrary`),
-    mediaLibrary => {
-        const pictures = mediaLibrary.pictureList;
-        console.log('pictureSelector', pictures);
-        return (pictures) ? {
-            pictureList: pictures
+    mediaLibrarySelector,
+    mediaLibrarySelector => (mediaLibrarySelector && mediaLibrarySelector.pictureList ? {
+            pictureList: mediaLibrarySelector.pictureList
         } : {
             pictureList: []
-        };
-    }
+        }
+    )
 );

@@ -2,10 +2,9 @@ import {
     createSelector
 } from 'reselect';
 
+import { automationSelector } from './automationSelector';
+
 export const statusSelector = createSelector(
-    state => state.get(`automation`),
-    automation => {
-        const status = automation.status;
-        return status;
-    }
+    automationSelector,
+    automationSelector =>  (automationSelector  && automationSelector.status ? automationSelector.status : null)
 );

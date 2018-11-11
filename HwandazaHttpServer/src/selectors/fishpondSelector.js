@@ -2,14 +2,13 @@ import {
     createSelector
 } from 'reselect';
 
+import { modulesSelector } from './modulesSelector';
+
 export const fishpondSelector = createSelector(
-    state => state.get(`automation`),
-    automation => {
-        const status = automation.status;
-        return (status && status.modules) ? {
-            status: status.modules.fishPond
+    modulesSelector,
+    modulesSelector => (modulesSelector && modulesSelector.modules ? {
+            status: modulesSelector.modules.fishPond
         } : {
             status: null
-        };
-    }
+        })
 );

@@ -2,7 +2,9 @@ import {
     createSelector
 } from 'reselect';
 
+import { automationSelector } from './automationSelector';
+
 export const systemUpTimeSelector = createSelector(
-    state => state.get(`automation`),
-    automation => automation.systemUpTime
+    automationSelector,
+    automationSelector =>  (automationSelector  && automationSelector.systemUpTime ? automationSelector.systemUpTime : null)
 );

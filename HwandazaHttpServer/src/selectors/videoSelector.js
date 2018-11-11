@@ -2,15 +2,14 @@ import {
     createSelector
 } from 'reselect';
 
+import { mediaLibrarySelector } from './mediaLibrarySelector';
+
 export const videoSelector = createSelector(
-    state => state.get(`mediaLibrary`),
-    mediaLibrary => {
-        const vedeos = mediaLibrary.videoList;
-        console.log('videoSelector', vedeos);
-        return (vedeos) ? {
-            videoList: vedeos
+    mediaLibrarySelector,
+    mediaLibrarySelector => (mediaLibrarySelector && mediaLibrarySelector.videoList ? {
+            videoList: mediaLibrarySelector.videoList
         } : {
             videoList: []
-        };
-    }
+        }
+    )
 );

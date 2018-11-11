@@ -5,7 +5,6 @@ import "./index.css";
 import { getStore } from "../src/store/getStore";
 import { getStatus, getPictures, getVideos, getSongs} from "./actions";
 import App from "./App";
-import { DevTools } from './components/DevTools/DevTools';
 
 const store = getStore();
 
@@ -19,7 +18,6 @@ const render = (store)=>{
     ReactDOM.render(
         <div>
             <Index state={store.getState()}/>
-            <DevTools store={store}/>
         </div>,
         document.getElementById('hwandaza-automation'));
 };

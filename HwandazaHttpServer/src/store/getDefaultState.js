@@ -23,7 +23,11 @@ export const getDefaultState = () => {
       videoList:[],
     },
     searchResult: {
-      songList: []},
+      songList: []
+    },
+    favoriteTracks: {
+        songList:[]
+    },
   };
 
   return fromJS(defaultState);

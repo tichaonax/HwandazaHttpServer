@@ -2,13 +2,13 @@ import {
     createSelector
 } from 'reselect';
 
+import { mediaLibrarySelector } from './mediaLibrarySelector';
+
+
 export const songSelector = createSelector(
-    state => state.get(`mediaLibrary`),
-    mediaLibrary => {
-        const songs = mediaLibrary.songList;
-        console.log('songSelector', songs);
-        return (songs) ? {
-            songList: songs
+    mediaLibrarySelector,
+    mediaLibrarySelector => (mediaLibrarySelector && mediaLibrarySelector.songList ? {
+        songList: mediaLibrarySelector.songList
         } : {
             songList: [
                 {
@@ -20,6 +20,6 @@ export const songSelector = createSelector(
                     Url: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
                 },
             ]
-        };
-    }
+        }
+    )
 );

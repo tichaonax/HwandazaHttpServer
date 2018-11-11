@@ -58,3 +58,10 @@ export {
     setSearchResult,
 }
 from "./searchActions";
+
+export {
+    LOAD_FAVORITE_TRACKS,
+    loadFavoriteTracks,
+    SET_FAVORITE_TRACK,
+    setFavoriteTrack,
+} from "./favoriteTrackActions";

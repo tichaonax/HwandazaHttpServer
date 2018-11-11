@@ -2,14 +2,12 @@ import {
     createSelector
 } from 'reselect';
 
+import { statusSelector } from './statusSelector';
+
 export const lightsSelector = createSelector(
-    state => state.get(`automation`),
-    automation => {
-        const status = automation.status;
-        return (status && status.lights) ? {
-            status: status.lights
-        } : {
+    statusSelector,
+    statusSelector => (statusSelector && statusSelector.lights ? {
+            status: statusSelector.lights } : {
             status: null
-        };
-    }
+        })
 );
