@@ -39,7 +39,7 @@ const mapStateToProps = (state, {autoplay}) => {
     const songs = songSelector(state);
     return {
         songs: songs.songList,
-        autoplay,
+        autoplay: true,
     }
 };
 

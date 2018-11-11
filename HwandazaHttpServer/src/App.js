@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let timer = setInterval(this.pollStatus, 1000);
+    let timer = setInterval(this.pollStatus, 2000);
     this.setState({ timer });
   }
 
@@ -36,8 +36,8 @@ class App extends Component {
   }
 
   pollStatus = () => {
-    this.dispatch(randomToggleStatus());
-    //this.dispatch(getStatus());
+    //this.dispatch(randomToggleStatus());
+    this.dispatch(getStatus());
   }
 
   drawerToggleClickHandler = () => {
