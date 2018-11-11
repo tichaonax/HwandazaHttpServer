@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import "../../styles/css/styles.css";
 import 'font-awesome/css/font-awesome.min.css';
-import AudioPlayer from 'react-cl-audio-player';';'
+import CLAudioPlayer from './AudioPlayer';
  
 export class MusicPlus extends React.Component {
     constructor(props){
@@ -34,8 +34,11 @@ export class MusicPlus extends React.Component {
 /*             this.dispatch(getSongs()); */
         }
 
-        onPlay = () => {
-            console.log('onPlay');
+        onPlay = (currentSong) => {
+            console.log('onPlay currentSong', JSON.stringify(currentSong));
+          //  src = http://localhost:3000/song/Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a
+
+            // currentSong =  {"url":"song/Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a","artist":{"name":"Killer T","song":"Mutoro Warema"}}
         }
 
         onPause = () => {
@@ -69,7 +72,7 @@ export class MusicPlus extends React.Component {
         const { songs, autoplay } = this.props;
         console.log('Music-songs',songs);
         return (<div className="hwandaza-automation">
-            <AudioPlayer 
+            <CLAudioPlayer 
                 songs={songs} 
                 autoplay={autoplay}
                 onTimeUpdate={this.onTimeUpdate}
