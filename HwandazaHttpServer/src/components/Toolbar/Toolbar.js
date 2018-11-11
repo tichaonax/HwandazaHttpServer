@@ -9,7 +9,7 @@ import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 import { statusDateSelector } from '../../selectors';
 import "./Toolbar.css";
 
-const dateFomart = "ddd ll hh:mm:ss A";
+const dateFomart = "ddd ll hh:mm A";
 
 export class Toolbar extends React.Component {
   constructor(props) {
@@ -18,26 +18,22 @@ export class Toolbar extends React.Component {
     this.state = {
       check: false,
       dateTime: null,
+      statusDate: null,
     };
-
-    document.addEventListener('DOMContentLoaded', () => {
-      var dateTimeDiv = document.getElementById('dateTime_div');
-      if(dateTimeDiv){
-        dateTimeDiv.addEventListener('DOMSubtreeModified', () => {      
-          //const serverDateTime = moment( this.props.statusDate).format(dateFomart);
-          //console.log('dateTime_div', serverDateTime);
-          this.toggleSwitch();
-        });
-      }
-    });
   }
- 
-  toggleSwitch = () => {
+  componentWillReceiveProps(newProps){
+    if(newProps.statusDate != this.state.statusDate){
+        this.toggleSwitch(newProps.statusDate);
+    }
+  }
+
+  toggleSwitch = (statusDate) => {
     this.setState(prevState => ({
-      check: !prevState.check
+      check: !prevState.check,
+      statusDate,
     }));
   } 
- 
+
   render() {
     const { statusDate } = this.props;
     const dateTime = moment(statusDate).format(dateFomart);

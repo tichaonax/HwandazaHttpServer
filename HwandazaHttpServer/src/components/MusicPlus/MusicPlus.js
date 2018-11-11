@@ -2,23 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import "../../styles/css/styles.css";
 import 'font-awesome/css/font-awesome.min.css';
-import CLAudioPlayer from 'react-cl-audio-player';';'
+import AudioPlayer from 'react-cl-audio-player';';'
  
 export class MusicPlus extends React.Component {
     constructor(props){
         super(props);
         this.dispatch = props.dispatch;
         this.state = {
-           songs: [
-            {
-                Name: "Kugara Newe",
-                Url: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
-            },
-            {
-                Name: "Mutoro Warema",
-                Url: "Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a",
-             },
-           ],
         }
     }
 
@@ -75,22 +65,12 @@ export class MusicPlus extends React.Component {
             } */
         }
 
-      getMusicFiles = songs => songs.map(song => {
-        return ({
-            url: `song/${song.Url}`,
-            artist: {
-            name: `${song.Name.substring(0,15)}...`,
-            song: song.Name,
-        }
-    })
-});
-
       render() {
         const { songs, autoplay } = this.props;
         console.log('Music-songs',songs);
         return (<div className="hwandaza-automation">
-            <CLAudioPlayer 
-                songs={ this.getMusicFiles(songs) } 
+            <AudioPlayer 
+                songs={songs} 
                 autoplay={autoplay}
                 onTimeUpdate={this.onTimeUpdate}
                 onEnded={this.onEnded}
@@ -103,6 +83,19 @@ export class MusicPlus extends React.Component {
         </div>);
     }
 }
+
+MusicPlus.defaultProps = {
+    songs: [
+        {
+            Name: "Kugara Newe",
+            Url: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
+        },
+        {
+            Name: "Mutoro Warema",
+            Url: "Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a",
+         },
+       ],
+  };
 
 MusicPlus.propTypes = {
     songs: PropTypes.array.isRequired

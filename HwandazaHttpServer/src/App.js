@@ -36,8 +36,8 @@ class App extends Component {
   }
 
   pollStatus = () => {
-    //this.dispatch(randomToggleStatus());
-    this.dispatch(getStatus());
+    this.dispatch(randomToggleStatus());
+    //this.dispatch(getStatus());
   }
 
   drawerToggleClickHandler = () => {

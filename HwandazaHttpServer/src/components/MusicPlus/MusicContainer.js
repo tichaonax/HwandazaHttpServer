@@ -10,9 +10,22 @@ import MusicLoader from './MusicLoader';
 import "../../styles/css/styles.css";
 import './MusicContainer.css';
 
+function loadMusicFiles(songs){
+    return songs.map(song => {
+        let name = unescape(song.Url.split('/')[0]);
+    return ({
+            url: `song/${song.Url}`,
+            artist: {
+                name: name.length <= 20 ? name : `${name.substring(0,20)}...`,
+                song: song.Name,
+            }
+        })
+    })
+};
+
 const musiccontainer = props => (
     <div className="hwandaza-automation">
-        <MusicPlus songs={props.songs} autoplay />
+        <MusicPlus songs={loadMusicFiles(props.songs)} autoplay={props.autoplay} />
         <Search />
         <MusicLoader/>
     </div>

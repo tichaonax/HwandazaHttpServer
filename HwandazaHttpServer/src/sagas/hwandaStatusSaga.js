@@ -45,8 +45,8 @@ function* fetchFromRaspbery() {
 export function* hwandaStatusSaga() {
   console.log("hwandaStatusSaga saga starterd");
   //fetch test data 
-  //yield takeEvery(GET_STATUS, fetchFromMockData);
+  yield takeEvery(GET_STATUS, fetchFromMockData);
 
   //fetch real data
-  yield takeLatest(GET_STATUS, fetchFromRaspbery);
+  //yield takeLatest(GET_STATUS, fetchFromRaspbery);
 }
