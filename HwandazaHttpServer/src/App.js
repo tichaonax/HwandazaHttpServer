@@ -5,7 +5,7 @@ import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Status from "./components/Status/Status";
 import Settings from "./components/Settings/Settings";
 import Lights from "./components/Lights/Lights";
@@ -14,9 +14,7 @@ import About from "./components/About/About";
 import Music from "./components/Music/MusicPlayer";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
-import NotFound from "./components/NotFound/NotFound";
 import { showNavPage, setNavPage, randomToggleStatus, getStatus } from "./actions";
-import { consolidateStreamedStyles } from "styled-components";
 
 class App extends Component {
   constructor(props) {
