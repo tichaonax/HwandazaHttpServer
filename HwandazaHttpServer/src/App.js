@@ -11,11 +11,12 @@ import Settings from "./components/Settings/Settings";
 import Lights from "./components/Lights/Lights";
 import Help from "./components/Help/Help";
 import About from "./components/About/About";
-import Music from "./components/MusicPlus/MusicContainer";
+import Music from "./components/Music/MusicPlayer";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
 import NotFound from "./components/NotFound/NotFound";
 import { showNavPage, setNavPage, randomToggleStatus, getStatus } from "./actions";
+import { consolidateStreamedStyles } from "styled-components";
 
 class App extends Component {
   constructor(props) {
@@ -58,11 +59,13 @@ class App extends Component {
 
   render() {
     let backdrop;
-    let { shownavpage } = this.props;
+    let { shownavpage, navpage } = this.props;
     if (shownavpage) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
+
     return (
+      
       <BrowserRouter>
         <div style={{ height: "100%" }}>
           <Toolbar
@@ -74,19 +77,17 @@ class App extends Component {
             navClickHandler={this.navClickHandler}
           />
           {backdrop}
+          {console.log('Apps props', JSON.stringify(this.props))}
           <main style={{ marginTop: "64px" }}>
-              <Switch>
-                <Route path="/" exact component={Status} />
-                <Route path="/status" component={Status} />
-                <Route path="/lights" component={Lights} />
-                <Route path="/control" component={Control} />
-                <Route path="/music" component={Music} />
-                <Route path="/gallery" component={ImageGallery} />
-                <Route path="/settings" component={Settings} />
-                <Route path="/help" component={Help} />
-                <Route path="/about" component={About} />
-                <Route component={NotFound} />
-              </Switch>
+            {navpage ==="status" && <div><Status/></div>}
+            {navpage ==="lights" &&<div><Lights/></div>}
+            {navpage ==="control" &&<div><Control/></div>}
+            {navpage ==="settings" &&<div><Settings/></div>}
+            {navpage ==="help" &&<div><Help/></div>}
+            {navpage ==="about" &&<div><About/></div>}
+            
+            <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} />
+            <ImageGallery display={navpage === "gallery" ? 'block' : 'none'} />
           </main>
         </div>
       </BrowserRouter>
@@ -97,7 +98,8 @@ class App extends Component {
 const mapStateToProps = state => {
   const navigation = state.navigation;
   return {
-    shownavpage: (navigation ? navigation.shownavpage : null)
+    shownavpage: (navigation ? navigation.shownavpage : null),
+    navpage: (navigation ? navigation.navpage : 'status')
   };
 };
 

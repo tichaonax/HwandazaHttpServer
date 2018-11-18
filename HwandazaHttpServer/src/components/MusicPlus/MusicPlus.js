@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import "../../styles/css/styles.css";
 import 'font-awesome/css/font-awesome.min.css';
-import CLAudioPlayer from './AudioPlayer';
+import AudioPlayer from './AudioPlayer';
  
 export class MusicPlus extends React.Component {
     constructor(props){
@@ -12,17 +12,14 @@ export class MusicPlus extends React.Component {
         }
     }
 
-       /*   componentWillReceiveProps(newProps){
-            if(newProps.songs && newProps.songs[0] && newProps.songs[0].Path != this.props.songs[0].Path){
-                console.log('new props');
-                this.setState({
-                    songs: newProps.songs,
-                });
-            }
-        }  */
-
+        componentDidMount() {
+       /*      console.log('MusicPLus****** componentDidMount() ');
+            this.setState({
+                reload: false,
+            }); */
+        }
         onTimeUpdate = () => {
-            console.log('onTimeUpdate');
+            //console.log('onTimeUpdate');
         }
 
         onEnded = () => {
@@ -30,12 +27,12 @@ export class MusicPlus extends React.Component {
         }
 
         onError = () => {
-            console.log('onError');
+            //console.log('onError');
 /*             this.dispatch(getSongs()); */
         }
 
         onPlay = (currentSong) => {
-            console.log('onPlay currentSong', JSON.stringify(currentSong));
+            //console.log('onPlay currentSong', JSON.stringify(currentSong));
           //  src = http://localhost:3000/song/Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a
 
             // currentSong =  {"url":"song/Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a","artist":{"name":"Killer T","song":"Mutoro Warema"}}
@@ -46,7 +43,7 @@ export class MusicPlus extends React.Component {
         }
 
         onPrevious = () => {
-            console.log('onPrevious');
+            // console.log('onPrevious');
            /*  const count = this.state.playCount;
             console.log('onPrevious:', count);
             if (count > 0)
@@ -56,7 +53,7 @@ export class MusicPlus extends React.Component {
         }
 
         onNext =() => {
-            console.log('onNext');
+            // console.log('onNext');
             /* const count = this.state.playCount;
             console.log('onNext:', count);
             this.setState({
@@ -70,11 +67,11 @@ export class MusicPlus extends React.Component {
 
       render() {
         const { songs, autoplay } = this.props;
-        console.log('Music-songs',songs);
+        console.log('Music-songs****',songs);
         return (<div className="hwandaza-automation">
-            <CLAudioPlayer 
-                songs={songs} 
-                autoplay={autoplay}
+            <AudioPlayer 
+                songs={songs}
+                autoplay={autoplay} 
                 onTimeUpdate={this.onTimeUpdate}
                 onEnded={this.onEnded}
                 onError={this.onError}
@@ -86,19 +83,6 @@ export class MusicPlus extends React.Component {
         </div>);
     }
 }
-
-MusicPlus.defaultProps = {
-    songs: [
-        {
-            Name: "Kugara Newe",
-            Url: "Killer%20T/Bvunza%20Tinzwe/Kugara%20Newe.m4a",
-        },
-        {
-            Name: "Mutoro Warema",
-            Url: "Killer%20T/Bvunza%20Tinzwe/Mutoro%20Warema.m4a",
-         },
-       ],
-  };
 
 MusicPlus.propTypes = {
     songs: PropTypes.array.isRequired

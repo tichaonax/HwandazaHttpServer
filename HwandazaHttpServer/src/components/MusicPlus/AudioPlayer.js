@@ -185,16 +185,19 @@ export var AudioPlayer = (_temp = _class = function (_PureComponent) {
   }
 
   AudioPlayer.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    this.setState({
-      active: nextProps.songs[0],
-      songs: nextProps.songs,
-      current: 0,
-      progress: 0,
-      random: false,
-      playing: !!nextProps.autoplay,
-      repeat: false,
-      mute: false
-    });
+  
+    if(nextProps.songs && nextProps.songs[0] && nextProps.songs[0].url !== this.props.songs[0].url){      
+        this.setState({
+        active: nextProps.songs[0],
+        songs: nextProps.songs,
+        current: 0,
+        progress: 0,
+        random: false,
+        playing: !!nextProps.autoplay,
+        repeat: false,
+        mute: false
+      });
+  }
   };
 
   AudioPlayer.prototype.render = function render() {

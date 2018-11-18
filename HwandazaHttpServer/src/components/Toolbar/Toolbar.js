@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import moment from "moment";
 import Switch from "react-switch";
 
@@ -22,7 +22,7 @@ export class Toolbar extends React.Component {
     };
   }
   componentWillReceiveProps(newProps){
-    if(newProps.statusDate != this.state.statusDate){
+    if(newProps.statusDate !== this.state.statusDate){
         this.toggleSwitch(newProps.statusDate);
     }
   }

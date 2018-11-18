@@ -17,6 +17,7 @@ const Index = ()=>(
 const render = (store)=>{
     ReactDOM.render(
         <div>
+            
             <Index state={store.getState()}/>
         </div>,
         document.getElementById('hwandaza-automation'));
