@@ -13,7 +13,7 @@ class Gallery extends React.Component {
       super();
       this.state = {
         showIndex: false,
-        showBullets: true,
+        showBullets: false,
         infinite: true,
         showThumbnails: true,
         showFullscreenButton: true,
@@ -23,7 +23,7 @@ class Gallery extends React.Component {
         showNav: true,
         isRTL: false,
         slideDuration: 450,
-        slideInterval: 2000,
+        slideInterval: 3000,
         thumbnailPosition: 'bottom',
         showVideo: {},
       };
