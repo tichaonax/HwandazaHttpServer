@@ -27,6 +27,7 @@
     "react-responsive-music-player": "^0.3.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-select": "^2.1.1",
     "react-switch": "^3.0.4",
     "react-switch-button": "^2.3.5",
     "rebass": "^3.0.0-8",

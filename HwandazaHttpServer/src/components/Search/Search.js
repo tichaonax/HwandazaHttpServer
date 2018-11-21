@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-
-import { Suggestions } from './Suggestions';
+import AsyncSelect from 'react-select/lib/Async';
 
 import {
     searchSelector,
@@ -10,49 +9,77 @@ import {
 
 import {
   search,
+  setSongs,
     } from '../../actions';
 
-export class Search extends Component {
+export class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: '',
+      searchAsYouType: '',
     }
 }
 
-  handleInputChange = () => {
+  handleInputChange = (searchText) => {
+   const searchAsYouType = searchText.replace(/\W/g, '');
     this.setState({
-      query: this.search.value
+      searchAsYouType
     }, () => {
-      if (this.state.query && this.state.query.length > 1) {
-        if (this.state.query.length > 1) {
+      if (searchAsYouType) {
+        if (searchAsYouType.length > 1) {
           this.props.onSearch({
             Command: "namedsongs",
-            Module: this.state.query,
+            Module: searchAsYouType,
         })}
-
       } 
-    })
+    });
+    
+   return searchAsYouType;
+  }
+
+  onChange = (e)=>{
+    if(e.value){
+      this.props.setSongs([e.value]);
+    }
+  }
+
+  loadTracks = (searchAsYouType, callback) => {
+    let  options = []; 
+
+    if(this.props.songs){
+      options = this.props.songs.map(r => (
+        { 
+          value: {
+            Name: r.Name,
+            Url: r.Url,
+            Cover:r.Cover,
+          }, 
+          label: r.Name,
+        }
+    ))}
+
+    return Promise.resolve(options);
   }
 
   render() {
     return (
-      <form>
-        <input
-          placeholder="Search for..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
+      <div>
+        <pre>search: "{this.state.searchAsYouType}"</pre>
+        <AsyncSelect
+          cacheOptions
+          loadOptions={this.loadTracks}
+          defaultOptions
+          onInputChange={this.handleInputChange}
+          onChange={this.onChange}
         />
-        <p>{this.state.query}</p>
-        <Suggestions results={this.props.songs} />
-      </form>
+      </div>
     )
   }
 }
 
-
-Search.propTypes = {
+  Search.propTypes = {
     songs: PropTypes.array.isRequired,
+    onSearch: PropTypes.func.isRequired,
   };
 
   Search.defaultProps = {
@@ -60,13 +87,16 @@ Search.propTypes = {
   }
 
   const mapDispatchToProps = dispatch => ({
-    onSearch: (command) => dispatch(search(command))
+    onSearch: command => dispatch(search(command)),
+    setSongs: songList => dispatch(setSongs(songList)), 
   })
   
 const mapStateToProps = (state) => {
-    const songs = searchSelector(state);
+    const songs = searchSelector(state).songList;
+    songs.sort((a,b) => (a.Name.toLowerCase() > b.Name.toLowerCase()) 
+    ? 1 : ((b.Name.toLowerCase() > a.Name.toLowerCase()) ? -1 : 0));
     return {
-        songs: songs.songList,
+        songs,
     }
 };
 

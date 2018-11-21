@@ -26,12 +26,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let timer = setInterval(this.pollStatus, 2000);
+    let timer = setInterval(this.pollStatus, 182000);
     this.setState({ timer });
   }
 
   componentWillUnmount() {
-    this.clearInterval(this.state.timer);
+    if(this.state.timer){
+      this.clearInterval(this.state.timer);
+    }
   }
 
   pollStatus = () => {

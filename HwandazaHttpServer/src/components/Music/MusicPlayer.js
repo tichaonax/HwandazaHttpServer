@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+//import { withRouter } from "react-router";
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './MusicPlayer.css'
+import Search from '../Search/Search';
 
 import { songSelectorMusicPlayerProjector } from '../../selectors';
 
@@ -161,6 +162,17 @@ class MusicPlayer extends Component {
     return artistList.join(' / ')
   }
 
+
+  renderButton(text, style){
+    return (
+      <button
+        className="btn btn-default"
+        /* style={buttonStyle} */
+        style={style}
+        onClick={this.props.handleClick}>{text}</button>
+    );
+  }
+
   render() {
     const { progressColor, btnColor, playlist } = this.props
     const { activeMusicIndex, playMode } = this.state
@@ -209,6 +221,22 @@ class MusicPlayer extends Component {
             </div>
             <div className="control-container">
               <div className="mode-control">
+              <div>
+              <i className="icon fas fa-heart" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
+              </div>
+        
+               </div>
+              <div className="controls">
+                <div>
+                  <i className="icon fal fa-plus" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
+                </div>
+                <div>
+                  <i className="icon far fa-minus" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
+               </div>
+              </div>
+            </div>
+            <div className="control-container">
+              <div className="mode-control">
                 <i className={`icon fa fa-${playModeClass}`} style={btnStyle} onClick={this.handleChangePlayMode.bind(this)}></i>
               </div>
               <div className="controls">
@@ -217,11 +245,14 @@ class MusicPlayer extends Component {
                 <i className="icon fa fa-step-forward" style={btnStyle} onClick={this.handleNext.bind(this)}></i>
               </div>
             </div>
+            
           </div>
+          
           <div className="cover-container">
             <div className="cover" style={{ backgroundImage: `url(${activeMusic.cover})` }}></div>
           </div>
         </div>
+        <div><Search /></div>
       </div>
     )
   }
@@ -233,10 +264,11 @@ class MusicPlayer extends Component {
 
 const mapStateToProps = (state, {autoplay}) => {
     const songs = songSelectorMusicPlayerProjector(state);
+    //console.log('songs', JSON.stringify(songs));
     return {
         playlist : songs.songList,
         autoplay,
     }
 };
 
-export default withRouter(connect(mapStateToProps)(MusicPlayer));
+export default connect(mapStateToProps)(MusicPlayer);

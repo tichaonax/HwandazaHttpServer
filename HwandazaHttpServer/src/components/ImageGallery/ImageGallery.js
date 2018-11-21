@@ -39,28 +39,28 @@ class Gallery extends React.Component {
     }
   
     _onImageClick(event) {
-      console.debug('clicked on image', event.target, 'at index', this._imageGallery.getCurrentIndex());
+      //console.debug('clicked on image', event.target, 'at index', this._imageGallery.getCurrentIndex());
     }
   
     _onImageLoad(event) {
-      console.debug('loaded image', event.target.src);
+      //console.debug('loaded image', event.target.src);
     }
   
     _onSlide(index) {
       this._resetVideo();
-      console.debug('slid to index', index);
+      //console.debug('slid to index', index);
     }
   
     _onPause(index) {
-      console.debug('paused on index', index);
+      //console.debug('paused on index', index);
     }
   
     _onScreenChange(fullScreenElement) {
-      console.debug('isFullScreen?', !!fullScreenElement);
+      //console.debug('isFullScreen?', !!fullScreenElement);
     }
   
     _onPlay(index) {
-      console.debug('playing from index', index);
+      //console.debug('playing from index', index);
     }
   
     _handleInputChange(state, event) {
@@ -154,7 +154,7 @@ class Gallery extends React.Component {
   
     render() {
         const { pictures } = this.props;
-        console.log('ImageGallery-pictures',pictures);
+        //console.log('ImageGallery-pictures',pictures);
         return (
         <div style={{display: this.props.display}}>  
           <section className='app'>

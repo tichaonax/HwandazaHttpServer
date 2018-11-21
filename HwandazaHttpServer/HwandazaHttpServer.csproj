@@ -119,11 +119,11 @@
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
     <None Include="build\static\css\main.d4a6c883.css.map" />
-    <None Include="build\static\js\main.5d89e791.js.map" />
+    <None Include="build\static\js\main.1c452669.js.map" />
     <None Include="build\static\media\fontawesome-webfont.674f50d2.eot" />
     <None Include="build\static\media\fontawesome-webfont.af7ae505.woff2" />
     <Content Include="build\static\css\main.d4a6c883.css" />
-    <Content Include="build\static\js\main.5d89e791.js" />
+    <Content Include="build\static\js\main.1c452669.js" />
     <Content Include="build\static\media\fontawesome-webfont.b06871f2.ttf" />
     <None Include="build\static\media\fontawesome-webfont.fee66e71.woff" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
