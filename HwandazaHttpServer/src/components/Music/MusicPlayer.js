@@ -222,16 +222,15 @@ class MusicPlayer extends Component {
             <div className="control-container">
               <div className="mode-control">
               <div>
-              <i className="icon fas fa-heart" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
+              <i className="fa fa-heart" aria-hidden="true" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
               </div>
-        
                </div>
               <div className="controls">
                 <div>
-                  <i className="icon fal fa-plus" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
+                  <i className="icon fa fa-minus" aria-hidden="true" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
                 </div>
                 <div>
-                  <i className="icon far fa-minus" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
+                  <i className="icon fa fa-plus"  aria-hidden="true" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
                </div>
               </div>
             </div>
