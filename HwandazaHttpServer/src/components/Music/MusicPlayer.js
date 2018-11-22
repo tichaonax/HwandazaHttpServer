@@ -222,7 +222,7 @@ class MusicPlayer extends Component {
             <div className="control-container">
               <div className="mode-control">
               <div>
-              <i className="fa fa-heart" aria-hidden="true" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
+              <i className="icon fa fa-heart" aria-hidden="true" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
               </div>
                </div>
               <div className="controls">
@@ -251,7 +251,7 @@ class MusicPlayer extends Component {
             <div className="cover" style={{ backgroundImage: `url(${activeMusic.cover})` }}></div>
           </div>
         </div>
-        <div><Search /></div>
+        <div className="search-as-you-type"><Search /></div>
       </div>
     )
   }

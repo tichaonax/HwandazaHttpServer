@@ -6,6 +6,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.search-as-you-type {
+  width: 360px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
 .player-container, .player-container .info-and-control .time-and-volume, .player-container .info-and-control .control-container, .player-container .info-and-control .control-container .mode-control, .player-container .info-and-control .control-container .controls {
   display: flex; }
 
