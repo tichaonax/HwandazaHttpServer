@@ -77,17 +77,17 @@ class App extends Component {
             navClickHandler={this.navClickHandler}
           />
           {backdrop}
-          {console.log('Apps props', JSON.stringify(this.props))}
           <main style={{ marginTop: "64px" }}>
             {navpage ==="status" && <div><Status/></div>}
             {navpage ==="lights" &&<div><Lights/></div>}
             {navpage ==="control" &&<div><Control/></div>}
+            {navpage ==="gallery" &&<div><ImageGallery/></div>}
             {navpage ==="settings" &&<div><Settings/></div>}
             {navpage ==="help" &&<div><Help/></div>}
             {navpage ==="about" &&<div><About/></div>}
             
             <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} />
-            <ImageGallery display={navpage === "gallery" ? 'block' : 'none'} />
+          
           </main>
         </div>
       </BrowserRouter>

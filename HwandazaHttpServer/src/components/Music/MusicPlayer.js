@@ -54,13 +54,15 @@ class MusicPlayer extends Component {
   }
 
   updateProgress() {
-    const duration = this.audioContainer.duration
-    const currentTime = this.audioContainer.currentTime
-    const progress = currentTime / duration
-    this.setState({
-      progress: progress,
-      leftTime: duration - currentTime
-    })
+    if(this.audioContainer){
+      const duration = this.audioContainer.duration
+      const currentTime = this.audioContainer.currentTime
+      const progress = currentTime / duration
+      this.setState({
+        progress: progress,
+        leftTime: duration - currentTime
+      })
+    }
   }
 
   end() {
@@ -165,7 +167,9 @@ class MusicPlayer extends Component {
   }
 
   _processArtistName(artistList) {
+    if(artistList)
     return artistList.join(' / ')
+    return null;
   }
 
 
@@ -194,12 +198,12 @@ class MusicPlayer extends Component {
             autoPlay={this.state.play}
             preload="auto"
             ref={ref => { this.audioContainer = ref }}
-            src={activeMusic.url}
+            src={activeMusic ? activeMusic.url : null}
           />
           <div className="info-and-control">
             <div className="music-info">
-              <h2 className="title">{activeMusic.title}</h2>
-              <h3 className="artist">{this._processArtistName(activeMusic.artist)}</h3>
+              <h2 className="title">{activeMusic ? activeMusic.title : "loading..."}</h2>
+              <h3 className="artist">{this._processArtistName(activeMusic ? activeMusic.artist : null)}</h3>
             </div>
             <div className="time-and-volume">
               <div className="left-time">-{this._formatTime(this.state.leftTime)}</div>
@@ -257,7 +261,7 @@ class MusicPlayer extends Component {
           </div>
           
           <div className="cover-container">
-            <div className="cover" style={{ backgroundImage: `url(${activeMusic.cover})` }}></div>
+            <div className="cover" style={{ backgroundImage: `url(${activeMusic ? activeMusic.cover : null})` }}></div>
           </div>
         </div>
         <div className="search-as-you-type"><Search /></div>
