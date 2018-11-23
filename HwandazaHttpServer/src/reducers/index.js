@@ -5,6 +5,7 @@ import { apiErrors } from "./apiErrors";
 import { mediaLibrary } from "./mediaLibrary";
 import { searchResult } from "./searchResult";
 import { favoriteTracks } from "./favoriteTracks";
+import { musicRootFolders } from "./musicRootFolders";
 
 export const reducer = combineReducers({
   automation,
@@ -12,5 +13,6 @@ export const reducer = combineReducers({
   apiErrors,
   mediaLibrary,
   searchResult,
-  favoriteTracks, 
+  favoriteTracks,
+  musicRootFolders, 
 });

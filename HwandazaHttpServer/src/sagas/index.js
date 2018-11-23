@@ -6,3 +6,5 @@ export { pictureSaga } from './pictureSaga';
 export { songSaga } from './songSaga';
 export { videoSaga } from './videoSaga';
 export { searchSaga } from './searchSaga';
+export { musicRootFoldersSaga } from './musicRootFoldersSaga';
+export { loadFolderSongsSaga } from './loadFolderSongsSaga';

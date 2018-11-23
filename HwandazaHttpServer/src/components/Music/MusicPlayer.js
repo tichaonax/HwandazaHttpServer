@@ -4,8 +4,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './MusicPlayer.css'
 import Search from '../Search/Search';
+import RootFolders from '../Search/RootFolders';
 
 import { songSelectorMusicPlayerProjector } from '../../selectors';
+import { getSongs } from '../../actions';
 
 class MusicPlayer extends Component {
 
@@ -137,6 +139,10 @@ class MusicPlayer extends Component {
     this.setState({ playMode: this.modeList[index] })
   }
 
+  handleLoadSongs() {
+    this.props.onLoadSongs();
+  }
+
   _playMusic(index) {
     this.setState({
       activeMusicIndex: index,
@@ -232,6 +238,9 @@ class MusicPlayer extends Component {
                 <div>
                   <i className="icon fa fa-plus"  aria-hidden="true" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
                </div>
+               <div>
+                  <i className="icon fa fa-download"  aria-hidden="true" style={btnStyle} onClick={this.handleLoadSongs.bind(this)}></i>
+               </div>
               </div>
             </div>
             <div className="control-container">
@@ -252,22 +261,28 @@ class MusicPlayer extends Component {
           </div>
         </div>
         <div className="search-as-you-type"><Search /></div>
+        <div className="search-as-you-type"><RootFolders/></div>
       </div>
     )
   }
 }
 
   MusicPlayer.propTypes = {
-    playlist: PropTypes.array.isRequired
+    playlist: PropTypes.array.isRequired,
+    onLoadSongs: PropTypes.func.isRequired,
   };
+
+  const mapDispatchToProps = dispatch => ({
+    onLoadSongs: () => dispatch(getSongs()), 
+  })
 
 const mapStateToProps = (state, {autoplay}) => {
     const songs = songSelectorMusicPlayerProjector(state);
-    //console.log('songs', JSON.stringify(songs));
+    console.log('songs', JSON.stringify(songs));
     return {
         playlist : songs.songList,
         autoplay,
     }
 };
 
-export default connect(mapStateToProps)(MusicPlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(MusicPlayer);

@@ -52,7 +52,7 @@ class Gallery extends React.Component {
     }
   
     _onPause(index) {
-      //console.debug('paused on index', index);
+      console.debug('paused on index', index);
     }
   
     _onScreenChange(fullScreenElement) {
@@ -60,7 +60,7 @@ class Gallery extends React.Component {
     }
   
     _onPlay(index) {
-      //console.debug('playing from index', index);
+      console.debug('playing from index', index);
     }
   
     _handleInputChange(state, event) {

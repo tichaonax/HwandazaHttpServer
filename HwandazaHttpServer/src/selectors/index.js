@@ -10,6 +10,7 @@ export { mediaLibrarySelector } from './mediaLibrarySelector';
 export { pictureSelector } from './pictureSelector';
 export { songSelector } from './songSelector'; 
 export { videoSelector } from './videoSelector'; 
-export { searchSelector } from './searchSelector';
+export { searchSelectorProjector } from './searchSelectorProjector';
 export { navSelector } from './navSelector';
 export { songSelectorMusicPlayerProjector } from './songSelectorMusicPlayerProjector';
+export { musicRootFoldersSelectorProjector } from './musicRootFoldersSelectorProjector';

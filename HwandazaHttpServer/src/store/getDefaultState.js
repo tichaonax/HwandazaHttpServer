@@ -26,7 +26,10 @@ export const getDefaultState = () => {
       songList: []
     },
     favoriteTracks: {
-        songList:[]
+      songList: [],
+    },
+    musicRootFolders: {
+      folders: [],
     },
   };
 

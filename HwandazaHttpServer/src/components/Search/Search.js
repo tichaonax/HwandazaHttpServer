@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import AsyncSelect from 'react-select/lib/Async';
+//import AsyncSelect from 'react-select/lib/Async';
+import Select from 'react-select';
+//import 'react-select/dist/react-select.css';
 
 import {
-    searchSelector,
+    searchSelectorProjector,
 } from '../../selectors';
 
 import {
@@ -20,15 +22,15 @@ export class Search extends React.Component {
     }
 }
 
-  handleInputChange = (searchText) => {
-   const searchAsYouType = searchText.replace(/\W/g, '');
+  handleInputChange = (searchAsYouType) => {
+   //const searchAsYouType = searchText.replace(/\W/g, '');
     this.setState({
       searchAsYouType
     }, () => {
       if (searchAsYouType) {
         if (searchAsYouType.length > 1) {
           this.props.onSearch({
-            Command: "namedsongs",
+            Command: "namedsongs", 
             Module: searchAsYouType,
         })}
       } 
@@ -43,7 +45,7 @@ export class Search extends React.Component {
     }
   }
 
-  loadTracks = (searchAsYouType, callback) => {
+  loadTracks = () => {
     let  options = []; 
 
     if(this.props.songs){
@@ -58,19 +60,19 @@ export class Search extends React.Component {
         }
     ))}
 
+    //return options;
     return Promise.resolve(options);
   }
 
   render() {
+    console.log('this.props.songs', this.props.songs);
     return (
       <div>
         <pre>search: "{this.state.searchAsYouType}"</pre>
-        <AsyncSelect
-          cacheOptions
-          loadOptions={this.loadTracks}
-          defaultOptions
+        <Select
           onInputChange={this.handleInputChange}
           onChange={this.onChange}
+          options={this.props.songs}
         />
       </div>
     )
@@ -92,9 +94,10 @@ export class Search extends React.Component {
   })
   
 const mapStateToProps = (state) => {
-    const songs = searchSelector(state).songList;
-    songs.sort((a,b) => (a.Name.toLowerCase() > b.Name.toLowerCase()) 
-    ? 1 : ((b.Name.toLowerCase() > a.Name.toLowerCase()) ? -1 : 0));
+    const songs = searchSelectorProjector(state).songList;
+    songs.sort((a,b) => (a.label.toLowerCase() > b.label.toLowerCase()) 
+    ? 1 : ((b.label.toLowerCase() > a.label.toLowerCase()) ? -1 : 0));
+    //console.log('searchSelectorProjector', songs);
     return {
         songs,
     }
