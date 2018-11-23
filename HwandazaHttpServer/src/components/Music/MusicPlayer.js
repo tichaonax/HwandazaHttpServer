@@ -264,8 +264,10 @@ class MusicPlayer extends Component {
             <div className="cover" style={{ backgroundImage: `url(${activeMusic ? activeMusic.cover : null})` }}></div>
           </div>
         </div>
-        <div className="search-as-you-type"><Search /></div>
-        <div className="search-as-you-type"><RootFolders/></div>
+        <div className="search-as-you-type-container">
+          <div className="search-as-you-type"><Search /></div>
+          <div className="search-as-you-type"><RootFolders/></div>
+        </div>
       </div>
     )
   }

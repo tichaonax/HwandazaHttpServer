@@ -10,7 +10,7 @@
   width: 360px;
   margin: auto;
   margin-top: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .player-container, .player-container .info-and-control .time-and-volume, .player-container .info-and-control .control-container, .player-container .info-and-control .control-container .mode-control, .player-container .info-and-control .control-container .controls {
   display: flex; }
@@ -27,7 +27,16 @@
 
 .player-container {
   flex-wrap: wrap-reverse;
-  justify-content: center; }
+  justify-content: center; 
+  position: absolute;
+  top: 240px;
+}
+  .search-as-you-type-container{
+    position: absolute;
+    top: 50px;
+    margin: auto;
+    width: 100%;
+  }
   .player-container .info-and-control {
     width: 100%; }
     .player-container .info-and-control .music-info {
@@ -100,6 +109,15 @@
       background-size: cover; }
 
 @media (min-width: 576px) {
+  .search-as-you-type-container{
+    position: relative;
+  }
+  .player-container {
+    flex-wrap: wrap-reverse;
+    justify-content: center; 
+    position: relative;
+    top: 0px;
+  }
   .player-container .info-and-control {
     width: 296px; }
     .player-container .info-and-control .music-info {

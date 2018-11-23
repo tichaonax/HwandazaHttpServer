@@ -46,19 +46,19 @@ export class RootFolders extends React.Component {
   }
 
   onFocus = (e) => {
-    window.scroll({
+ /*    window.scroll({
       top: document.documentElement.getBoundingClientRect().height, 
       left: 0, 
       behavior: 'smooth' 
-     }); 
+     });  */
   }
 
   onBlur = (e) => {
-    window.scroll({
+  /*   window.scroll({
       top: 0, 
       left: 0, 
       behavior: 'smooth' 
-     }); 
+     });  */
   }
 
   render() {
