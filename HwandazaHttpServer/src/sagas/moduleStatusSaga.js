@@ -26,7 +26,7 @@ function* setModuleStatus(action) {
         const data = yield apply(response, response.json);
         yield put(setStatus(data));
     } catch (error) {
-        console.log('moduleStatusSaga Error API:', error);
+        //console.log('moduleStatusSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }

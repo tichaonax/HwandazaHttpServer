@@ -20,15 +20,13 @@ import {
 
 function* loadSongs(action) {
     try {
-        console.log('loadFolderSongsSaga', action);
         const url = `${Utils.getBaseUrl()}/hwandazaautomation`;
         const options = Utils.buildPostFetchOptions(action.request);
         const response = yield call(fetch, url, options);
         const data = yield apply(response, response.json);
-        console.log("loadFolderSongsSaga api response", data);
         yield put(setSongs(data));
     } catch (error) {
-        console.log('loadFolderSongsSaga Error API:', error);
+        //console.log('loadFolderSongsSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }

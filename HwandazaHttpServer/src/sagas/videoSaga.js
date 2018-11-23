@@ -22,7 +22,6 @@ import {
     try {
       const response = yield call(fetch, url);
       const data = yield apply(response, response.json);
-      //console.log("videoSaga api response", data);
       yield put(setVideos(data));
     } catch (error) {
       //console.log('Error API:', error);

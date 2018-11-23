@@ -278,7 +278,7 @@ class MusicPlayer extends Component {
 
 const mapStateToProps = (state, {autoplay}) => {
     const songs = songSelectorMusicPlayerProjector(state);
-    console.log('songs', JSON.stringify(songs));
+    //console.log('songs', JSON.stringify(songs));
     return {
         playlist : songs.songList,
         autoplay,

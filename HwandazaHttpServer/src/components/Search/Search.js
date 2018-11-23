@@ -45,27 +45,7 @@ export class Search extends React.Component {
     }
   }
 
-  loadTracks = () => {
-    let  options = []; 
-
-    if(this.props.songs){
-      options = this.props.songs.map(r => (
-        { 
-          value: {
-            Name: r.Name,
-            Url: r.Url,
-            Cover:r.Cover,
-          }, 
-          label: r.Name,
-        }
-    ))}
-
-    //return options;
-    return Promise.resolve(options);
-  }
-
   render() {
-    console.log('this.props.songs', this.props.songs);
     return (
       <div>
         <pre>search: "{this.state.searchAsYouType}"</pre>
@@ -97,7 +77,6 @@ const mapStateToProps = (state) => {
     const songs = searchSelectorProjector(state).songList;
     songs.sort((a,b) => (a.label.toLowerCase() > b.label.toLowerCase()) 
     ? 1 : ((b.label.toLowerCase() > a.label.toLowerCase()) ? -1 : 0));
-    //console.log('searchSelectorProjector', songs);
     return {
         songs,
     }

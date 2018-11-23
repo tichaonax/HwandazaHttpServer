@@ -17,7 +17,6 @@ import {
 } from "../actions";
 
 function* setSystemDateTime(action) {
-    console.log('action.request',action.request);
     try {
         const url = `${Utils.getBaseUrl()}/hwandazaautomation`;
         const options = Utils.buildPostFetchOptions(action.request);
@@ -25,7 +24,7 @@ function* setSystemDateTime(action) {
         //dont care about the response but request new status
         yield put(getStatus());
     } catch (error) {
-        console.log('systemDateTimeSaga Error API:', error);
+        //console.log('systemDateTimeSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }

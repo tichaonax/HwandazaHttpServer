@@ -27,7 +27,7 @@ function* search(action) {
         const data = yield apply(response, response.json);
         yield put(setSearchResult(data));
     } catch (error) {
-        console.log('searchSaga Error API:', error);
+        //console.log('searchSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }

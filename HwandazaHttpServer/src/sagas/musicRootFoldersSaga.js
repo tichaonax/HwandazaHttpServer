@@ -20,7 +20,6 @@ import {
 
 function* getMusicRootFolders(action) {
     try {
-        console.log('musicRootFoldersSaga saga', action);
         const url = `${Utils.getBaseUrl()}/hwandazaautomation`; 
         const request = {
             Command : "rootfolders",
@@ -28,10 +27,9 @@ function* getMusicRootFolders(action) {
         const options = Utils.buildPostFetchOptions(request);
         const response = yield call(fetch, url, options);
         const data = yield apply(response, response.json);
-        console.log("musicRootFoldersSaga api response", data);
         yield put(setMusicRootFolders(data));
     } catch (error) {
-        console.log('musicRootFoldersSaga Error API:', error);
+        //console.log('musicRootFoldersSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }

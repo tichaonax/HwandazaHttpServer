@@ -22,10 +22,9 @@ import {
     try {
       const response = yield call(fetch, url);
       const data = yield apply(response, response.json);
-      console.log("songSaga api response", data);
       yield put(setSongs(data));
     } catch (error) {
-      console.log('Error API:', error);
+      //console.log('song saga Error API:', error);
       yield put(setApiCallFailed({error: error}));
     }
   }
