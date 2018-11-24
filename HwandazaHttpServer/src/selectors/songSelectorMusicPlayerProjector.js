@@ -13,7 +13,7 @@ function loadMusicFiles(songs){
             return ({
                 cover: `picture/${song.Cover}`,
                 url: `song/${song.Url}`,
-                title: `${song.Name.substring(0,30)}...`,
+                title: song.Name.length <= 30 ? song.Name : `${song.Name.substring(0,30)}...`,
                 artist: [
                     name.length <= 20 ? name : `${name.substring(0,20)}...`,
                 ]
