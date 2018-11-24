@@ -6,8 +6,8 @@ import './MusicPlayer.css'
 import Search from '../Search/Search';
 import RootFolders from '../Search/RootFolders';
 
-import { songSelectorMusicPlayerProjector } from '../../selectors';
-import { getSongs } from '../../actions';
+import { songSelectorMusicPlayerProjector, selectTrackByUrlSelector } from '../../selectors';
+import { getSongs, addFavoriteTrack, removeFavoriteTrack, loadFavoriteTracks } from '../../actions';
 
 class MusicPlayer extends Component {
 
@@ -145,6 +145,38 @@ class MusicPlayer extends Component {
     this.props.onLoadSongs();
   }
 
+  handleLoadFavorites(){
+    this.props.loadFavoriteTracks();
+  }
+
+  handleAddFavoriteTrack() {
+    const activeMusic = this._getActiveTrack();
+    if(activeMusic){
+      const track = this._selectTrackByUrl(activeMusic);
+      console.log('selectTrackByUrlSelector==>', track)
+      this.props.addFavoriteTrack(track)
+    }
+  }
+
+  handleRemoveFavoriteTrack() {
+    const activeMusic = this._getActiveTrack();
+    if(activeMusic){
+      const track = this._selectTrackByUrl(activeMusic);
+      console.log('selectTrackByUrlSelector==>', track)
+      this.props.removeFavoriteTrack(track)
+    }
+  }
+
+  _selectTrackByUrl(activeMusic){
+    return selectTrackByUrlSelector(activeMusic.url.split("song/")[1]);
+  }
+
+  _getActiveTrack(){
+    const { playlist } = this.props
+    const { activeMusicIndex } = this.state
+    return playlist[activeMusicIndex]; 
+  }
+
   _playMusic(index) {
     this.setState({
       activeMusicIndex: index,
@@ -224,15 +256,15 @@ class MusicPlayer extends Component {
             <div className="control-container">
               <div className="mode-control">
               <div>
-              <i className="icon fa fa-heart" aria-hidden="true" style={btnStyle} title="Load favorites" onClick={this.handlePrev.bind(this)}></i>
+              <i className="icon fa fa-heart" aria-hidden="true" style={btnStyle} title="Load favorites" onClick={this.handleLoadFavorites.bind(this)}></i>
               </div>
                </div>
               <div className="controls">
                 <div>
-                  <i className="icon fa fa-minus" aria-hidden="true" style={btnStyle} title="Remove from favorites" onClick={this.handlePrev.bind(this)}></i>
+                  <i className="icon fa fa-minus" aria-hidden="true" style={btnStyle} title="Remove from favorites" onClick={this.handleRemoveFavoriteTrack.bind(this)}></i>
                 </div>
                 <div>
-                  <i className="icon fa fa-plus"  aria-hidden="true" style={btnStyle} title="Add so favorites" onClick={this.handlePrev.bind(this)}></i>
+                  <i className="icon fa fa-plus"  aria-hidden="true" style={btnStyle} title="Add so favorites" onClick={this.handleAddFavoriteTrack.bind(this)}></i>
                </div>
                <div>
                   <i className="icon fa fa-download"  aria-hidden="true" style={btnStyle} title="Load songs" onClick={this.handleLoadSongs.bind(this)}></i>
@@ -271,7 +303,10 @@ class MusicPlayer extends Component {
 
   const mapDispatchToProps = dispatch => ({
     onLoadSongs: () => dispatch(getSongs()), 
-  })
+    addFavoriteTrack: url => dispatch(addFavoriteTrack(url)),
+    removeFavoriteTrack: url => dispatch(removeFavoriteTrack(url)),
+    loadFavoriteTracks: () => dispatch(loadFavoriteTracks()),
+  });
 
 const mapStateToProps = (state, {autoplay}) => {
     const songs = songSelectorMusicPlayerProjector(state);

@@ -2,15 +2,12 @@ import {
     createSelector
 } from 'reselect';
 
-export const mediaLibrarySelector = createSelector(
-    state => state.mediaLibrary,
-    mediaLibrary => 
-
-    (mediaLibrary ? {
-        mediaLibrary
+export const favoritesSelector = createSelector(
+    state => state.favoriteTracks,
+    favoriteTracks => 
+    (favoriteTracks ? {
+        songList : favoriteTracks
         } : {
-            pictureList:[],
-            videoList:[],
             songList: [
                 {
                     Name: "Rudo Ibofu",

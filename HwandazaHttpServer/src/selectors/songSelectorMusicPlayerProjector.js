@@ -2,7 +2,7 @@ import {
     createSelector
 } from 'reselect';
 
-import { mediaLibrarySelector, songSelector, } from '../selectors';
+import { mediaLibrarySelector, } from '../selectors';
 
 function loadMusicFiles(songs){
     return songs.map(song => {
@@ -20,9 +20,8 @@ function loadMusicFiles(songs){
 
 export const songSelectorMusicPlayerProjector = createSelector(
     mediaLibrarySelector,
-    songSelector,
-    (music,pictures)  => (music && music.songList ? {
-        songList: loadMusicFiles(music.songList)
+    library => (library && library.songList ? {
+        songList: loadMusicFiles(library.songList)
         } : {
             songList: [
                 {

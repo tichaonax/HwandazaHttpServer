@@ -62,8 +62,10 @@ from "./searchActions";
 export {
     LOAD_FAVORITE_TRACKS,
     loadFavoriteTracks,
-    SET_FAVORITE_TRACK,
-    setFavoriteTrack,
+    ADD_FAVORITE_TRACK,
+    addFavoriteTrack,
+    REMOVE_FAVORITE_TRACK,
+    removeFavoriteTrack,
 } from "./favoriteTrackActions";
 
 export {

@@ -14,3 +14,5 @@ export { searchSelectorProjector } from './searchSelectorProjector';
 export { navSelector } from './navSelector';
 export { songSelectorMusicPlayerProjector } from './songSelectorMusicPlayerProjector';
 export { musicRootFoldersSelectorProjector } from './musicRootFoldersSelectorProjector';
+export { selectTrackByUrlSelector } from './selectTrackByUrlSelector';
+export { favoritesSelector } from './favoritesSelector';

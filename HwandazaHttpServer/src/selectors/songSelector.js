@@ -4,7 +4,6 @@ import {
 
 import { mediaLibrarySelector } from './mediaLibrarySelector';
 
-
 export const songSelector = createSelector(
     mediaLibrarySelector,
     mediaLibrarySelector => (mediaLibrarySelector && mediaLibrarySelector.songList ? {
