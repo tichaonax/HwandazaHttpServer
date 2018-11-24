@@ -29,11 +29,11 @@
   flex-wrap: wrap-reverse;
   justify-content: center; 
   position: absolute;
-  top: 240px;
+  top: 160px;
 }
   .search-as-you-type-container{
     position: absolute;
-    top: 50px;
+    top: 55px;
     margin: auto;
     width: 100%;
   }

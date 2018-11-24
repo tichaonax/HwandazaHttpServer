@@ -118,12 +118,12 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.911a36c9.css.map" />
-    <None Include="build\static\js\main.88b157c7.js.map" />
+    <None Include="build\static\css\main.bc1f5a98.css.map" />
+    <None Include="build\static\js\main.61f2f60b.js.map" />
     <None Include="build\static\media\fontawesome-webfont.674f50d2.eot" />
     <None Include="build\static\media\fontawesome-webfont.af7ae505.woff2" />
-    <Content Include="build\static\css\main.911a36c9.css" />
-    <Content Include="build\static\js\main.88b157c7.js" />
+    <Content Include="build\static\css\main.bc1f5a98.css" />
+    <Content Include="build\static\js\main.61f2f60b.js" />
     <Content Include="build\static\media\fontawesome-webfont.b06871f2.ttf" />
     <None Include="build\static\media\fontawesome-webfont.fee66e71.woff" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />

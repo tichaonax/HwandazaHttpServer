@@ -15,26 +15,9 @@ export class RootFolders extends React.Component {
   constructor(props) {
     super(props);
     this.searchInput = React.createRef();
-    this.state = {
-      searchAsYouType: '',
-    }
 }
 
-  handleInputChange = (searchText) => {
-   const searchAsYouType = searchText.replace(/\W/g, '');
-    this.setState({
-      searchAsYouType
-    }, () => {
-      if (searchAsYouType) {
-        //do nothing
-      } 
-    });
-    
-   return searchAsYouType;
-  }
-
   onChange = (e)=>{
-      console.log('onChange folders e', JSON.stringify(e))
     if(e.value){
      this.props.loadFolderSongs({
          Command : "foldersongs",
@@ -45,33 +28,14 @@ export class RootFolders extends React.Component {
     this.searchInput.current.blur();
   }
 
-  onFocus = (e) => {
- /*    window.scroll({
-      top: document.documentElement.getBoundingClientRect().height, 
-      left: 0, 
-      behavior: 'smooth' 
-     });  */
-  }
-
-  onBlur = (e) => {
-  /*   window.scroll({
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
-     });  */
-  }
-
   render() {
     return (
       <div>
-        <pre>artist: "{this.state.searchAsYouType}"</pre>
         <Select
-          onInputChange={this.handleInputChange}
+          ref={this.searchInput} 
           onChange={this.onChange}
           options={this.props.folders}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
-          ref={this.searchInput} 
+          placeholder={"Select artist..."}
         />
       </div>
     )
