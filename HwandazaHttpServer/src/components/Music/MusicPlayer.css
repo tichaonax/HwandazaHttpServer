@@ -98,6 +98,9 @@
       .player-container .info-and-control .control-container .controls {
         width: 240px;
         justify-content: space-around; }
+      .controls-padding {
+        padding-bottom: 10px;
+      }
   .player-container .cover-container {
     width: 240px;
     height: 240px;

@@ -172,27 +172,19 @@ class MusicPlayer extends Component {
     return null;
   }
 
-
-  renderButton(text, style){
-    return (
-      <button
-        className="btn btn-default"
-        /* style={buttonStyle} */
-        style={style}
-        onClick={this.props.handleClick}>{text}</button>
-    );
-  }
-
   render() {
     const { progressColor, btnColor, playlist } = this.props
     const { activeMusicIndex, playMode } = this.state
     const activeMusic = playlist[activeMusicIndex]
+    if (!activeMusic){
+      this.handleNext();
+    }
     const playModeClass = playMode === 'loop' ? 'refresh' : playMode === 'random' ? 'random' : 'repeat'
     const btnStyle = { color: btnColor }
     const progressStyle = { width: `${this.state.progress * 100}%`, backgroundColor: progressColor }
 
     return (
-      <div style={{display: this.props.display}}>
+      <div style={{display: this.props.display}}>        
         <div className="player-container" style={this.props.style}>
           <audio
             autoPlay={this.state.play}
@@ -251,13 +243,12 @@ class MusicPlayer extends Component {
               <div className="mode-control">
                 <i className={`icon fa fa-${playModeClass}`} style={btnStyle} onClick={this.handleChangePlayMode.bind(this)}></i>
               </div>
-              <div className="controls">
+              <div className="controls controls-padding">
                 <i className="icon fa fa-step-backward" style={btnStyle} onClick={this.handlePrev.bind(this)}></i>
                 <i className={`icon fa fa-${this.state.play ? 'pause' : 'play'}`} style={btnStyle} onClick={this.handleToggle.bind(this)}></i>
                 <i className="icon fa fa-step-forward" style={btnStyle} onClick={this.handleNext.bind(this)}></i>
               </div>
             </div>
-            
           </div>
           
           <div className="cover-container">
