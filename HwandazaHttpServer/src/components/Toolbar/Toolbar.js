@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import moment from "moment";
 import Switch from "react-switch";
 
@@ -47,7 +48,7 @@ export class Toolbar extends React.Component {
         <a href="/">HW</a>
       </div>
       <div className="spacer" />
-      <div id="dateTime_div" className="toolbar_status-date" onClick={() => this.props.navClickHandler("settings", false)}>{dateTime}</div>
+      <div id="dateTime_div" className="toolbar_status-date" ><Link to="settings" onClick={() => this.props.navClickHandler("settings", false)}>{dateTime}</Link></div>
       <div className="spacer" /> 
       <div>
       <Switch
