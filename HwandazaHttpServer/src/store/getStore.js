@@ -13,7 +13,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = composeEnhancers(
-  persistState('favoriteTracks', { key: 'hwandaza-automation' }),
+  persistState('favoriteTracks', { key: 'hwandaza-automationX' }),
   applyMiddleware(sagaMiddleware, thunk),
 );
 

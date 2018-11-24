@@ -18,7 +18,7 @@ import {
     try {
       const favorites = yield select(favoritesSelector);
       console.log('favorites', favorites);
-      yield put(setSongs(favorites));
+      yield put(setSongs(favorites.songList));
     } catch (error) {
       console.log('favoritesSaga Error API:', error);
       yield put(setApiCallFailed({error: error}));
