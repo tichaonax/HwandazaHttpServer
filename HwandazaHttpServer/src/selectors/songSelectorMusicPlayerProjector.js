@@ -18,7 +18,7 @@ function loadMusicFiles(songs){
                     name.length <= 20 ? name : `${name.substring(0,20)}...`,
                 ]
             })
-        } catch {
+        } catch (error) {
             return;
         }
     })
