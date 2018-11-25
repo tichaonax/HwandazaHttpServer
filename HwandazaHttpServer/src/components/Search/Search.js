@@ -10,6 +10,7 @@ import {
 import {
   search,
   setSongs,
+  setLoadingStatus,
     } from '../../actions';
 
 export class Search extends React.Component {
@@ -20,6 +21,7 @@ export class Search extends React.Component {
 
   handleInputChange = (searchText) => {
       if (searchText && searchText.length > 1) {
+        this.props.setLoadingStatus(true);
         this.props.onSearch({
           Command: "namedsongs", 
           Module: searchText,
@@ -62,6 +64,7 @@ export class Search extends React.Component {
   const mapDispatchToProps = dispatch => ({
     onSearch: command => dispatch(search(command)),
     setSongs: songList => dispatch(setSongs(songList)), 
+    setLoadingStatus: loading => dispatch(setLoadingStatus(loading)),
   })
   
 const mapStateToProps = (state) => {

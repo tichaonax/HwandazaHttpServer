@@ -16,6 +16,7 @@ import {
     LOAD_MUSIC_ROOT_FOLDERS,
     setMusicRootFolders,
     setApiCallFailed,
+    setLoadingStatus,
 } from "../actions";
 
 function* getMusicRootFolders(action) {
@@ -28,6 +29,7 @@ function* getMusicRootFolders(action) {
         const response = yield call(fetch, url, options);
         const data = yield apply(response, response.json);
         yield put(setMusicRootFolders(data));
+        yield put(setLoadingStatus(false));
     } catch (error) {
         //console.log('musicRootFoldersSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));

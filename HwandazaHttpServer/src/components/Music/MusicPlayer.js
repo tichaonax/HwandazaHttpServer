@@ -7,7 +7,7 @@ import Search from '../Search/Search';
 import RootFolders from '../Search/RootFolders';
 
 import { songSelectorMusicPlayerProjector, selectTrackByUrlSelector } from '../../selectors';
-import { getSongs, addFavoriteTrack, removeFavoriteTrack, loadFavoriteTracks } from '../../actions';
+import { getSongs, addFavoriteTrack, removeFavoriteTrack, loadFavoriteTracks, setLoadingStatus } from '../../actions';
 
 class MusicPlayer extends Component {
 
@@ -142,6 +142,7 @@ class MusicPlayer extends Component {
   }
 
   handleLoadSongs() {
+    this.props.setLoadingStatus(true);
     this.props.onLoadSongs();
   }
 
@@ -261,10 +262,10 @@ class MusicPlayer extends Component {
                </div>
               <div className="controls">
                 <div>
-                  <i className="icon fa fa-minus" aria-hidden="true" style={btnStyle} title="Remove from favorites" onClick={this.handleRemoveFavoriteTrack.bind(this)}></i>
+                  <i className="icon fa fa-times" aria-hidden="true" style={btnStyle} title="Remove from favorites" onClick={this.handleRemoveFavoriteTrack.bind(this)}></i>
                 </div>
                 <div>
-                  <i className="icon fa fa-plus"  aria-hidden="true" style={btnStyle} title="Add so favorites" onClick={this.handleAddFavoriteTrack.bind(this)}></i>
+                  <i className="icon fa fa-check"  aria-hidden="true" style={btnStyle} title="Add to favorites" onClick={this.handleAddFavoriteTrack.bind(this)}></i>
                </div>
                <div>
                   <i className="icon fa fa-download"  aria-hidden="true" style={btnStyle} title="Load songs" onClick={this.handleLoadSongs.bind(this)}></i>
@@ -306,6 +307,7 @@ class MusicPlayer extends Component {
     addFavoriteTrack: url => dispatch(addFavoriteTrack(url)),
     removeFavoriteTrack: url => dispatch(removeFavoriteTrack(url)),
     loadFavoriteTracks: () => dispatch(loadFavoriteTracks()),
+    setLoadingStatus: loading => dispatch(setLoadingStatus(loading)),
   });
 
 const mapStateToProps = (state, {autoplay}) => {

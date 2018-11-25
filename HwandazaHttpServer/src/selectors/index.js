@@ -16,3 +16,4 @@ export { songSelectorMusicPlayerProjector } from './songSelectorMusicPlayerProje
 export { musicRootFoldersSelectorProjector } from './musicRootFoldersSelectorProjector';
 export { selectTrackByUrlSelector } from './selectTrackByUrlSelector';
 export { favoritesSelector } from './favoritesSelector';
+export { loadingSelector } from './loadingSelector';

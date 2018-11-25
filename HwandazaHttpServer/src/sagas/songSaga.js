@@ -15,6 +15,7 @@ import {
     setApiCallFailed,
     GET_SONGS,
     setSongs,
+    setLoadingStatus,
   } from "../actions";
   
   function* fetchFromRaspbery() {
@@ -23,6 +24,7 @@ import {
       const response = yield call(fetch, url);
       const data = yield apply(response, response.json);
       yield put(setSongs(data));
+      yield put(setLoadingStatus(false));
     } catch (error) {
       //console.log('song saga Error API:', error);
       yield put(setApiCallFailed({error: error}));

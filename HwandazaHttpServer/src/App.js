@@ -14,6 +14,7 @@ import About from "./components/About/About";
 import Music from "./components/Music/MusicPlayer";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
+import Spinner from "./components/spinner/Spinner";
 import { showNavPage, setNavPage, randomToggleStatus, getStatus } from "./actions";
 
 class App extends Component {
@@ -68,6 +69,7 @@ class App extends Component {
       
       <BrowserRouter>
         <div style={{ height: "100%" }}>
+          <Spinner />
           <Toolbar
             drawerClickHandler={this.drawerToggleClickHandler}
             navClickHandler={this.navClickHandler}
@@ -87,7 +89,6 @@ class App extends Component {
             {navpage ==="about" &&<div><About/></div>}
             
             <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} />
-          
           </main>
         </div>
       </BrowserRouter>

@@ -6,6 +6,7 @@ import { mediaLibrary } from "./mediaLibrary";
 import { searchResult } from "./searchResult";
 import { favoriteTracks } from "./favoriteTracks";
 import { musicRootFolders } from "./musicRootFolders";
+import { spinner } from "./spinner";
 
 export const reducer = combineReducers({
   automation,
@@ -14,5 +15,6 @@ export const reducer = combineReducers({
   mediaLibrary,
   searchResult,
   favoriteTracks,
-  musicRootFolders, 
+  musicRootFolders,
+  spinner, 
 });

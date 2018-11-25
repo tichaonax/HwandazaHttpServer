@@ -16,6 +16,7 @@ import {
     SEARCH_AS_YOU_TYPE,
     setSearchResult,
     setApiCallFailed,
+    setLoadingStatus,
 } from "../actions";
 
 function* search(action) {
@@ -26,6 +27,7 @@ function* search(action) {
         const response = yield call(fetch, url, options);
         const data = yield apply(response, response.json);
         yield put(setSearchResult(data));
+        yield put(setLoadingStatus(false));
     } catch (error) {
         //console.log('searchSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
