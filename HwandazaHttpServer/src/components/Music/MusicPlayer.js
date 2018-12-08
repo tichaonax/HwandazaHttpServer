@@ -6,8 +6,16 @@ import './MusicPlayer.css'
 import Search from '../Search/Search';
 import RootFolders from '../Search/RootFolders';
 
-import { songSelectorMusicPlayerProjector, selectTrackByUrlSelector } from '../../selectors';
-import { getSongs, addFavoriteTrack, removeFavoriteTrack, loadFavoriteTracks, setLoadingStatus } from '../../actions';
+import { 
+  songSelectorMusicPlayerProjector, 
+  selectTrackByUrlSelector } from '../../selectors';
+  
+import { 
+  getSongs, 
+  addFavoriteTrack, 
+  removeFavoriteTrack, 
+  loadFavoriteTracks, 
+  setLoadingStatus } from '../../actions';
 
 class MusicPlayer extends Component {
 
@@ -169,7 +177,10 @@ class MusicPlayer extends Component {
   }
 
   _selectTrackByUrl(activeMusic){
-    return selectTrackByUrlSelector(activeMusic.url.split("song/")[1]);
+    console.log('activeMusic', activeMusic);
+    const track = selectTrackByUrlSelector(activeMusic.url.split("song/")[1]);
+    console.log('track===>', track);
+    return track;
   }
 
   _getActiveTrack(){

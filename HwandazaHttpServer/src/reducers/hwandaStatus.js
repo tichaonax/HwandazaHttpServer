@@ -24,18 +24,21 @@ export const automation = createReducer(null, {
         return produce(state, draft => {
           draft.status.modules.irrigator.power = (draft.status.modules.irrigator.power === 0) ? 1 : 0;
           draft.statusDate = dateTime;
+          draft.status.modules.irrigator.lastUpdate = dateTime;
         });
 
       case 1:
         return produce(state, draft => {
           draft.status.modules.fishPond.power = (draft.status.modules.fishPond.power === 0) ? 1 : 0;
           draft.statusDate = dateTime;
+          draft.status.modules.fishPond.lastUpdate = dateTime;
         });
 
       case 2:
         return produce(state, draft => {
           draft.status.modules.waterPump.power = (draft.status.modules.waterPump.power === 0) ? 1 : 0;
           draft.statusDate = dateTime;
+          draft.status.modules.waterPump.lastUpdate = dateTime;
         });
 
       case 3:

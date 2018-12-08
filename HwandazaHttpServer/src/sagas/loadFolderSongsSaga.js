@@ -16,6 +16,7 @@ import {
     LOAD_FOLDER_SONGS,
     setSongs,
     setApiCallFailed,
+    setLoadingStatus,
 } from "../actions";
 
 function* loadSongs(action) {
@@ -25,6 +26,7 @@ function* loadSongs(action) {
         const response = yield call(fetch, url, options);
         const data = yield apply(response, response.json);
         yield put(setSongs(data));
+        yield put(setLoadingStatus(false));
     } catch (error) {
         //console.log('loadFolderSongsSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));

@@ -9,7 +9,6 @@ import {
 
 import {
     loadFolderSongs,
-    setLoadingStatus,
     } from '../../actions';
 
 export class RootFolders extends React.Component {
@@ -20,7 +19,6 @@ export class RootFolders extends React.Component {
 
   onChange = (e)=>{
     if(e.value){
-     this.props.setLoadingStatus(true);
      this.props.loadFolderSongs({
          Command : "foldersongs",
          Module: e.value,
@@ -54,7 +52,6 @@ RootFolders.defaultProps = {
 
 const mapDispatchToProps = dispatch => ({
     loadFolderSongs: folder => dispatch(loadFolderSongs(folder)),
-    setLoadingStatus: loading => dispatch(setLoadingStatus(loading)), 
 })
   
 const mapStateToProps = (state) => {

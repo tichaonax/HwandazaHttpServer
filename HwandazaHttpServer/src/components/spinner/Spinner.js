@@ -19,9 +19,8 @@ export class Spinner extends React.Component {
       super(props);
     }
     render() {
-        console.log('this.props.loading', this.props.loading)
       return (
-        <div className='sweet-loading hwandaza-automation'>
+        <div className='sweet-loading hwandaza-spinner'>
           <ClipLoader
             className={override}
             sizeUnit={"px"}

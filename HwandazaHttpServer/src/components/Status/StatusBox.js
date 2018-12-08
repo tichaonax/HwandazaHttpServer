@@ -7,6 +7,7 @@ const statusbox = props => {
   return (
     <div className="status-box">
       <SwitchHeader Title={props.Title} HeaderColor={props.HeaderColor} />
+      <div className="left">{props.LastUpdate}</div>
       <PowerSwitch Id={props.Id} Checked={props.Checked} Disabled={props.Disabled}/>
     </div>
   );

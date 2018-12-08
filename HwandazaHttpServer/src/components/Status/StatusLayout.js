@@ -5,8 +5,16 @@ import StatusBox from './StatusBox';
 
 import "./Status.css";
  
-function getModuleCheckedValue(module) {
-    return (module && module.power === 1) ? "checked" : null;
+function getModuleStatus(module) {
+  console.log('******module', JSON.stringify(module));
+    const mduleStatus = {status: null, lastUpdate: null}
+    if(module){
+     if(module.power === 1){
+      mduleStatus.status ="checked"
+     }
+     mduleStatus.lastUpdate = module.lastUpdate;
+    }
+     return mduleStatus;
   }
 
   function getCheckedValue(power) {
@@ -15,9 +23,9 @@ function getModuleCheckedValue(module) {
 
 const statuslayout = props => {
     const { lights, fishpond, waterpump, irrigator } = props.props;
-    const waterpumpChecked = getModuleCheckedValue(waterpump);
-    const fishpondChecked = getModuleCheckedValue(fishpond);
-    const irrigatorChecked = getModuleCheckedValue(irrigator);
+    const waterpumpStatus = getModuleStatus(waterpump);
+    const fishpondStatus = getModuleStatus(fishpond);
+    const irrigatorStatus = getModuleStatus(irrigator);
 
     const m1Checked = (lights) ? getCheckedValue(lights.m1): null;
     const m2Checked = (lights) ? getCheckedValue(lights.m2) : null;
@@ -30,9 +38,9 @@ const statuslayout = props => {
     <div>
       <Flex>
         <Box p={6} width={1/2}>
-          <div><StatusBox Checked={waterpumpChecked} Title="Water Pump" Id="1" HeaderColor="orange" Disabled="disabled"/></div>
-          <div><StatusBox Checked={fishpondChecked} Title="Fish Pond" Id="2" HeaderColor="purple" Disabled="disabled"/></div>
-          <div><StatusBox Checked={irrigatorChecked} Title="Lawn Irrigator" Id="3" HeaderColor="green" Disabled="disabled"/></div>
+          <div><StatusBox LastUpdate={waterpumpStatus.lastUpdate} Checked={waterpumpStatus.status} Title="Water Pump" Id="1" HeaderColor="orange" Disabled="disabled"/></div>
+          <div><StatusBox LastUpdate={fishpondStatus.lastUpdate} Checked={fishpondStatus.status} Title="Fish Pond" Id="2" HeaderColor="purple" Disabled="disabled"/></div>
+          <div><StatusBox LastUpdate={irrigatorStatus.lastUpdate} Checked={irrigatorStatus.status} Title="Lawn Irrigator" Id="3" HeaderColor="green" Disabled="disabled"/></div>
         </Box>
         <Box p={3} width={1/2}>
           <div><StatusBox Checked={m1Checked} Title="M1" Id="8" HeaderColor="#FC8144" Disabled="disabled"/></div>

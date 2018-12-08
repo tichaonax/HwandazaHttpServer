@@ -2,3 +2,19 @@
   font-family: sans-serif;
   text-align: center;
 }
+.hwandaza-spinner {
+  position: relative;
+  margin-left: 200px;
+}
+@media (min-width: 576px) {
+  .hwandaza-spinner{
+    position: relative;
+    margin-left: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hwandaza-spinner{
+    position: relative;
+    margin-left: 400px;
+  } }
