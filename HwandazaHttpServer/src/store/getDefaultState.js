@@ -31,6 +31,12 @@ export const getDefaultState = () => {
     musicRootFolders: {
       folders: [],
     },
+    notification: {
+      info: {message: null},
+      error: {message: null},
+      warn: {message: null, title: null},
+      success: {message: null, title: null},
+    }
   };
 
   return fromJS(defaultState);

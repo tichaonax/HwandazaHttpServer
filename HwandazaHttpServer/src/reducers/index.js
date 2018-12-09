@@ -7,6 +7,7 @@ import { searchResult } from "./searchResult";
 import { favoriteTracks } from "./favoriteTracks";
 import { musicRootFolders } from "./musicRootFolders";
 import { spinner } from "./spinner";
+import { notification } from "./notification";
 
 export const reducer = combineReducers({
   automation,
@@ -16,5 +17,6 @@ export const reducer = combineReducers({
   searchResult,
   favoriteTracks,
   musicRootFolders,
-  spinner, 
+  spinner,
+  notification, 
 });

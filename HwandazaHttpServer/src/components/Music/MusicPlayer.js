@@ -9,12 +9,15 @@ import RootFolders from '../Search/RootFolders';
 import { 
   songSelectorMusicPlayerProjector, 
   selectTrackByUrlSelector } from '../../selectors';
-  
+
 import { 
   getSongs, 
   addFavoriteTrack, 
   removeFavoriteTrack, 
-  loadFavoriteTracks, 
+  loadFavoriteTracks,
+  setNotificationSuccess, 
+  setNotificationInfo,
+  setNotificationWarn,
   setLoadingStatus } from '../../actions';
 
 class MusicPlayer extends Component {
@@ -152,10 +155,12 @@ class MusicPlayer extends Component {
   handleLoadSongs() {
     this.props.setLoadingStatus(true);
     this.props.onLoadSongs();
+    this.props.onNotifyLoadSongs();
   }
 
   handleLoadFavorites(){
     this.props.loadFavoriteTracks();
+    this.props.onNotifyLoadFavoriteTracks();
   }
 
   handleAddFavoriteTrack() {
@@ -163,7 +168,8 @@ class MusicPlayer extends Component {
     if(activeMusic){
       const track = this._selectTrackByUrl(activeMusic);
       console.log('selectTrackByUrlSelector==>', track)
-      this.props.addFavoriteTrack(track)
+      this.props.addFavoriteTrack(track);
+      this.props.onNotifyAddFavorite(activeMusic.title);
     }
   }
 
@@ -172,7 +178,8 @@ class MusicPlayer extends Component {
     if(activeMusic){
       const track = this._selectTrackByUrl(activeMusic);
       console.log('selectTrackByUrlSelector==>', track)
-      this.props.removeFavoriteTrack(track)
+      this.props.removeFavoriteTrack(track);
+      this.props.onNotifyFavoriteDeleted(activeMusic.title);
     }
   }
 
@@ -319,11 +326,18 @@ class MusicPlayer extends Component {
     removeFavoriteTrack: url => dispatch(removeFavoriteTrack(url)),
     loadFavoriteTracks: () => dispatch(loadFavoriteTracks()),
     setLoadingStatus: loading => dispatch(setLoadingStatus(loading)),
+    onNotifyAddFavorite: title => dispatch(setNotificationSuccess({
+      title, message:'Saved to favorites',
+    })),
+    onNotifyLoadSongs: () => dispatch(setNotificationInfo('Loading songs')),
+    onNotifyFavoriteDeleted: title => dispatch(setNotificationWarn({
+      title, message:'Removed from favorites',
+    })),
+    onNotifyLoadFavoriteTracks: () => dispatch(setNotificationInfo('Loading favorite songs')),
   });
 
 const mapStateToProps = (state, {autoplay}) => {
     const songs = songSelectorMusicPlayerProjector(state);
-    //console.log('songs', JSON.stringify(songs));
     return {
         playlist : songs.songList,
         autoplay,

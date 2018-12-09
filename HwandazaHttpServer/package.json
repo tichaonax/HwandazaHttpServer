@@ -23,6 +23,7 @@
     "react-cl-audio-player": "^2.2.0",
     "react-dom": "^16.5.1",
     "react-image-gallery": "^0.8.12",
+    "react-notifications": "^1.4.3",
     "react-redux": "^5.0.7",
     "react-responsive-music-player": "^0.3.0",
     "react-router-dom": "^4.3.1",

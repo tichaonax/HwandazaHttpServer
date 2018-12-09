@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+ 
 import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
@@ -15,12 +17,11 @@ import Music from "./components/Music/MusicPlayer";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
 import Spinner from "./components/spinner/Spinner";
-import { showNavPage, setNavPage, randomToggleStatus, getStatus } from "./actions";
+import { showNavPage, setNavPage, randomToggleStatus, getStatus, resetNotifications } from "./actions";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.dispatch = props.dispatch;
     this.state = {
       timer: null,
     }
@@ -38,31 +39,61 @@ class App extends Component {
   }
 
   pollStatus = () => {
-    //this.dispatch(randomToggleStatus());
-    this.dispatch(getStatus());
+    //this.props.onRandomToggleStatus());
+    this.props.onGetStatus();
   }
 
   drawerToggleClickHandler = () => {
     let newState = !this.props.shownavpage;
-    this.dispatch(showNavPage(newState));
+    this.props.onShowNavPage(newState);
   };
-
+favoritesSelector
   backdropClickHandler = () => {
-    this.dispatch(showNavPage(false));
+    this.props.onShowNavPage(false);
   };
 
   navClickHandler = (navtopage, draweractive) => {
     if (draweractive) {
-      this.dispatch(showNavPage(false));
+      this.props.onShowNavPage(false);
     }
-    this.dispatch(setNavPage(navtopage));
+    this.props.onSetNavPage(navtopage);
   };
+
+  createNotificationInfoHandler = (info) => {
+    NotificationManager.info(info);
+    this.props.onResetNotifications();
+  }
+
+  createNotificationSuccessHandler = (success) => {
+    NotificationManager.success(success.message, success.title);
+    this.props.onResetNotifications();
+  }
+
+  createNotificationWarningHandler = (warn) => {
+    NotificationManager.warning(warn.message, warn.title, 3000);
+    this.props.onResetNotifications();
+  }
 
   render() {
     let backdrop;
-    let { shownavpage, navpage } = this.props;
+    let { shownavpage, navpage, notification } = this.props;
     if (shownavpage) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
+    }    
+
+    console.log('notification***', notification);
+    if(notification){
+      if(notification.success){
+        this.createNotificationSuccessHandler(notification.success);
+      };
+
+      if(notification.info){
+        this.createNotificationInfoHandler(notification.info);
+      }
+
+      if(notification.warn){
+        this.createNotificationWarningHandler(notification.warn);
+    ``}
     }
 
     return (
@@ -90,18 +121,30 @@ class App extends Component {
             
             <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} />
           </main>
+          <NotificationContainer/>
         </div>
       </BrowserRouter>
     );
   }
 }
 
+
+const mapDispatchToProps = dispatch => ({
+  onResetNotifications: () => dispatch(resetNotifications()),
+  onGetStatus: () => dispatch(getStatus()),
+  onShowNavPage: newState => dispatch(showNavPage(newState)),
+  onRandomToggleStatus: () => dispatch(randomToggleStatus()),
+  onSetNavPage: navtopage => dispatch(setNavPage(navtopage)),
+});
+
 const mapStateToProps = state => {
   const navigation = state.navigation;
+  const notification = state.notification;
   return {
     shownavpage: (navigation ? navigation.shownavpage : null),
-    navpage: (navigation ? navigation.navpage : 'status')
+    navpage: (navigation ? navigation.navpage : 'status'),
+    notification,
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
