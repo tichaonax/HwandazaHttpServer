@@ -45,19 +45,14 @@ export class Search extends React.Component {
     this.searchInput.current.blur();
   }
 
-  selectSongHandler = (selectSong) =>{
-    if(selectSong){
-      this.setState({selectedOption: null});
-      this.props.onSetDeselectSearchAsYouType(false);
-    }
-  }
   render() {
     const { deselector } = this.props;
     const { selectedOption } = this.state;
 
     if(deselector){
       if(deselector.selectSong){
-        this.selectSongHandler(deselector.selectSong);
+        this.setState({selectedOption: null});
+        this.props.onSetDeselectSearchAsYouType(false);
       };
     }
 

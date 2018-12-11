@@ -36,23 +36,14 @@ export class RootFolders extends React.Component {
     this.searchInput.current.blur();
   }
 
-  selectArtistHandler = (selectArtist) =>{
-    console.log('selectArtistHandler', selectArtist);
-    if(selectArtist){
-        console.log('reset artist');
-        this.setState({ selectedOption: null });
-        this.props.onSetDeselectAsrtist(false);
-    }
-  }
-
   render() {
     const { deselector } = this.props;
     const {selectedOption} = this.state;
-    console.log('deselector***', deselector);
     
     if(deselector){
       if(deselector.selectArtist){
-        this.selectArtistHandler(deselector.selectArtist);
+        this.setState({ selectedOption: null });
+        this.props.onSetDeselectAsrtist(false);
       }
     }
     return (
