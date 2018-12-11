@@ -36,6 +36,10 @@ export const getDefaultState = () => {
       error: {message: null},
       warn: {message: null, title: null},
       success: {message: null, title: null},
+    },
+    deselector: {
+      selectSong: false,
+      selectArtist: false,
     }
   };
 

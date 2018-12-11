@@ -93,7 +93,7 @@ favoritesSelector
 
       if(notification.warn){
         this.createNotificationWarningHandler(notification.warn);
-    ``}
+     }
     }
 
     return (

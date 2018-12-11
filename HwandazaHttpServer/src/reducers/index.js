@@ -8,6 +8,7 @@ import { favoriteTracks } from "./favoriteTracks";
 import { musicRootFolders } from "./musicRootFolders";
 import { spinner } from "./spinner";
 import { notification } from "./notification";
+import { deselector } from "./deselector";
 
 export const reducer = combineReducers({
   automation,
@@ -18,5 +19,6 @@ export const reducer = combineReducers({
   favoriteTracks,
   musicRootFolders,
   spinner,
-  notification, 
+  notification,
+  deselector, 
 });

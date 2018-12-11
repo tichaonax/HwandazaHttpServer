@@ -11,12 +11,18 @@ import {
   search,
   setSongs,
   setLoadingStatus,
-    } from '../../actions';
+  setDeselectAsrtist,
+  setDeselectSearchAsYouType
+  } 
+  from '../../actions';
 
 export class Search extends React.Component {
   constructor(props) {
     super(props);
     this.searchInput = React.createRef();
+    this.state = {
+      selectedOption: null,
+    };
 }
 
   handleInputChange = (searchText) => {
@@ -25,22 +31,40 @@ export class Search extends React.Component {
         this.props.onSearch({
           Command: "namedsongs", 
           Module: searchText,
-      })
+      });
     } 
   }
 
-  onChange = (e)=>{
-    if(e.value){
-      this.props.setSongs([e.value]);
+  onChange = (selectedOption)=>{
+    this.setState({selectedOption});
+    if(selectedOption.value){
+      this.props.setSongs([selectedOption.value]);
+      this.props.onSetDeselectSearchAsYouType(false);
+      this.props.onSetDeselectAsrtist(true);
     }
-
     this.searchInput.current.blur();
   }
 
+  selectSongHandler = (selectSong) =>{
+    if(selectSong){
+      this.setState({selectedOption: null});
+      this.props.onSetDeselectSearchAsYouType(false);
+    }
+  }
   render() {
+    const { deselector } = this.props;
+    const { selectedOption } = this.state;
+
+    if(deselector){
+      if(deselector.selectSong){
+        this.selectSongHandler(deselector.selectSong);
+      };
+    }
+
     return (
       <div>
         <Select
+          value={selectedOption}
           ref={this.searchInput} 
           onInputChange={this.handleInputChange}
           onChange={this.onChange}
@@ -65,15 +89,19 @@ export class Search extends React.Component {
     onSearch: command => dispatch(search(command)),
     setSongs: songList => dispatch(setSongs(songList)), 
     setLoadingStatus: loading => dispatch(setLoadingStatus(loading)),
+    onSetDeselectAsrtist: status => dispatch(setDeselectAsrtist(status)),
+    onSetDeselectSearchAsYouType: status => dispatch(setDeselectSearchAsYouType(status)),
   })
   
 const mapStateToProps = (state) => {
-    const songs = searchSelectorProjector(state).songList;
-    songs.sort((a,b) => (a.label.toLowerCase() > b.label.toLowerCase()) 
-    ? 1 : ((b.label.toLowerCase() > a.label.toLowerCase()) ? -1 : 0));
-    return {
-        songs,
-    }
+  const deselector = state.deselector;
+  const songs = searchSelectorProjector(state).songList;
+  songs.sort((a,b) => (a.label.toLowerCase() > b.label.toLowerCase()) 
+  ? 1 : ((b.label.toLowerCase() > a.label.toLowerCase()) ? -1 : 0));
+  return {
+      songs,
+      deselector,
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

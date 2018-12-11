@@ -118,14 +118,17 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.2ad40a1b.css.map" />
-    <None Include="build\static\js\main.c65e5097.js.map" />
+    <None Include="build\static\css\main.d0e57c6d.css.map" />
+    <None Include="build\static\js\main.f86b5f85.js.map" />
     <None Include="build\static\media\fontawesome-webfont.674f50d2.eot" />
     <None Include="build\static\media\fontawesome-webfont.af7ae505.woff2" />
-    <Content Include="build\static\css\main.2ad40a1b.css" />
-    <Content Include="build\static\js\main.c65e5097.js" />
+    <Content Include="build\static\css\main.d0e57c6d.css" />
+    <Content Include="build\static\js\main.f86b5f85.js" />
     <Content Include="build\static\media\fontawesome-webfont.b06871f2.ttf" />
     <None Include="build\static\media\fontawesome-webfont.fee66e71.woff" />
+    <Content Include="build\static\media\notification.0b4ac1dc.ttf" />
+    <None Include="build\static\media\notification.651771e1.woff" />
+    <None Include="build\static\media\notification.c0d3c94c.eot" />
     <None Include="HwandazaHttpServer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +142,7 @@
     <Content Include="build\favicon.ico" />
     <Content Include="build\index.html" />
     <Content Include="build\static\media\fontawesome-webfont.912ec66d.svg" />
+    <Content Include="build\static\media\notification.5bee74ca.svg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png">
       <InProject>false</InProject>

@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-//import { withRouter } from "react-router";
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './MusicPlayer.css'
@@ -18,7 +17,10 @@ import {
   setNotificationSuccess, 
   setNotificationInfo,
   setNotificationWarn,
-  setLoadingStatus } from '../../actions';
+  setLoadingStatus,
+  setDeselectSearchAsYouType,
+  setDeselectAsrtist,
+ } from '../../actions';
 
 class MusicPlayer extends Component {
 
@@ -156,18 +158,21 @@ class MusicPlayer extends Component {
     this.props.setLoadingStatus(true);
     this.props.onLoadSongs();
     this.props.onNotifyLoadSongs();
+    this.props.onSetDeselectSearchAsYouType(true);
+    this.props.onSetDeselectAsrtist(true);
   }
 
   handleLoadFavorites(){
     this.props.loadFavoriteTracks();
     this.props.onNotifyLoadFavoriteTracks();
+    this.props.onSetDeselectSearchAsYouType(true);
+    this.props.onSetDeselectAsrtist(true);
   }
 
   handleAddFavoriteTrack() {
     const activeMusic = this._getActiveTrack();
     if(activeMusic){
       const track = this._selectTrackByUrl(activeMusic);
-      console.log('selectTrackByUrlSelector==>', track)
       this.props.addFavoriteTrack(track);
       this.props.onNotifyAddFavorite(activeMusic.title);
     }
@@ -177,17 +182,13 @@ class MusicPlayer extends Component {
     const activeMusic = this._getActiveTrack();
     if(activeMusic){
       const track = this._selectTrackByUrl(activeMusic);
-      console.log('selectTrackByUrlSelector==>', track)
       this.props.removeFavoriteTrack(track);
       this.props.onNotifyFavoriteDeleted(activeMusic.title);
     }
   }
 
   _selectTrackByUrl(activeMusic){
-    console.log('activeMusic', activeMusic);
-    const track = selectTrackByUrlSelector(activeMusic.url.split("song/")[1]);
-    console.log('track===>', track);
-    return track;
+    return selectTrackByUrlSelector(activeMusic.url.split("song/")[1]);
   }
 
   _getActiveTrack(){
@@ -224,7 +225,7 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    const { progressColor, btnColor, playlist } = this.props
+    const { progressColor, btnColor, playlist } = this.props;
     const { activeMusicIndex, playMode } = this.state
     const activeMusic = playlist[activeMusicIndex]
     if (!activeMusic){
@@ -334,14 +335,16 @@ class MusicPlayer extends Component {
       title, message:'Removed from favorites',
     })),
     onNotifyLoadFavoriteTracks: () => dispatch(setNotificationInfo('Loading favorite songs')),
+    onSetDeselectAsrtist: status => dispatch(setDeselectAsrtist(status)),
+    onSetDeselectSearchAsYouType: status => dispatch(setDeselectSearchAsYouType(status)),
   });
 
 const mapStateToProps = (state, {autoplay}) => {
-    const songs = songSelectorMusicPlayerProjector(state);
-    return {
-        playlist : songs.songList,
-        autoplay,
-    }
+  const songs = songSelectorMusicPlayerProjector(state);
+  return {
+    playlist : songs.songList,
+    autoplay,
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MusicPlayer);

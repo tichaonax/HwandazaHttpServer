@@ -1,4 +1,12 @@
 export {
+    SET_DESELECT_SEARCH_AS_YOU_TYPE,
+    setDeselectSearchAsYouType,
+    SET_DESELECT_ARTIST,
+    setDeselectAsrtist,
+}
+from "./deselectorActions";
+
+export {
     GET_STATUS,
     getStatus,
 
