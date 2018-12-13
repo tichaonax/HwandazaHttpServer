@@ -23,7 +23,7 @@ class Gallery extends React.Component {
         showNav: true,
         isRTL: false,
         slideDuration: 450,
-        slideInterval: 3000,
+        slideInterval: 5000,
         thumbnailPosition: 'bottom',
         showVideo: {},
       };

@@ -3,7 +3,16 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import "./index.css";
 import { getStore } from "../src/store/getStore";
-import { getStatus, getPictures, getVideos, getSongs, loadMusicRootFolders, setLoadingStatus} from "./actions";
+import { 
+    getStatus, 
+    getPictures, 
+    getVideos, 
+    getSongs, 
+    loadMusicRootFolders, 
+    setLoadingStatus,
+    setLoadSongsOnListFinished,
+} from "./actions";
+
 import App from "./App";
 
 const store = getStore();
@@ -31,3 +40,4 @@ store.dispatch(getVideos());
 store.dispatch(getSongs());
 store.dispatch(loadMusicRootFolders());
 store.dispatch(setLoadingStatus(true));
+store.dispatch(setLoadSongsOnListFinished(true));

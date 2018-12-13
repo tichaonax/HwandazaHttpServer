@@ -81,7 +81,6 @@ favoritesSelector
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }    
 
-    console.log('notification***', notification);
     if(notification){
       if(notification.success){
         this.createNotificationSuccessHandler(notification.success);

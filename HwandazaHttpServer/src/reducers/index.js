@@ -4,11 +4,8 @@ import { automation } from "./hwandaStatus";
 import { apiErrors } from "./apiErrors";
 import { mediaLibrary } from "./mediaLibrary";
 import { searchResult } from "./searchResult";
-import { favoriteTracks } from "./favoriteTracks";
-import { musicRootFolders } from "./musicRootFolders";
+import { player } from "./player";
 import { spinner } from "./spinner";
-import { notification } from "./notification";
-import { deselector } from "./deselector";
 
 export const reducer = combineReducers({
   automation,
@@ -16,9 +13,6 @@ export const reducer = combineReducers({
   apiErrors,
   mediaLibrary,
   searchResult,
-  favoriteTracks,
-  musicRootFolders,
+  player,
   spinner,
-  notification,
-  deselector, 
 });

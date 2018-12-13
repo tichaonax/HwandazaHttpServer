@@ -1,27 +1,14 @@
 export {
-    SET_DESELECT_SEARCH_AS_YOU_TYPE,
-    setDeselectSearchAsYouType,
-    SET_DESELECT_ARTIST,
-    setDeselectAsrtist,
-}
-from "./deselectorActions";
-
-export {
     GET_STATUS,
     getStatus,
-
     SET_STATUS,
     setStatus,
-
     SET_RANDOM_LIGHT_STATUS,
     setRandomLightStatus,
-
     RANDOM_TOGGLE_STATUS,
     randomToggleStatus,
-    
     SET_MODULE_STATUS,
     setModuleStatus,
-
     SET_SYSTEM_DATE_TIME,
     setSyatemDateTime,
 }
@@ -74,16 +61,19 @@ export {
     addFavoriteTrack,
     REMOVE_FAVORITE_TRACK,
     removeFavoriteTrack,
-} from "./favoriteTrackActions";
-
-export {
     LOAD_MUSIC_ROOT_FOLDERS,
     loadMusicRootFolders,
     SET_MUSIC_ROOT_FOLDERS,
     setMusicRootFolders,
     LOAD_FOLDER_SONGS,
     loadFolderSongs,
-} from "./musicRootFolderActions";
+    SET_DESELECT_SEARCH_AS_YOU_TYPE,
+    setDeselectSearchAsYouType,
+    SET_DESELECT_ARTIST,
+    setDeselectAsrtist,
+    SET_LOAD_SONGS_ON_LIST_FINISHED,
+    setLoadSongsOnListFinished,
+} from "./playerActions";
 
 export {
     SET_LOADING_STATUS,

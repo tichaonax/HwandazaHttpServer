@@ -5,7 +5,7 @@ import {
 export const mediaLibrarySelector = createSelector(
     state => state.mediaLibrary,
     mediaLibrary => {
-    console.log('mediaLibrarySelector mediaLibrary', JSON.stringify(mediaLibrary));
+    //console.log('mediaLibrarySelector mediaLibrary', JSON.stringify(mediaLibrary));
     if (mediaLibrary) {
         return mediaLibrary
         } 

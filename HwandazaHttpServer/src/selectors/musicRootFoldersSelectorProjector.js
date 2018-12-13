@@ -3,8 +3,9 @@ import {
 } from 'reselect';
 
 export const musicRootFoldersSelectorProjector = createSelector(
-    state => state.musicRootFolders,
-    rootFolders => (rootFolders && rootFolders.folders ? {
+    state => state.player,
+    rootFolders => 
+    (rootFolders && rootFolders.folders ? {
             folders: rootFolders.folders.map(f => (
                 { 
                   value: f, 

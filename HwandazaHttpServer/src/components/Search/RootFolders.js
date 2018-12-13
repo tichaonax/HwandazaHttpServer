@@ -11,6 +11,7 @@ import {
     loadFolderSongs,
     setDeselectSearchAsYouType,
     setDeselectAsrtist,
+    setLoadSongsOnListFinished,
     } from '../../actions';
 
 export class RootFolders extends React.Component {
@@ -31,6 +32,7 @@ export class RootFolders extends React.Component {
         })
         this.props.onSetDeselectAsrtist(false);
         this.props.onSetDeselectSearchAsYouType(true);
+        this.props.onSetLoadSongsOnListFinished(false);
     }
 
     this.searchInput.current.blur();
@@ -72,10 +74,11 @@ const mapDispatchToProps = dispatch => ({
     loadFolderSongs: folder => dispatch(loadFolderSongs(folder)),
     onSetDeselectAsrtist: status => dispatch(setDeselectAsrtist(status)),
     onSetDeselectSearchAsYouType: status => dispatch(setDeselectSearchAsYouType(status)),
+    onSetLoadSongsOnListFinished: loadMore => dispatch(setLoadSongsOnListFinished(loadMore)),
 })
   
 const mapStateToProps = (state) => {
-    const deselector = state.deselector;
+    const deselector = state.player;
     const folders = musicRootFoldersSelectorProjector(state).folders;
     folders.sort((a,b) => (a.label.toLowerCase() > b.label.toLowerCase()) 
     ? 1 : ((b.label.toLowerCase() > a.label.toLowerCase()) ? -1 : 0));

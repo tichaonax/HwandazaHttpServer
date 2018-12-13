@@ -6,7 +6,6 @@ import StatusBox from './StatusBox';
 import "./Status.css";
  
 function getModuleStatus(module) {
-  console.log('******module', JSON.stringify(module));
     const mduleStatus = {status: null, lastUpdate: null}
     if(module){
      if(module.power === 1){

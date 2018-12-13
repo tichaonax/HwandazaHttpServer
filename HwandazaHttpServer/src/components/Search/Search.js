@@ -12,7 +12,8 @@ import {
   setSongs,
   setLoadingStatus,
   setDeselectAsrtist,
-  setDeselectSearchAsYouType
+  setDeselectSearchAsYouType,
+  setLoadSongsOnListFinished,
   } 
   from '../../actions';
 
@@ -32,6 +33,7 @@ export class Search extends React.Component {
           Command: "namedsongs", 
           Module: searchText,
       });
+      this.props.onSetLoadSongsOnListFinished(false);
     } 
   }
 
@@ -86,10 +88,11 @@ export class Search extends React.Component {
     setLoadingStatus: loading => dispatch(setLoadingStatus(loading)),
     onSetDeselectAsrtist: status => dispatch(setDeselectAsrtist(status)),
     onSetDeselectSearchAsYouType: status => dispatch(setDeselectSearchAsYouType(status)),
+    onSetLoadSongsOnListFinished: loadMore => dispatch(setLoadSongsOnListFinished(loadMore)),
   })
   
 const mapStateToProps = (state) => {
-  const deselector = state.deselector;
+  const deselector = state.player;
   const songs = searchSelectorProjector(state).songList;
   songs.sort((a,b) => (a.label.toLowerCase() > b.label.toLowerCase()) 
   ? 1 : ((b.label.toLowerCase() > a.label.toLowerCase()) ? -1 : 0));

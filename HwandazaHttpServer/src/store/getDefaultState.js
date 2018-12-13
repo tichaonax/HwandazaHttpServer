@@ -25,21 +25,16 @@ export const getDefaultState = () => {
     searchResult: {
       songList: []
     },
-    favoriteTracks: {
+    player: {
       songList: [],
-    },
-    musicRootFolders: {
       folders: [],
-    },
-    notification: {
       info: {message: null},
       error: {message: null},
       warn: {message: null, title: null},
       success: {message: null, title: null},
-    },
-    deselector: {
       selectSong: false,
       selectArtist: false,
+      loadMore: true,
     }
   };
 

@@ -20,6 +20,7 @@ import {
   setLoadingStatus,
   setDeselectSearchAsYouType,
   setDeselectAsrtist,
+  setLoadSongsOnListFinished,
  } from '../../actions';
 
 class MusicPlayer extends Component {
@@ -134,9 +135,13 @@ class MusicPlayer extends Component {
     if (playMode === 'repeat') {
       this._playMusic(activeMusicIndex)
     } else if (playMode === 'loop') {
-      const total = this.props.playlist.length
-      const index = activeMusicIndex < total - 1 ? activeMusicIndex + 1 : 0
-      this._playMusic(index)
+      const total = this.props.playlist.length;
+        const index = activeMusicIndex < total - 1 ? activeMusicIndex + 1 : 0
+        if (activeMusicIndex === (total - 1) && index === 0 && this.props.player && this.props.player.loadSongsOnListFinished){
+          this.props.onLoadSongs();
+        }else{
+        this._playMusic(index);
+      }
     } else if (playMode === 'random') {
       let randomIndex = Math.floor(Math.random() * this.props.playlist.length)
       while (randomIndex === activeMusicIndex) {
@@ -160,6 +165,7 @@ class MusicPlayer extends Component {
     this.props.onNotifyLoadSongs();
     this.props.onSetDeselectSearchAsYouType(true);
     this.props.onSetDeselectAsrtist(true);
+    this.props.onSetLoadSongsOnListFinished(true);
   }
 
   handleLoadFavorites(){
@@ -167,6 +173,7 @@ class MusicPlayer extends Component {
     this.props.onNotifyLoadFavoriteTracks();
     this.props.onSetDeselectSearchAsYouType(true);
     this.props.onSetDeselectAsrtist(true);
+    this.props.onSetLoadSongsOnListFinished(false);
   }
 
   handleAddFavoriteTrack() {
@@ -337,13 +344,16 @@ class MusicPlayer extends Component {
     onNotifyLoadFavoriteTracks: () => dispatch(setNotificationInfo('Loading favorite songs')),
     onSetDeselectAsrtist: status => dispatch(setDeselectAsrtist(status)),
     onSetDeselectSearchAsYouType: status => dispatch(setDeselectSearchAsYouType(status)),
+    onSetLoadSongsOnListFinished: loadMore => dispatch(setLoadSongsOnListFinished(loadMore)),
   });
 
 const mapStateToProps = (state, {autoplay}) => {
   const songs = songSelectorMusicPlayerProjector(state);
+  const player = state.player;
   return {
     playlist : songs.songList,
     autoplay,
+    player,
   }
 };
 

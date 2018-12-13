@@ -36,7 +36,6 @@ export class Spinner extends React.Component {
   
 const mapStateToProps = (state) => {
     const loading = loadingSelector(state);
-    console.log('loading', loading)
     return {
         loading,
     }
