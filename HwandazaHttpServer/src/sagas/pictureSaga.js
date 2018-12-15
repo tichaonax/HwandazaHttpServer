@@ -24,7 +24,6 @@ import {
       const data = yield apply(response, response.json);
       yield put(setPictures(data));
     } catch (error) {
-      //console.log('Error API:', error);
       yield put(setApiCallFailed({error: error}));
     }
   }

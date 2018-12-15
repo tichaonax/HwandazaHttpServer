@@ -28,7 +28,6 @@ function* loadSongs(action) {
         yield put(setSongs(data));
         yield put(setLoadingStatus(false));
     } catch (error) {
-        //console.log('loadFolderSongsSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }

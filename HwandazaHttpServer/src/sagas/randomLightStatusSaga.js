@@ -26,7 +26,6 @@ function* setRandomLightStatus(action) {
         const data = yield apply(response, response.json);
         yield put(setStatus(data));
     } catch (error) {
-        //console.log('randomLightStatusSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }

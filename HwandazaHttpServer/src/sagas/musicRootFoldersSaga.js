@@ -31,7 +31,6 @@ function* getMusicRootFolders(action) {
         yield put(setMusicRootFolders(data));
         yield put(setLoadingStatus(false));
     } catch (error) {
-        //console.log('musicRootFoldersSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }

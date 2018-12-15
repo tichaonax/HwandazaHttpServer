@@ -26,7 +26,6 @@ import {
       yield put(setSongs(data));
       yield put(setLoadingStatus(false));
     } catch (error) {
-      //console.log('song saga Error API:', error);
       yield put(setApiCallFailed({error: error}));
     }
   }

@@ -16,11 +16,9 @@ import {
   
   function* loadFavorites() {
     try {
-      const favorites = yield select(favoritesSelector);
-      console.log('favorites', favorites);
+      const favorites = yield select(favoritesSelector)
       yield put(setSongs(favorites.songList));
     } catch (error) {
-      console.log('favoritesSaga Error API:', error);
       yield put(setApiCallFailed({error: error}));
     }
   }

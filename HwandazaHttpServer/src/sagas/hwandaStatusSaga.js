@@ -25,7 +25,6 @@ import {
 
 function* fetchFromMockData() {
   const response = yield call(() => getMockStatusApi());
-  //console.log('mockdata', JSON.stringify(response.data));
   yield put(setStatus(response.data));
 }
 
@@ -34,10 +33,8 @@ function* fetchFromRaspbery() {
   try {
     const response = yield call(fetch, url);
     const data = yield apply(response, response.json);
-    //console.log("api response", JSON.stringify(data));
     yield put(setStatus(data));
   } catch (error) {
-    //console.log('Error API:', error);
     yield put(setApiCallFailed({error: error}));
   }
 }

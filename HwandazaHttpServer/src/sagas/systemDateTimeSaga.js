@@ -24,7 +24,6 @@ function* setSystemDateTime(action) {
         //dont care about the response but request new status
         yield put(getStatus());
     } catch (error) {
-        //console.log('systemDateTimeSaga Error API:', error);
         yield put(setApiCallFailed({error: error}));
     }
 }
