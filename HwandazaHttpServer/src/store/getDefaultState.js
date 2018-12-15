@@ -38,6 +38,7 @@ export const getDefaultState = () => {
       selectSong: false,
       selectArtist: false,
       loadMore: true,
+      cover: null,
     }
   };
 

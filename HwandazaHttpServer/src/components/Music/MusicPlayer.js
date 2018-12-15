@@ -23,6 +23,8 @@ import {
   setDeselectSearchAsYouType,
   setDeselectAsrtist,
   setLoadSongsOnListFinished,
+  getRandomTrackCover,
+  setRandomTrackCover,
  } from '../../actions';
 
 class MusicPlayer extends Component {
@@ -91,6 +93,7 @@ class MusicPlayer extends Component {
 
   play() {
     this._setPlayingSongFavoriteStatus();
+    this.onSetRandomTrackCover();
   }
   
   handleAdjustProgress(e) {
@@ -107,7 +110,7 @@ class MusicPlayer extends Component {
   }
 
   handleImageClick(e) {
-    console.log('handleImageClick', e);
+    this.onGetRandomTrackCover();
   }
 
   handleAdjustVolume(e) {
@@ -252,8 +255,14 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    const { progressColor, btnColor, playlist } = this.props;
+    const { progressColor, btnColor, playlist, player } = this.props;
     const { activeMusicIndex, playMode } = this.state
+    const { cover } = player;
+    let coverImage = `url(${activeMusic ? activeMusic.cover : null})`;
+    if(cover && cover.Url){
+      coverImage = `url(${cover.Url})`;
+    }
+
     const activeMusic = playlist[activeMusicIndex]
     if (!activeMusic){
       this.handleNext();
@@ -334,7 +343,7 @@ class MusicPlayer extends Component {
           <div className="cover-container">
             <div 
             onClick={this.handleImageClick.bind(this)}
-            className="cover" style={{ backgroundImage: `url(${activeMusic ? activeMusic.cover : null})` }}></div>
+            className="cover" style={{ backgroundImage: coverImage }}></div>
           </div>
         </div>
         <div className="search-as-you-type-container">
@@ -368,6 +377,8 @@ class MusicPlayer extends Component {
     onSetDeselectAsrtist: status => dispatch(setDeselectAsrtist(status)),
     onSetDeselectSearchAsYouType: status => dispatch(setDeselectSearchAsYouType(status)),
     onSetLoadSongsOnListFinished: loadMore => dispatch(setLoadSongsOnListFinished(loadMore)),
+    onGetRandomTrackCover: () => dispatch(getRandomTrackCover()),
+    onSetRandomTrackCover: () => dispatch(setRandomTrackCover({cover : null})),
   });
 
 const mapStateToProps = (state, {autoplay}) => {

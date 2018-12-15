@@ -92,6 +92,10 @@ namespace HwandazaHttpServer.ServerUtils
                         response = GetHwandazaAutomationPictureList();
                         response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
                         break;
+                    case "hwandazaautomation/cover":
+                        response = GetHwandazaAutomationCover();
+                        response.Headers.Add("Content-Type", ContentTypeMapper.JSON);
+                        break;
                     default:
                         response = await StaticFileHandlerAsync(localpath);
                         break;
@@ -167,7 +171,13 @@ namespace HwandazaHttpServer.ServerUtils
         {
             return _restHandler.GetHwandazaAutomationPictureList();
         }
-        
+
+        private HttpResponse GetHwandazaAutomationCover()
+        {
+            return _restHandler.GetHwandazaAutomationCover();
+        }
+
+
         private async Task ProcessPostRequestAsync()
         {
             HttpResponse response;

@@ -26,3 +26,9 @@ export const setDeselectAsrtist = createAction(SET_DESELECT_ARTIST, 'status');
 
 export const SET_LOAD_SONGS_ON_LIST_FINISHED = `SET_LOAD_SONGS_ON_LIST_FINISHED`;
 export const setLoadSongsOnListFinished = createAction(SET_LOAD_SONGS_ON_LIST_FINISHED, 'loadMore');
+
+export const GET_RANDOM_TRACK_COVER = `GET_RANDOM_TRACK_COVER`;
+export const getRandomTrackCover = createAction(GET_RANDOM_TRACK_COVER);
+
+export const SET_RANDOM_TRACK_COVER = `SET_RANDOM_TRACK_COVER`;
+export const setRandomTrackCover = createAction(SET_RANDOM_TRACK_COVER, 'cover');

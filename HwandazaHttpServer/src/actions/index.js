@@ -77,6 +77,10 @@ export {
     setDeselectAsrtist,
     SET_LOAD_SONGS_ON_LIST_FINISHED,
     setLoadSongsOnListFinished,
+    GET_RANDOM_TRACK_COVER,
+    getRandomTrackCover,
+    SET_RANDOM_TRACK_COVER,
+    setRandomTrackCover,
 } from "./playerActions";
 
 export {

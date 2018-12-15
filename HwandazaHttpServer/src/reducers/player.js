@@ -9,6 +9,7 @@ import {
   SET_NOTIFICATION_WARN,
   SET_NOTIFICATION_SUCCESS,
   RESET_NOTIFICATIONS,
+  SET_RANDOM_TRACK_COVER,
  } from '../actions';
 
 export const player = createReducer({}, {
@@ -46,6 +47,10 @@ export const player = createReducer({}, {
 
   [RESET_NOTIFICATIONS](state) {
     return Object.assign({}, state, { warn: null, success: null, info: null, error: null});
+  },
+
+  [SET_RANDOM_TRACK_COVER](state, action) {
+    return Object.assign({}, state, { cover: action.cover });
   },
 });
 
