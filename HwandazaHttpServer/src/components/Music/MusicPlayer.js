@@ -7,7 +7,9 @@ import RootFolders from '../Search/RootFolders';
 
 import { 
   songSelectorMusicPlayerProjector, 
-  selectTrackByUrlSelector } from '../../selectors';
+  selectTrackByUrlSelector,
+  favoritesSelector,
+ } from '../../selectors';
 
 import { 
   getSongs, 
@@ -49,7 +51,8 @@ class MusicPlayer extends Component {
       play: this.props.autoplay || false,
       playMode: 'loop',
       progress: 0,
-      volume: 1
+      volume: 1,
+      isFavorite: false,
     }
     this.modeList = ['loop', 'random', 'repeat']
   }
@@ -58,16 +61,19 @@ class MusicPlayer extends Component {
     const audioContainer = this.audioContainer
     audioContainer.addEventListener('timeupdate', this.updateProgress.bind(this))
     audioContainer.addEventListener('ended', this.end.bind(this));
-    this.setState({playerMounted:true})
+    audioContainer.addEventListener('play', this.play.bind(this));
+    this.setState({playerMounted:true});
   }
 
   componentWillUnmount() {
     const audioContainer = this.audioContainer
     audioContainer.removeEventListener('timeupdate', this.updateProgress.bind(this))
     audioContainer.removeEventListener('ended', this.end.bind(this))
+    audioContainer.removeEventListener('play', this.play.bind(this));
   }
 
   updateProgress() {
+
     if(this.audioContainer){
       const duration = this.audioContainer.duration
       const currentTime = this.audioContainer.currentTime
@@ -83,6 +89,10 @@ class MusicPlayer extends Component {
     this.handleNext()
   }
 
+  play() {
+    this._setPlayingSongFavoriteStatus();
+  }
+  
   handleAdjustProgress(e) {
     const progressContainer = this.progressContainer
     const progress = (e.clientX - progressContainer.getBoundingClientRect().left) / progressContainer.clientWidth
@@ -92,8 +102,12 @@ class MusicPlayer extends Component {
       play: true,
       progress: progress
     }, () => {
-      this.audioContainer.play()
+      this.audioContainer.play();
     })
+  }
+
+  handleImageClick(e) {
+    console.log('handleImageClick', e);
   }
 
   handleAdjustVolume(e) {
@@ -107,8 +121,8 @@ class MusicPlayer extends Component {
   }
 
   handleToggle() {
-    this.state.play ? this.audioContainer.pause() : this.audioContainer.play()
-    this.setState({ play: !this.state.play })
+    this.state.play ? this.audioContainer.pause() : this.audioContainer.play();
+    this.setState({ play: !this.state.play });
   }
 
   handlePrev() {
@@ -212,7 +226,7 @@ class MusicPlayer extends Component {
       progress: 0
     }, () => {
       this.audioContainer.currentTime = 0
-      this.audioContainer.play()
+      this.audioContainer.play();
     })
   }
 
@@ -231,6 +245,12 @@ class MusicPlayer extends Component {
     return null;
   }
 
+  _setPlayingSongFavoriteStatus(){
+    const track = this._selectTrackByUrl(this._getActiveTrack());
+    const match = this.props.favorites.songList.find(t=> (t.Url == track.Url));
+    this.setState({isFavorite: (match) ? true : false})
+  }
+
   render() {
     const { progressColor, btnColor, playlist } = this.props;
     const { activeMusicIndex, playMode } = this.state
@@ -240,6 +260,7 @@ class MusicPlayer extends Component {
     }
     const playModeClass = playMode === 'loop' ? 'refresh' : playMode === 'random' ? 'random' : 'repeat'
     const btnStyle = { color: btnColor }
+    const btnStyleFavorite = { color : 'green'};
     const progressStyle = { width: `${this.state.progress * 100}%`, backgroundColor: progressColor }
 
     return (
@@ -283,7 +304,7 @@ class MusicPlayer extends Component {
             <div className="control-container">
               <div className="mode-control">
               <div>
-              <i className="icon fa fa-heart" aria-hidden="true" style={btnStyle} title="Load favorites" onClick={this.handleLoadFavorites.bind(this)}></i>
+              <i className="icon fa fa-heart" aria-hidden="true" style={this.state.isFavorite ? btnStyleFavorite : btnStyle} title="Load favorites" onClick={this.handleLoadFavorites.bind(this)}></i>
               </div>
                </div>
               <div className="controls">
@@ -311,7 +332,9 @@ class MusicPlayer extends Component {
           </div>
           
           <div className="cover-container">
-            <div className="cover" style={{ backgroundImage: `url(${activeMusic ? activeMusic.cover : null})` }}></div>
+            <div 
+            onClick={this.handleImageClick.bind(this)}
+            className="cover" style={{ backgroundImage: `url(${activeMusic ? activeMusic.cover : null})` }}></div>
           </div>
         </div>
         <div className="search-as-you-type-container">
@@ -349,11 +372,14 @@ class MusicPlayer extends Component {
 
 const mapStateToProps = (state, {autoplay}) => {
   const songs = songSelectorMusicPlayerProjector(state);
+  const favorites = favoritesSelector(state);
   const player = state.player;
+
   return {
     playlist : songs.songList,
     autoplay,
     player,
+    favorites,
   }
 };
 

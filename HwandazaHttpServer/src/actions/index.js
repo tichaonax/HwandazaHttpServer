@@ -61,6 +61,10 @@ export {
     addFavoriteTrack,
     REMOVE_FAVORITE_TRACK,
     removeFavoriteTrack,
+}
+from "./favoriteActions";
+
+export {
     LOAD_MUSIC_ROOT_FOLDERS,
     loadMusicRootFolders,
     SET_MUSIC_ROOT_FOLDERS,

@@ -25,6 +25,9 @@ export const getDefaultState = () => {
     searchResult: {
       songList: []
     },
+    favoriteTracks: {
+      songList: [],
+    },
     player: {
       songList: [],
       folders: [],

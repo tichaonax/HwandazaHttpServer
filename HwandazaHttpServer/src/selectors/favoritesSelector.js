@@ -3,10 +3,10 @@ import {
 } from 'reselect';
 
 export const favoritesSelector = createSelector(
-    state => state.player,
+    state => state.favoriteTracks,
     favoriteTracks => 
-    (favoriteTracks && favoriteTracks.songList && favoriteTracks.songList.length > 0 ? {
-        songList : favoriteTracks.songList
+    (favoriteTracks && favoriteTracks.length > 0 ? {
+        songList : favoriteTracks
         } : {
             songList: [
                 {

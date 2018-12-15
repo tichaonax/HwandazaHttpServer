@@ -138,7 +138,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => {
   const navigation = state.navigation;
-  const notification = state.notification;
+  const notification = state.player;
   return {
     shownavpage: (navigation ? navigation.shownavpage : null),
     navpage: (navigation ? navigation.navpage : 'status'),
