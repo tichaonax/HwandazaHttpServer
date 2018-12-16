@@ -33,7 +33,7 @@ export class Search extends React.Component {
           Command: "namedsongs", 
           Module: searchText,
       });
-      this.props.onSetLoadSongsOnListFinished(false);
+      this.props.onSetLoadSongsOnListFinished(true);
     } 
   }
 
