@@ -156,6 +156,8 @@ class MusicPlayer extends Component {
         const index = activeMusicIndex < total - 1 ? activeMusicIndex + 1 : 0
         if (activeMusicIndex === (total - 1) && index === 0 && this.props.player && this.props.player.loadSongsOnListFinished){
           this.props.onLoadSongs();
+          this.props.onSetDeselectSearchAsYouType(true);
+          this.props.onSetDeselectAsrtist(true);
         }else{
         this._playMusic(index);
       }
