@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import ImageGallery from 'react-image-gallery';
 import { pictureSelector } from "../../selectors";
+import { getPictures } from "../../actions";
 
 import '../../styles/css/styles.css';
 import '../../styles/css/image-gallery.css';
@@ -29,6 +30,10 @@ class Gallery extends React.Component {
       };
     }
   
+    componentDidMount() {
+      this.props.onGetPictures();
+    }
+
     componentDidUpdate(prevProps, prevState) {
       if (this.state.slideInterval !== prevState.slideInterval ||
           this.state.slideDuration !== prevState.slideDuration) {
@@ -302,6 +307,10 @@ class Gallery extends React.Component {
     }
   }
 
+  const mapDispatchToProps = dispatch => ({
+    onGetPictures: () => dispatch(getPictures()), 
+  });
+
 const mapStateToProps = (state) => {
     const pictures = pictureSelector(state);
     return {
@@ -309,4 +318,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(Gallery);
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

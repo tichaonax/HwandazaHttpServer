@@ -35,9 +35,9 @@ const render = (store)=>{
 render(store);
 
 store.dispatch(getStatus());
-store.dispatch(getPictures());
-store.dispatch(getVideos());
+//store.dispatch(getPictures());
+//store.dispatch(getVideos());
 store.dispatch(getSongs());
 store.dispatch(loadMusicRootFolders());
-store.dispatch(setLoadingStatus(true));
 store.dispatch(setLoadSongsOnListFinished(true));
+store.dispatch(setLoadingStatus(true));
