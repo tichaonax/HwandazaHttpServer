@@ -1,4 +1,3 @@
-import moment from "moment";
 import {
     createSelector
 } from 'reselect';
@@ -9,11 +8,7 @@ export const favoritesSelector = createSelector(
     (favoriteTracks && favoriteTracks.length > 0 ? {
         songList : favoriteTracks
         } : {
-
-            statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
-            recordCount: 2,
-            totalAvailable: 2,
-            result: [
+            songList: [
                 {
                     Cover: "chbby/whatsapp/WhatsApp%20Image%202018-08-29%20at%207.30.21%20AM.jpeg",
                     Name: "Rudo Ibofu",

@@ -18,15 +18,15 @@ import {
   
   function* loadFavorites() {
     try {
-      const favorites = yield select(favoritesSelector);
-      const songList= {
+      const { songList } = yield select(favoritesSelector);
+      const songs= {
         statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
-        recordCount: favorites.size,
-        totalAvailable: favorites.size,
-        result: favorites,
+        recordCount: songList.length,
+        totalAvailable: songList.length,
+        result: songList,
       };
-      
-      yield put(setSongs(songList));
+
+      yield put(setSongs(songs));
     } catch (error) {
       yield put(setApiCallFailed({error: error}));
     }
