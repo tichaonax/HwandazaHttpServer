@@ -5,7 +5,7 @@ import {
 export const searchSelectorProjector = createSelector(
     state => state.searchResult,
     searchResult => (searchResult && searchResult.songList ? {
-            songList : searchResult.songList.result.map(s => (
+            songList : searchResult.songList.map(s => (
                 { 
                   value: {
                     Name: s.Name,

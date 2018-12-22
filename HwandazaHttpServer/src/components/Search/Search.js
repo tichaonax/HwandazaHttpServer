@@ -74,12 +74,12 @@ export class Search extends React.Component {
 }
 
   Search.propTypes = {
-    songs: PropTypes.array.isRequired,
+    songs: PropTypes.object.isRequired,
     onSearch: PropTypes.func.isRequired,
   };
 
   Search.defaultProps = {
-    songs: [],
+    songs: {},
   }
 
   const mapDispatchToProps = dispatch => ({
