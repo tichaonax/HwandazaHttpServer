@@ -13,7 +13,7 @@ export const favoritesSelector = createSelector(
             statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
             recordCount: 2,
             totalAvailable: 2,
-            songList: [
+            result: [
                 {
                     Cover: "chbby/whatsapp/WhatsApp%20Image%202018-08-29%20at%207.30.21%20AM.jpeg",
                     Name: "Rudo Ibofu",

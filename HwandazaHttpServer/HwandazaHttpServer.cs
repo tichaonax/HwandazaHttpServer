@@ -45,7 +45,7 @@ namespace HwandazaHttpServer
                 _streamSocketListener = new StreamSocketListener();
                 _streamSocketListener.Control.QualityOfService = SocketQualityOfService.LowLatency;
                 _streamSocketListener.Control.KeepAlive = true;
-                _streamSocketListener.Control.NoDelay = true;
+                //_streamSocketListener.Control.NoDelay = true;
                 _streamSocketListener.ConnectionReceived += async (s, e) => { await ProcessRequestAsync(e.Socket); };
                 await _streamSocketListener.BindServiceNameAsync(_httpServerPort.ToString());
             });
@@ -95,7 +95,7 @@ namespace HwandazaHttpServer
                 }
                 catch (Exception innnerException)
                 {
-                    //await Logger.WriteDebugLog("Error WriteInternalServerErrorResponse =>" + ex.Message + "Trace" + innnerException.StackTrace);
+                    await Logger.WriteDebugLog("Error WriteInternalServerErrorResponse =>" + ex.Message + "Trace" + innnerException.StackTrace);
                 }
             }
             finally

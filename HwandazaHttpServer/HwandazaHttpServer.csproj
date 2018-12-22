@@ -119,11 +119,11 @@
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
     <None Include="build\static\css\main.d0e57c6d.css.map" />
-    <None Include="build\static\js\main.8ed9da0c.js.map" />
+    <None Include="build\static\js\main.5d717e55.js.map" />
     <None Include="build\static\media\fontawesome-webfont.674f50d2.eot" />
     <None Include="build\static\media\fontawesome-webfont.af7ae505.woff2" />
     <Content Include="build\static\css\main.d0e57c6d.css" />
-    <Content Include="build\static\js\main.8ed9da0c.js" />
+    <Content Include="build\static\js\main.5d717e55.js" />
     <Content Include="build\static\media\fontawesome-webfont.b06871f2.ttf" />
     <None Include="build\static\media\fontawesome-webfont.fee66e71.woff" />
     <Content Include="build\static\media\notification.0b4ac1dc.ttf" />

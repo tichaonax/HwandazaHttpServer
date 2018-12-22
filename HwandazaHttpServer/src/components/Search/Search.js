@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
@@ -40,7 +41,14 @@ export class Search extends React.Component {
   onChange = (selectedOption)=>{
     this.setState({selectedOption});
     if(selectedOption.value){
-      this.props.setSongs([selectedOption.value]);
+      const songList = {
+        statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+        recordCount: 1,
+        totalAvailable: 1,
+        result:[selectedOption.value],
+      };
+
+      this.props.setSongs(songList);
       this.props.onSetDeselectSearchAsYouType(false);
       this.props.onSetDeselectAsrtist(true);
     }
