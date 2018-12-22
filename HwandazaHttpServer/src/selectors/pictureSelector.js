@@ -1,3 +1,4 @@
+import moment from "moment";
 import {
     createSelector
 } from 'reselect';
@@ -9,7 +10,12 @@ export const pictureSelector = createSelector(
     mediaLibrarySelector => (mediaLibrarySelector && mediaLibrarySelector.pictureList ? {
             pictureList: mediaLibrarySelector.pictureList
         } : {
-            pictureList: []
+            pictureList: {
+                statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+                recordCount: 0,
+                totalAvailable: 0,
+                result:[],
+            }
         }
     )
 );
