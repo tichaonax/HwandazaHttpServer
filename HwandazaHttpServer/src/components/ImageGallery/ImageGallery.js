@@ -81,7 +81,7 @@ class Gallery extends React.Component {
     }
   
     _getStaticImages = pictures =>{
-      return pictures.map(picture => {
+      return pictures.result.map(picture => {
           return ({
                   original: `picture/${picture.Url}`,
                   thumbnail: `picture/${picture.Url}`,
