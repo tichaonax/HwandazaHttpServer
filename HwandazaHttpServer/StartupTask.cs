@@ -30,7 +30,7 @@ namespace HwandazaHttpServer
 
             // Get the deferral object from the task instance
             _backgroundTaskDeferral = taskInstance.GetDeferral();
-            Task.Run(() => Logger.WriteDebugLog("System IBackgroundTaskInstance Started"));
+            // Task.Run(() => Logger.WriteDebugLog("System IBackgroundTaskInstance Started"));
             _taskInstance = taskInstance;
             //create a reference point to clean  up method that will be called in the event an application is cancelled
             _taskInstance.Canceled += TaskInstanceCanceled;
@@ -90,7 +90,7 @@ namespace HwandazaHttpServer
             {
                 var msg = ex.Message;
                 isAvailble = false;
-                await Logger.WriteDebugLog($"System ****** Failed => {msg}");
+                //await Logger.WriteDebugLog($"System ****** Failed => {msg}");
             }
             finally
             {

@@ -259,7 +259,7 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    const { progressColor, btnColor, playlist, player } = this.props;
+    const { progressColor, btnColor, playlist, player, recordCount, totalAvailable } = this.props;
     const { activeMusicIndex, playMode } = this.state
   
     const activeMusic = playlist[activeMusicIndex]
@@ -390,12 +390,14 @@ const mapStateToProps = (state, {autoplay}) => {
   const songs = songSelectorMusicPlayerProjector(state);
   const favorites = favoritesSelector(state);
   const player = state.player;
-
   return {
-    playlist : songs.songList,
+    playlist : songs.songList.result,
     autoplay,
     player,
     favorites,
+    statusDate: songs.songList,
+    recordCount: songs.songList.recordCount,
+    totalAvailable: songs.songList.totalAvailable,
   }
 };
 

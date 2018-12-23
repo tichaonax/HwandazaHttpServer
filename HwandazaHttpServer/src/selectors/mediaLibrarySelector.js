@@ -1,3 +1,4 @@
+import moment from "moment";
 import {
     createSelector
 } from 'reselect';
@@ -5,14 +6,17 @@ import {
 export const mediaLibrarySelector = createSelector(
     state => state.mediaLibrary,
     mediaLibrary => {
-    //console.log('mediaLibrarySelector mediaLibrary', JSON.stringify(mediaLibrary));
     if (mediaLibrary) {
         return mediaLibrary
         } 
         return {
-            pictureList:[],
-            videoList:[],
-            songList: [
+            pictureList:{},
+            videoList:{},
+            songList: {
+            statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+            recordCount: 2,
+            totalAvailable: 2,
+            result: [
                 {
                     Name: "Rudo Ibofu",
                     Url: "Killer%20T/Mashoko%20Anopfuura/Rudo%20Ibofu.m4a",
@@ -23,7 +27,8 @@ export const mediaLibrarySelector = createSelector(
                     Url: "Clarence%20Carter/SIng%20Along%20WIth%20Clarence%20Carter/03%20Don't%20Bother%20Me.m4a",
                     Cover: "chbby/whatsapp/WhatsApp%20Image%202018-08-12%20at%208.00.23%20AM.jpeg",
                 },
-            ]
+            ],
+        }
         };
     }
 );

@@ -1,3 +1,5 @@
+import moment from "moment";
+
 import {
     select,
     put,
@@ -16,8 +18,15 @@ import {
   
   function* loadFavorites() {
     try {
-      const favorites = yield select(favoritesSelector)
-      yield put(setSongs(favorites.songList));
+      const { songList } = yield select(favoritesSelector);
+      const songs= {
+        statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+        recordCount: songList.length,
+        totalAvailable: songList.length,
+        result: songList,
+      };
+
+      yield put(setSongs(songs));
     } catch (error) {
       yield put(setApiCallFailed({error: error}));
     }
