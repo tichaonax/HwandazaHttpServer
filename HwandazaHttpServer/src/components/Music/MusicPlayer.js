@@ -343,6 +343,9 @@ class MusicPlayer extends Component {
                 <i className="icon fa fa-step-forward" style={btnStyle} title="Next" onClick={this.handleNext.bind(this)}></i>
               </div>
             </div>
+            <div className="control-container">
+              <h3 className="track-count">Track count: {totalAvailable}</h3>
+            </div>
           </div>
           
           <div className="cover-container">

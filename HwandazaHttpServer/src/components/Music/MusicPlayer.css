@@ -6,6 +6,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.track-count {
+  font-size: 0.6em;
+  }
 .search-as-you-type {
   width: 360px;
   margin: auto;
