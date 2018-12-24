@@ -269,7 +269,6 @@ class MusicPlayer extends Component {
     const { cover } = player;
     let coverImage = `url(${activeMusic ? activeMusic.cover : null})`;
     if(cover && cover.Url){
-      console.log('cover.Ulr', cover.Url);
       coverImage = `url(picture/${cover.Url})`;
     }
     const playModeClass = playMode === 'loop' ? 'refresh' : playMode === 'random' ? 'random' : 'repeat'

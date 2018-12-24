@@ -13,7 +13,7 @@ namespace HwandazaHttpServer
     {
         private const int OneMinutesDelay = 1;
         private const int Timeout = 60000;
-        private const int ServerPort = 8100;
+        private const int ServerPort = 8300;
         private const string HomeDirectory = "build";
         private const string Domain = "127.0.0.1";
         private const string SystemStatusPage = "hwandazaautomation/status";
@@ -106,7 +106,7 @@ namespace HwandazaHttpServer
         {
             //gracefully stop modules so that we do not leave peripherals like waterpump running after the control application is terminated
             _backgroundTaskDeferral.Complete();
-            Windows.ApplicationModel.Core.CoreApplication.Exit();
+            //Windows.ApplicationModel.Core.CoreApplication.Exit();
         }
     }
 }
