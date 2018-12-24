@@ -7,6 +7,7 @@ import {
   fishpondSelector,
   waterpumpSelector,
   irrigatorSelector,
+  systemUpTimeSelector,
  } from '../../selectors';
 
  import "../../styles/css/styles.css";
@@ -18,6 +19,7 @@ const status = props => {
   return(
   <div className="hwandaza-automation">
     <h2>System Status</h2>
+    <h3><b>Uptime</b>: {props.systemUpTime}</h3>
     <StatusLayout props={props}/>
   </div>
   );
@@ -28,11 +30,13 @@ const mapStateToProps = (state) => {
   const waterpump = waterpumpSelector(state);
   const irrigator = irrigatorSelector(state);
   const lights = lightsSelector(state);
+  const systemUpTime = systemUpTimeSelector(state);
   return {
     lights: lights.status,
     fishpond: fishpond.status,
     waterpump: waterpump.status,
     irrigator: irrigator.status,
+    systemUpTime,
   }
 };
 export default connect(mapStateToProps)(status);

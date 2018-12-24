@@ -28,7 +28,12 @@ export const getDefaultState = () => {
           },
         ]
     },
-      pictureList:{},
+      pictureList:{
+        statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+        recordCount: 0,
+        totalAvailable: 0,
+        result:[],
+    },
       videoList:{},
     },
     searchResult: {

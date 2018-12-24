@@ -17,3 +17,4 @@ export { musicRootFoldersSelectorProjector } from './musicRootFoldersSelectorPro
 export { selectTrackByUrlSelector } from './selectTrackByUrlSelector';
 export { favoritesSelector } from './favoritesSelector';
 export { loadingSelector } from './loadingSelector';
+export { systemUpTimeSelector } from './systemUpTimeSelector';
