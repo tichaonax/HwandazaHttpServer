@@ -30,7 +30,7 @@ namespace HwandazaHttpServer
 
             // Get the deferral object from the task instance
             _backgroundTaskDeferral = taskInstance.GetDeferral();
-            Task.Run(() => Logger.WriteDebugLog("System IBackgroundTaskInstance Started"));
+            //Task.Run(() => Logger.WriteDebugLog("System IBackgroundTaskInstance Started"));
             _taskInstance = taskInstance;
             //create a reference point to clean  up method that will be called in the event an application is cancelled
             _taskInstance.Canceled += TaskInstanceCanceled;
@@ -106,10 +106,10 @@ namespace HwandazaHttpServer
         {
             //gracefully stop modules so that we do not leave peripherals like waterpump running after the control application is terminated
 
-            Task.Run(async () =>
-            {
-                await Logger.WriteDebugLog($"BackgroundTaskCancellationReason => {reason}");
-            });
+            //Task.Run(async () =>
+            //{
+            //    await Logger.WriteDebugLog($"BackgroundTaskCancellationReason => {reason}");
+            //});
 
             _backgroundTaskDeferral.Complete();
             Windows.ApplicationModel.Core.CoreApplication.Exit();
