@@ -7,7 +7,7 @@ import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Status from "./components/Status/Status";
 import Settings from "./components/Settings/Settings";
 import Lights from "./components/Lights/Lights";
@@ -110,14 +110,28 @@ favoritesSelector
           />
           {backdrop}
           <main style={{ marginTop: "64px" }}>
-            {navpage ==="status" && <div><Status/></div>}
+           {/*  {navpage ==="status" && <div><Status/></div>}
             {navpage ==="lights" &&<div><Lights/></div>}
             {navpage ==="control" &&<div><Control/></div>}
             {navpage ==="gallery" &&<div><ImageGallery/></div>}
             {navpage ==="settings" &&<div><Settings/></div>}
             {navpage ==="help" &&<div><Help/></div>}
-            {navpage ==="about" &&<div><About/></div>}
+            {navpage ==="about" &&<div><About/></div>} */}
             
+
+            <Switch>
+               <Route path="/" exact component={Status} />
+               <Route path="/status" component={Status} />
+               <Route path="/lights" component={Lights} />
+               <Route path="/control" component={Control} />
+               {/* <Route path="/music" component={Music} /> */}
+               <Route path="/gallery" component={ImageGallery} />
+               <Route path="/settings" component={Settings} />
+               <Route path="/help" component={Help} />
+               <Route path="/about" component={About} />
+              {/*  <Route component={NotFound} /> */}
+             </Switch>
+
             <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} />
           </main>
           <NotificationContainer/>
