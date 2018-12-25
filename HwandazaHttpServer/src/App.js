@@ -18,6 +18,7 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
 import Spinner from "./components/spinner/Spinner";
 import { showNavPage, setNavPage, randomToggleStatus, getStatus, resetNotifications } from "./actions";
+import { Utils } from './utility';
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +31,10 @@ class App extends Component {
   componentDidMount() {
     let timer = setInterval(this.pollStatus, 2000);
     this.setState({ timer });
+    //console.log('Path', Utils.parseUrl(window.location.href).pathname);
+    if(Utils.parseUrl(window.location.href).pathname ==='/music'){
+      this.props.onSetNavPage('music');
+    }
   }
 
   componentWillUnmount() {
