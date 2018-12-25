@@ -95,7 +95,7 @@ namespace HwandazaHttpServer
                 }
                 catch (Exception innnerException)
                 {
-                    //await Logger.WriteDebugLog("Error WriteInternalServerErrorResponse =>" + ex.Message + "Trace" + innnerException.StackTrace);
+                    await Logger.WriteDebugLog("Error WriteInternalServerErrorResponse =>" + ex.Message + "Trace" + innnerException.StackTrace);
                 }
             }
             finally
