@@ -254,7 +254,7 @@ class MusicPlayer extends Component {
 
   _setPlayingSongFavoriteStatus(){
     const track = this._selectTrackByUrl(this._getActiveTrack());
-    const match = this.props.favorites.songList.find(t=> (t.Url == track.Url));
+    const match = this.props.favorites.find(t=> (t.Url == track.Url));
     this.setState({isFavorite: (match) ? true : false})
   }
 
@@ -318,6 +318,7 @@ class MusicPlayer extends Component {
               <div className="mode-control">
               <div>
               <i className="icon fa fa-heart" aria-hidden="true" style={this.state.isFavorite ? btnStyleFavorite : btnStyle} title="Load favorites" onClick={this.handleLoadFavorites.bind(this)}></i>
+              <li><h4 className="track-count"> {this.props.favorites.length}</h4></li>
               </div>
                </div>
               <div className="controls">
@@ -390,7 +391,8 @@ class MusicPlayer extends Component {
 
 const mapStateToProps = (state, {autoplay}) => {
   const songs = songSelectorMusicPlayerProjector(state);
-  const favorites = favoritesSelector(state);
+  const favorites = favoritesSelector(state).songList;
+  console.log('favorites',favorites.length);
   const player = state.player;
   return {
     playlist : songs.songList.result,
