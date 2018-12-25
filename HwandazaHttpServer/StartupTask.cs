@@ -105,6 +105,12 @@ namespace HwandazaHttpServer
         private void TaskInstanceCanceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
         {
             //gracefully stop modules so that we do not leave peripherals like waterpump running after the control application is terminated
+
+            Task.Run(async () =>
+            {
+                await Logger.WriteDebugLog($"BackgroundTaskCancellationReason => {reason}");
+            });
+
             _backgroundTaskDeferral.Complete();
             Windows.ApplicationModel.Core.CoreApplication.Exit();
         }
