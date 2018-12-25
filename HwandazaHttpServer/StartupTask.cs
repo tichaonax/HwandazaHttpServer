@@ -11,8 +11,8 @@ namespace HwandazaHttpServer
 {
     public sealed class StartupTask : IBackgroundTask
     {
-        private const int OneMinutesDelay = 1;
-        private const int Timeout = 60000;
+        private const int HeartBeatDelay = 10000;
+        private const int Timeout = 30000;
         private const int ServerPort = 8300;
         private const string HomeDirectory = "build";
         private const string Domain = "127.0.0.1";
@@ -38,7 +38,7 @@ namespace HwandazaHttpServer
             _hwandazaHttpServer.StartServer();
 
             //create a system heart beat check that pings the service applicaation and check that everything is good.
-            _poolTimerHeartBeat = ThreadPoolTimer.CreatePeriodicTimer(SystemHeartBeatServerControlAsync, period: TimeSpan.FromMinutes(OneMinutesDelay));
+            _poolTimerHeartBeat = ThreadPoolTimer.CreatePeriodicTimer(SystemHeartBeatServerControlAsync, period: TimeSpan.FromMilliseconds(HeartBeatDelay));
         }
 
         private void SystemHeartBeatServerControlAsync(ThreadPoolTimer timer)
