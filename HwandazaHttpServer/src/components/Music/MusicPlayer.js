@@ -29,7 +29,6 @@ import {
   setLoadSongsOnListFinished,
   getRandomTrackCover,
   setRandomTrackCover,
-  setNavPage,
  } from '../../actions';
 
 class MusicPlayer extends Component {
@@ -79,20 +78,16 @@ class MusicPlayer extends Component {
     audioContainer.removeEventListener('play', this.play.bind(this));
   }
 
-/*   componentWillReceiveProps(nextProps){
-    console.log('nextProps',JSON.stringify(nextProps));
-    console.log('Path', Utils.parseUrl(window.location.href).pathname);
-  }; */
-
   updateProgress() {
-
     if(this.audioContainer){
+      this.props.onLoadingStatus(false);
       const duration = this.audioContainer.duration
       const currentTime = this.audioContainer.currentTime
       const progress = currentTime / duration
       this.setState({
         progress: progress,
-        leftTime: duration - currentTime
+        leftTime: duration - currentTime,
+        loaded: true,
       })
     }
   }
@@ -189,7 +184,7 @@ class MusicPlayer extends Component {
   }
 
   handleLoadSongs() {
-    this.props.setLoadingStatus(true);
+    this.props.onLoadingStatus(true);
     this.props.onLoadSongs();
     this.props.onNotifyLoadSongs();
     this.props.onSetDeselectSearchAsYouType(true);
@@ -236,6 +231,7 @@ class MusicPlayer extends Component {
   }
 
   _playMusic(index) {
+    this.props.onLoadingStatus(true);
     this.setState({
       activeMusicIndex: index,
       leftTime: 0,
@@ -385,7 +381,7 @@ class MusicPlayer extends Component {
     addFavoriteTrack: url => dispatch(addFavoriteTrack(url)),
     removeFavoriteTrack: url => dispatch(removeFavoriteTrack(url)),
     loadFavoriteTracks: () => dispatch(loadFavoriteTracks()),
-    setLoadingStatus: loading => dispatch(setLoadingStatus(loading)),
+    onLoadingStatus: loading => dispatch(setLoadingStatus(loading)),
     onNotifyAddFavorite: title => dispatch(setNotificationSuccess({
       title, message:'Saved to favorites',
     })),

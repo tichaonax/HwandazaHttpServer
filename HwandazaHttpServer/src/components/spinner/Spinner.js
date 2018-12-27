@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { css } from 'react-emotion';
-import { ClipLoader } from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 
 import { loadingSelector } from '../../selectors';
 
@@ -11,7 +11,7 @@ const override = css`
     position: absolute;
     top: 250px;
     z-index: 1;
-    margin: auto;
+    margin: center;
 `;
 
 export class Spinner extends React.Component {
@@ -21,10 +21,10 @@ export class Spinner extends React.Component {
     render() {
       return (
         <div className='sweet-loading hwandaza-spinner'>
-          <ClipLoader
+          <HashLoader
             className={override}
             sizeUnit={"px"}
-            size={150}
+            size={50}
             color={'#123abc'}
             loading={this.props.loading}
           />
