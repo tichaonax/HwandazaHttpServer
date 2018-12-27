@@ -17,10 +17,7 @@ import {
  import "./Status.css";
 
 const status = props => {
-
-  const { browserNavigation } = props;
-  browserNavigation('status');
-
+  props.onSetNavPage('status');
   return(
   <div className="hwandaza-automation">
     <h2>System Status</h2>
