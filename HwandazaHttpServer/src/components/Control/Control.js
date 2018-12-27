@@ -19,7 +19,8 @@ import {
 
 const control = props => {
 
-    const { fishpond, waterpump, irrigator } = props
+    const { fishpond, waterpump, irrigator, browserNavigation } = props;
+    browserNavigation('control');
 
     function handleWaterPumpSwitchChange(checked) {
         props.dispatch(setModuleStatus(

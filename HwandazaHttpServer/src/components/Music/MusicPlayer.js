@@ -1,5 +1,9 @@
 import { connect } from "react-redux";
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
+
+import { Utils } from '../../utility';
+
 import PropTypes from 'prop-types'
 import './MusicPlayer.css'
 import Search from '../Search/Search';
@@ -25,6 +29,7 @@ import {
   setLoadSongsOnListFinished,
   getRandomTrackCover,
   setRandomTrackCover,
+  setNavPage,
  } from '../../actions';
 
 class MusicPlayer extends Component {
@@ -73,6 +78,11 @@ class MusicPlayer extends Component {
     audioContainer.removeEventListener('ended', this.end.bind(this))
     audioContainer.removeEventListener('play', this.play.bind(this));
   }
+
+/*   componentWillReceiveProps(nextProps){
+    console.log('nextProps',JSON.stringify(nextProps));
+    console.log('Path', Utils.parseUrl(window.location.href).pathname);
+  }; */
 
   updateProgress() {
 
@@ -259,9 +269,11 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    const { progressColor, btnColor, playlist, player, recordCount, totalAvailable } = this.props;
-    const { activeMusicIndex, playMode } = this.state
-  
+    const { progressColor, btnColor, playlist, player, totalAvailable, browserNavigation } = this.props;
+    const { activeMusicIndex, playMode } = this.state;
+    
+    browserNavigation('music');
+
     const activeMusic = playlist[activeMusicIndex]
     if (!activeMusic){
       this.handleNext();
@@ -390,6 +402,7 @@ class MusicPlayer extends Component {
   });
 
 const mapStateToProps = (state, {autoplay}) => {
+  const navigation = state.navigation;
   const songs = songSelectorMusicPlayerProjector(state);
   const favorites = favoritesSelector(state).songList;
   const player = state.player;
@@ -404,4 +417,4 @@ const mapStateToProps = (state, {autoplay}) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MusicPlayer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MusicPlayer));

@@ -31,7 +31,6 @@ class App extends Component {
   componentDidMount() {
     let timer = setInterval(this.pollStatus, 2000);
     this.setState({ timer });
-    //console.log('Path', Utils.parseUrl(window.location.href).pathname);
     if(Utils.parseUrl(window.location.href).pathname ==='/music'){
       this.props.onSetNavPage('music');
     }
@@ -52,7 +51,7 @@ class App extends Component {
     let newState = !this.props.shownavpage;
     this.props.onShowNavPage(newState);
   };
-favoritesSelector
+
   backdropClickHandler = () => {
     this.props.onShowNavPage(false);
   };
@@ -79,6 +78,12 @@ favoritesSelector
     this.props.onResetNotifications();
   }
 
+  setBrowserNavigation(navpage){
+    if(Utils.parseUrl(window.location.href).pathname === `/${navpage}` && this.props.navpage!==navpage){
+      this.props.onSetNavPage(navpage);
+    }
+  }
+  
   render() {
     let backdrop;
     let { shownavpage, navpage, notification } = this.props;
@@ -116,18 +121,18 @@ favoritesSelector
           {backdrop}
           <main style={{ marginTop: "64px" }}>
             <Switch>
-               <Route path="/" exact component={Status} />
-               <Route path="/status" component={Status} />
-               <Route path="/lights" component={Lights} />
-               <Route path="/control" component={Control} />
-               <Route path="/gallery" component={ImageGallery} />
-               <Route path="/settings" component={Settings} />
-               <Route path="/help" component={Help} />
-               <Route path="/about" component={About} />
-              {/*  <Route component={NotFound} /> */}
+               <Route exact path="/" render={(routerProps) => (<Status {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+               <Route path="/status" render={(routerProps) => (<Status {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+               <Route path="/lights" render={(routerProps) => (<Lights {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+               <Route path="/control" render={(routerProps) => (<Control {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+               <Route path="/gallery" render={(routerProps) => (<ImageGallery {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+               <Route path="/settings" render={(routerProps) => (<Settings {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+               <Route path="/help" render={(routerProps) => (<Help {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+               <Route path="/about" render={(routerProps) => (<About {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+              {/*  <Route render={(routerProps) => (<About {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/> */}
              </Switch>
 
-            <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} />
+            <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} browserNavigation={this.setBrowserNavigation.bind(this)}/>
           </main>
           <NotificationContainer/>
         </div>
@@ -150,7 +155,7 @@ const mapStateToProps = state => {
   const notification = state.player;
   return {
     shownavpage: (navigation ? navigation.shownavpage : null),
-    navpage: (navigation ? navigation.navpage : 'status'),
+    navpage: navigation ? navigation.navpage : 'status',
     notification,
   };
 };

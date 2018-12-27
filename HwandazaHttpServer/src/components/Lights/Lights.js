@@ -10,7 +10,8 @@ import './Lights.css';
 
 const lights = props => {
 
-    const { lights } = props
+    const { lights, browserNavigation } = props;
+    browserNavigation('lights');
 
     function dispatchCommand(checked, light) {
         props.dispatch(setRandomLightStatus(

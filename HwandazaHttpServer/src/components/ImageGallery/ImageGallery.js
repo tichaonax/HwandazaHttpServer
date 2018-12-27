@@ -158,8 +158,8 @@ class Gallery extends React.Component {
     }
   
     render() {
-        const { pictures } = this.props;
-        //console.log('ImageGallery-pictures',pictures);
+        const { pictures, browserNavigation } = this.props;
+        browserNavigation('gallery');
         return (
         <div style={{display: this.props.display}}>  
           <section className='app'>

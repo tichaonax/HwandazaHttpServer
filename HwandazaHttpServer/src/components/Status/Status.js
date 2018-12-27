@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 import StatusLayout from "./StatusLayout";
+
+import { setNavPage } from "../../actions";
+
 import {
   lightsSelector,
   fishpondSelector,
@@ -13,9 +16,11 @@ import {
  import "../../styles/css/styles.css";
  import "./Status.css";
 
-
 const status = props => {
-    
+
+  const { browserNavigation } = props;
+  browserNavigation('status');
+
   return(
   <div className="hwandaza-automation">
     <h2>System Status</h2>
@@ -24,6 +29,10 @@ const status = props => {
   </div>
   );
 };
+
+const mapDispatchToProps = dispatch => ({
+  onSetNavPage: navtopage => dispatch(setNavPage(navtopage)),
+});
 
 const mapStateToProps = (state) => {
   const fishpond = fishpondSelector(state);
@@ -39,4 +48,4 @@ const mapStateToProps = (state) => {
     systemUpTime,
   }
 };
-export default connect(mapStateToProps)(status);
+export default connect(mapStateToProps, mapDispatchToProps)(status);
