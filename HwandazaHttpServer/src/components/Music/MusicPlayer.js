@@ -80,14 +80,12 @@ class MusicPlayer extends Component {
 
   updateProgress() {
     if(this.audioContainer){
-      this.props.onLoadingStatus(false);
       const duration = this.audioContainer.duration
       const currentTime = this.audioContainer.currentTime
       const progress = currentTime / duration
       this.setState({
         progress: progress,
         leftTime: duration - currentTime,
-        loaded: true,
       })
     }
   }
@@ -231,7 +229,6 @@ class MusicPlayer extends Component {
   }
 
   _playMusic(index) {
-    this.props.onLoadingStatus(true);
     this.setState({
       activeMusicIndex: index,
       leftTime: 0,
@@ -245,8 +242,10 @@ class MusicPlayer extends Component {
 
   _formatTime(time) {
     if (isNaN(time) || time === 0) {
+      this.props.onLoadingStatus(true);
       return
     }
+    this.props.onLoadingStatus(false);
     const mins = Math.floor(time / 60)
     const secs = (time % 60).toFixed()
     return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`
