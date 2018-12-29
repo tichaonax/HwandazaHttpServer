@@ -24,8 +24,8 @@ export class Spinner extends React.Component {
           <HashLoader
             className={override}
             sizeUnit={"px"}
-            size={50}
-            color={'#123abc'}
+            size={40}
+            color={'#ea0bd4'}
             loading={this.props.loading}
           />
         </div> 

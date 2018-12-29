@@ -324,7 +324,7 @@ class MusicPlayer extends Component {
             <div className="control-container">
               <div className="mode-control">
               <div>
-              <i className="icon fa fa-heart" aria-hidden="true" style={this.state.isFavorite ? btnStyleFavorite : btnStyle} title="Load favorites" onClick={this.handleLoadFavorites.bind(this)}></i>
+              <i className="icon fa fa-heart" aria-hidden="true" style={this.state.isFavorite && this.state.play ? btnStyleFavorite : btnStyle} title="Load favorites" onClick={this.handleLoadFavorites.bind(this)}></i>
               <li><h4 className="track-count"> {this.props.favorites.length}</h4></li>
               </div>
                </div>
