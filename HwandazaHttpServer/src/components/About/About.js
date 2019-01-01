@@ -85,7 +85,7 @@ return(
                         <h3><b>Settings</b></h3>
                         <p>Allows to change the system Date and Time</p>
                         <p>Changing Date occurs immediately</p>
-                        <p>Changing Time requres the application to restart so the scehdules can reconfigure, changing Date does not reset the application</p>
+                        <p>Changing Time requires the application to restart so the scehdules can reconfigure, changing Date does not reset the application</p>
                     </li>
                 </ol>
                 </ol>
