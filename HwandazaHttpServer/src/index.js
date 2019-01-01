@@ -40,4 +40,4 @@ store.dispatch(getStatus());
 store.dispatch(getSongs());
 store.dispatch(loadMusicRootFolders());
 store.dispatch(setLoadSongsOnListFinished(true));
-store.dispatch(setLoadingStatus(true));
+//store.dispatch(setLoadingStatus(true));
