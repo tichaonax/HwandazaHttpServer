@@ -1,11 +1,22 @@
-import React from 'react';
+import { connect } from "react-redux";
+import React, { Component } from 'react'
+
+import { setLoadingStatus } from '../../actions';
 
 import "../../styles/css/styles.css";
 import './About.css';
 
-const about = props => {
-    
-const { browserNavigation } = props;
+export class About extends Component {
+    constructor(props) {
+        super(props)
+      }
+
+      componentDidMount() {
+        this.props.dispatch(setLoadingStatus(false));
+      }
+
+render() {
+const { browserNavigation } = this.props;
 browserNavigation('about');
 
 return(
@@ -95,5 +106,6 @@ return(
 </div>
 );
 };
+};
 
-export default about;
+export default connect()(About);

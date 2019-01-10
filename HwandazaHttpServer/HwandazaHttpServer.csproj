@@ -118,12 +118,12 @@
     </AppxManifest>
     <None Include="build\asset-manifest.json" />
     <None Include="build\manifest.json" />
-    <None Include="build\static\css\main.667cee77.css.map" />
-    <None Include="build\static\js\main.222ee7a4.js.map" />
+    <None Include="build\static\css\main.2e89e1c6.css.map" />
+    <None Include="build\static\js\main.565bea97.js.map" />
     <None Include="build\static\media\fontawesome-webfont.674f50d2.eot" />
     <None Include="build\static\media\fontawesome-webfont.af7ae505.woff2" />
-    <Content Include="build\static\css\main.667cee77.css" />
-    <Content Include="build\static\js\main.222ee7a4.js" />
+    <Content Include="build\static\css\main.2e89e1c6.css" />
+    <Content Include="build\static\js\main.565bea97.js" />
     <Content Include="build\static\media\fontawesome-webfont.b06871f2.ttf" />
     <None Include="build\static\media\fontawesome-webfont.fee66e71.woff" />
     <Content Include="build\static\media\notification.0b4ac1dc.ttf" />

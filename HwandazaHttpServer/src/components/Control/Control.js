@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Flex, Box } from 'rebass';
 
@@ -15,15 +15,25 @@ import { HwandaSwitch } from '../HwandaSwitch/HwandaSwitch';
 
 import {
     setModuleStatus,
+    setLoadingStatus,
     } from '../../actions';
 
-const control = props => {
 
-    const { fishpond, waterpump, irrigator, browserNavigation } = props;
+export class Control extends Component {
+    constructor(props) {
+       super(props)
+    }
+    
+    componentDidMount() {
+        this.props.dispatch(setLoadingStatus(false));
+    }
+
+  render(){
+    const { fishpond, waterpump, irrigator, browserNavigation } = this.props;
     browserNavigation('control');
 
     function handleWaterPumpSwitchChange(checked) {
-        props.dispatch(setModuleStatus(
+        this.props.dispatch(setModuleStatus(
             {
                 Command: Utils.getCommandString(checked),
                 Module: "MainWaterPump",
@@ -32,7 +42,7 @@ const control = props => {
     }
       
     function handleIrrigatorSwitchChange(checked) {
-        props.dispatch(setModuleStatus(
+        this.props.dispatch(setModuleStatus(
             {
                 Command: Utils.getCommandString(checked),
                 Module: "LawnIrrigator",
@@ -41,7 +51,7 @@ const control = props => {
     }
 
     function handleFishpondSwitchChange(checked) {
-        props.dispatch(setModuleStatus(
+        this.props.dispatch(setModuleStatus(
             {
                 Command: Utils.getCommandString(checked),
                 Module: "FishPondPump",
@@ -93,8 +103,8 @@ const control = props => {
         </Flex>
    </div>
     );
+  };
 }
-
 const mapStateToProps = (state) => {
     const fishpond = fishpondSelector(state);
     const waterpump = waterpumpSelector(state);
@@ -106,4 +116,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(control);
+export default connect(mapStateToProps)(Control);

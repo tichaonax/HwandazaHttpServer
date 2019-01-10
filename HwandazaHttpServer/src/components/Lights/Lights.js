@@ -2,13 +2,17 @@ import React from 'react';
 import { connect } from "react-redux";
 import { HwandaSwitch } from '../HwandaSwitch/HwandaSwitch';
 import { lightsSelector } from '../../selectors';
-import { setRandomLightStatus } from '../../actions';
+import { setRandomLightStatus, setLoadingStatus } from '../../actions';
 import { Utils } from "../../utility";
 import "../../styles/css/styles.css";
 import './Lights.css';
 
 
 const lights = props => {
+
+    //function componentDidMount() {
+        props.dispatch(setLoadingStatus(false));
+    //}
 
     const { lights, browserNavigation } = props;
     browserNavigation('lights');

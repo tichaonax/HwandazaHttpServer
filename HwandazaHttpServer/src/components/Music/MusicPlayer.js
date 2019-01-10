@@ -2,8 +2,6 @@ import { connect } from "react-redux";
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 
-import { Utils } from '../../utility';
-
 import PropTypes from 'prop-types'
 import './MusicPlayer.css'
 import Search from '../Search/Search';
