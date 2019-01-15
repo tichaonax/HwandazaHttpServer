@@ -18,22 +18,16 @@ import {
     setLoadingStatus,
     } from '../../actions';
 
+const control = props => {
 
-export class Control extends Component {
-    constructor(props) {
-       super(props)
-    }
-    
-    componentDidMount() {
-        this.props.dispatch(setLoadingStatus(false));
-    }
+    props.dispatch(setLoadingStatus(false));
 
-  render(){
-    const { fishpond, waterpump, irrigator, browserNavigation } = this.props;
+    const { fishpond, waterpump, irrigator, browserNavigation } = props;
+
     browserNavigation('control');
 
     function handleWaterPumpSwitchChange(checked) {
-        this.props.dispatch(setModuleStatus(
+        props.dispatch(setModuleStatus(
             {
                 Command: Utils.getCommandString(checked),
                 Module: "MainWaterPump",
@@ -42,7 +36,7 @@ export class Control extends Component {
     }
       
     function handleIrrigatorSwitchChange(checked) {
-        this.props.dispatch(setModuleStatus(
+        props.dispatch(setModuleStatus(
             {
                 Command: Utils.getCommandString(checked),
                 Module: "LawnIrrigator",
@@ -51,7 +45,7 @@ export class Control extends Component {
     }
 
     function handleFishpondSwitchChange(checked) {
-        this.props.dispatch(setModuleStatus(
+        props.dispatch(setModuleStatus(
             {
                 Command: Utils.getCommandString(checked),
                 Module: "FishPondPump",
@@ -103,8 +97,8 @@ export class Control extends Component {
         </Flex>
    </div>
     );
-  };
-}
+  }
+
 const mapStateToProps = (state) => {
     const fishpond = fishpondSelector(state);
     const waterpump = waterpumpSelector(state);
@@ -116,4 +110,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(Control);
+export default connect(mapStateToProps)(control);

@@ -9,10 +9,7 @@ import './Lights.css';
 
 
 const lights = props => {
-
-    //function componentDidMount() {
-        props.dispatch(setLoadingStatus(false));
-    //}
+    props.dispatch(setLoadingStatus(false));
 
     const { lights, browserNavigation } = props;
     browserNavigation('lights');
