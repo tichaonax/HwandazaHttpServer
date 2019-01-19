@@ -1,4 +1,4 @@
-import moment from "moment";
+import format from "date-fns/format";
 import React from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
@@ -42,7 +42,7 @@ export class Search extends React.Component {
     this.setState({selectedOption});
     if(selectedOption.value){
       const songList = {
-        statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+        statusDate: format(new Date(), "YYYY-MM-DD HH:mm:ss"),
         recordCount: 1,
         totalAvailable: 1,
         result:[selectedOption.value],

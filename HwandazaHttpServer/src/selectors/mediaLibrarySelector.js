@@ -1,4 +1,4 @@
-import moment from "moment";
+import format from "date-fns/format";
 import {
     createSelector
 } from 'reselect';
@@ -13,7 +13,7 @@ export const mediaLibrarySelector = createSelector(
             pictureList:{},
             videoList:{},
             songList: {
-            statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+            statusDate: format(new Date(), "YYYY-MM-DD HH:mm:ss"),
             recordCount: 2,
             totalAvailable: 2,
             result: [

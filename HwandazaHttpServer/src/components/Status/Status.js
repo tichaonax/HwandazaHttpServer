@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import StatusLayout from "./StatusLayout";
-
 import { setNavPage } from "../../actions";
 
 import {

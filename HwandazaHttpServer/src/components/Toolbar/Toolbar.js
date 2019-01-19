@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import moment from "moment";
+import format from "date-fns/format";
 import Switch from "react-switch";
 
 import NavigationLinks from "../NavigationLinks/NavigationLinks";
@@ -9,7 +9,7 @@ import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 import { statusDateSelector } from '../../selectors';
 import "./Toolbar.css";
 
-const dateFomart = "ddd ll hh:mm A";
+const dateFormat = "ddd MMM DD, YYYY hh: mm A";
 
 export class Toolbar extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ export class Toolbar extends React.Component {
 
   render() {
     const { statusDate } = this.props;
-    const dateTime = moment(statusDate).format(dateFomart);
+    const dateTime = format(new Date(statusDate), dateFormat);
 
     return(
     <header className="toolbar">

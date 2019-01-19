@@ -1,5 +1,6 @@
 import produce from "immer";
-import moment from "moment";
+import format from "date-fns/format";
+
 import {
   createReducer
 } from "../utility";
@@ -17,7 +18,7 @@ export const automation = createReducer(null, {
   [RANDOM_TOGGLE_STATUS](state, {}) {
     //console.log("toggle state", JSON.stringify(state));
     //"statusDate": "2018-09-07 01:19:44"
-    const dateTime = moment().format("YYYY-MM-DD HH:mm:ss");
+    const dateTime = format(new Date(), "YYYY-MM-DD HH:mm:ss");
  
     switch (Math.round(Math.random() * 8)) {
       case 0:

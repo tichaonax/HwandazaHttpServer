@@ -1,4 +1,4 @@
-import moment from "moment";
+import format from "date-fns/format";
 
 import {
   fromJS
@@ -14,7 +14,7 @@ export const getDefaultState = () => {
     apiErrors: {},
     mediaLibrary: {
       songList: {
-        statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+        statusDate: format(new Date(),"YYYY-MM-DD HH:mm:ss"),
         recordCount: 2,
         totalAvailable: 2,
         result: [
@@ -29,7 +29,7 @@ export const getDefaultState = () => {
         ]
     },
       pictureList:{
-        statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+        statusDate: format(new Date(), "YYYY-MM-DD HH:mm:ss"),
         recordCount: 0,
         totalAvailable: 0,
         result:[],

@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
-import moment from "moment";
-import { DatePicker, TimePicker, Button } from "antd";
+import format from "date-fns/format";
+import DatePicker from "react-datepicker";
 import "antd/dist/antd.css";
+import "react-datepicker/dist/react-datepicker.css";
+
 import "../../styles/css/styles.css";
 import './Settings.css';
 import { setSyatemDateTime } from '../../actions';
@@ -13,29 +15,21 @@ export class Settings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      systemDate: moment(),
-      open: false,
+      systemDate: new Date(),
+      selecteDateTime: new Date(),
     };
 
     this.dispatch = props.dispatch;
   }
 
-  handleOpenChange = open => this.setState({ open });
-
-  handleClose(e) 
-  {
-    this.setState({ open: false })
-    const time = moment(this.state.value).format(timeFormat);
+  handleTimeChange = (dateTime) => {
+    this.setState({ selecteDateTime: dateTime });
+    const formatedTime = format(new Date(dateTime),timeFormat);
     this.dispatch(setSyatemDateTime(
     {
         Command: "SetSystemTime",
-        Time: time,
+        Time: formatedTime,
    })); 
-  }
-
-
-  handleTimeChange = (time) => {
-    this.setState({ value: time });
   }
 
   handleDateChange(e) {
@@ -43,7 +37,7 @@ export class Settings extends React.Component {
       systemDate: e
     });
 
-    const newDate = moment(e).format("YYYY-MM-DD");
+    const newDate = format(new Date(e), "YYYY-MM-DD");
     if(newDate !== 'Invalid date'){
       this.dispatch(setSyatemDateTime(
       {
@@ -65,18 +59,17 @@ export class Settings extends React.Component {
         <DatePicker
           selected={this.state.systemDate}
           onChange={e => this.handleDateChange(e)}
-          format={dateFormat}
+          dateFormat={dateFormat}
         />
-        <TimePicker
-          open={this.state.open}
-          onOpenChange={this.handleOpenChange}
-          onChange={this.handleTimeChange}
-          addon={() => (
-            <Button size="small" type="primary" onClick={(e)=> {this.handleClose(e);}}>
-              Ok
-            </Button>
-          )}
-          format={timeFormat}
+
+        <DatePicker
+            selected={this.state.selecteDateTime}
+            onChange={this.handleTimeChange}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={1}
+            dateFormat="h:mm aa"
+            timeCaption="Time"
         />
       </div>
     );

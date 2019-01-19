@@ -1,4 +1,4 @@
-import moment from "moment";
+import format from "date-fns/format";
 
 import {
     select,
@@ -20,7 +20,7 @@ import {
     try {
       const { songList } = yield select(favoritesSelector);
       const songs= {
-        statusDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+        statusDate: format(new Date(), "YYYY-MM-DD HH:mm:ss"),
         recordCount: songList.length,
         totalAvailable: songList.length,
         result: songList,
