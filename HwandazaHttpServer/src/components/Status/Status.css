@@ -2,11 +2,11 @@
   flex-direction: column;
   flex: "0 0 auto";
   display: flex;
-  height: 70px;
+  height: 65px;
   width: 150px;
   margin-bottom: 5px;
   margin-left: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
   align-content: center;
 }
 .top {
@@ -24,5 +24,5 @@
 }
 
 .status {
-  width: 75%;
+  width: 100%;
 }

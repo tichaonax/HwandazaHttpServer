@@ -22,7 +22,7 @@ const status = props => {
       <div className="columns medium-centered col-sm-9 status">
         <div className="hwandaza-automation">
           <h2>System Status</h2>
-          <h3><b>Uptime</b>: {props.systemUpTime}</h3>
+          <h3>Uptime: {props.systemUpTime}</h3>
           <StatusLayout props={props}/>
         </div>
       </div>

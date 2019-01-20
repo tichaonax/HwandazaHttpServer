@@ -29,11 +29,7 @@ return(
             <div className="columns small-centered small-10 medium-6 large-4">
                 <ol>
                     <li>
-                        <p>Hwandaza Automation runs on Raspberry Pi 3 Model B to automate some of the home 
-                            operations such as pumping water.</p>
-                        <p>The Software comprises of Windows 10 IoT foreground application and a background 
-                            application that runs a Web Server.
-                            The Web Server takes commands from a React client application then sends them 
+                        <p>Hwandaza Automation runs on Raspberry Pi 3 Model B to automate some of the home operations such as pumping water. The Software comprises of Windows 10 IoT foreground application and a background application that runs a Web Server. The Web Server takes commands from a React client application then sends them 
                             to the foreground application for processing.
                         </p>
                     </li>
@@ -64,17 +60,13 @@ return(
                     <li>
                         <h3><b>Lights</b></h3>
                         <p>This allows you to manually turn on the lights.</p>
-                        <p>This system randomly turns on/off these lights at night for random period
-                            and random times to simulate a person moving in the house at night.</p>
+                        <p>This system randomly turns on/off these lights at night for random duration and random times of the night to simulate a person moving in the house at night.</p>
                     </li>
                     </ol>
                 <ol>
                     <li>
                         <h3><b>Control</b></h3>
-                        <p>The pumps can be turned on/off only on this screen. Each pump will run for a 
-                            predetrmined time and shut off.
-                            The system also has a schedule shown on the device screen, that is automatically
-                            controlled by the device.
+                        <p>The pumps can be turned on/off only on this screen. Each pump will run for a predetrmined time and shut off.The system also has a schedule shown on the device screen, that is automatically controlled by the device.
                         </p>
                         <p>Water Pump: runs for 4 minutes daily every 30 minutes from 7:00AM to 5:00PM</p>
                         <p>FishPond: runs for 30 minutes daily at 10:00AM and 2:00PM</p>
@@ -84,16 +76,13 @@ return(
                 <ol>
                     <li>
                         <h3><b>Music</b></h3>
-                        <p>The UI for playing music, the tracks are stored at the Raspbery Pi device.</p>
-                        <p>User can search music by title or by folder location/artist name.</p>
-                        <p>User can add playing music to favorites stored locally to the browser</p>
+                        <p>The UI for playing music, the tracks are stored at the Raspbery Pi device. User can search music by title or by folder location/artist name. User can add playing music to favorites stored locally to the browser</p>
                     </li>
                 </ol>
                 <ol>
                     <li>
                         <h3><b>Gallery</b></h3>
-                        <p>View images stored on the device, these are the same images that rotate on the 
-                            device as background images</p>
+                        <p>View images stored on the device, these are the same images that rotate on the device as background images</p>
                     </li>
                     </ol>
                 <ol>
@@ -101,8 +90,13 @@ return(
                         <h3><b>Settings</b></h3>
                         <p>Allows to change the system Date and Time</p>
                         <p>Changing Date occurs immediately on the device</p>
-                        <p>Changing Time requires the application to restart so the 
-                            scehdules can reconfigure, changing Date does not reset the application</p>
+                        <p>Changing Time will restart the application so the scehdules can reconfigure, changing Date does not reset the application</p>
+                        <p></p>
+                    </li>
+                </ol>
+                <ol>
+                    <li>
+                        <h3><b>End of Help</b></h3>
                     </li>
                 </ol>
                 </ol>
