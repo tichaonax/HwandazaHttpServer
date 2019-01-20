@@ -4,3 +4,16 @@
     position: relative;
     top: -1px;
 }
+
+.settings-input{
+    width: 100%;
+    padding: 6px 10px;
+    height: 40px;
+    margin: 10px 10px 10px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color : #F0F8FF;
+    font-size: 16px;
+}

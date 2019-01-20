@@ -4,7 +4,6 @@ import format from "date-fns/format";
 import DatePicker from "react-datepicker";
 import "antd/dist/antd.css";
 import "react-datepicker/dist/react-datepicker.css";
-
 import "../../styles/css/styles.css";
 import './Settings.css';
 import { setSyatemDateTime } from '../../actions';
@@ -60,8 +59,8 @@ export class Settings extends React.Component {
           selected={this.state.systemDate}
           onChange={e => this.handleDateChange(e)}
           dateFormat={dateFormat}
+          className="settings-input"
         />
-
         <DatePicker
             selected={this.state.selecteDateTime}
             onChange={this.handleTimeChange}
@@ -70,6 +69,7 @@ export class Settings extends React.Component {
             timeIntervals={1}
             dateFormat="h:mm aa"
             timeCaption="Time"
+            className="settings-input"
         />
       </div>
     );
