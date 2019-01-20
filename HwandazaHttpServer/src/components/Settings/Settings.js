@@ -55,22 +55,38 @@ export class Settings extends React.Component {
     return (
       <div className="hwandaza-automation">
         <h2>System Settings</h2>
-        <DatePicker
-          selected={this.state.systemDate}
-          onChange={e => this.handleDateChange(e)}
-          dateFormat={dateFormat}
-          className="settings-input"
-        />
-        <DatePicker
-            selected={this.state.selecteDateTime}
-            onChange={this.handleTimeChange}
-            showTimeSelect
-            showTimeSelectOnly
-            timeIntervals={1}
-            dateFormat="h:mm aa"
-            timeCaption="Time"
+        <div>
+          <DatePicker
+            selected={this.state.systemDate}
+            onChange={e => this.handleDateChange(e)}
+            dateFormat={dateFormat}
             className="settings-input"
-        />
+          />
+          <DatePicker
+              selected={this.state.selecteDateTime}
+              onChange={this.handleTimeChange}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={1}
+              dateFormat="h:mm aa"
+              timeCaption="Time"
+              className="settings-input"
+          />
+        </div>
+        <div align="left" className="columns small-10 medium-6 large-4">
+          <ol>
+              <ol>
+                  <li>
+                      - Change the system date. Select the correct date from the dropdown.
+                  </li>
+              </ol>
+              <ol>
+                  <li>
+                      - Change system time. This will reset the device allowing the schedules to be recalculated. Select the correct time from the dropdown.
+                  </li>
+              </ol>
+            </ol>
+        </div>
       </div>
     );
   }
