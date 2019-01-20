@@ -56,7 +56,7 @@ class App extends Component {
   }
 
   pollSystemStatus = () => {
-    //this.props.onRandomToggleStatus());
+    //this.props.onRandomToggleStatus();
     this.props.onGetStatus();
   }
 
@@ -120,6 +120,7 @@ class App extends Component {
       backgroundColor: 'rgba(244,246,249, 0.7)',
       color: '#222222',
       marginTop: '55px',
+      overflowY: 'scroll',
     }
   })
 

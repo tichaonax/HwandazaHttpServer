@@ -37,7 +37,7 @@ const statuslayout = props => {
     <div>
       <Flex>
         <Box p={6} width={1/2}>
-          <div><StatusBox LastUpdate={waterpumpStatus.lastUpdate} Checked={waterpumpStatus.status} Title="Water Pump" Id="1" HeaderColor="orange" Disabled="disabled"/></div>
+          <div><StatusBox LastUpdate={waterpumpStatus.lastUpdate} Checked={waterpumpStatus.status} Title="Water Pump" Id="1" HeaderColor="#990033" Disabled="disabled"/></div>
           <div><StatusBox LastUpdate={fishpondStatus.lastUpdate} Checked={fishpondStatus.status} Title="Fish Pond" Id="2" HeaderColor="purple" Disabled="disabled"/></div>
           <div><StatusBox LastUpdate={irrigatorStatus.lastUpdate} Checked={irrigatorStatus.status} Title="Lawn Irrigator" Id="3" HeaderColor="green" Disabled="disabled"/></div>
         </Box>

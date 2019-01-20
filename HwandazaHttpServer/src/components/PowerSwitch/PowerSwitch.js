@@ -4,7 +4,7 @@ import "./PowerSwitch.css";
 
 const powerswitch = props => {
   return (
-    <div>
+    <div className="switch-position"> 
       <div className="onoffswitch">
         <input
           type="checkbox"
