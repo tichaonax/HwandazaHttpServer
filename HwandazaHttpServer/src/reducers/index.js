@@ -7,6 +7,7 @@ import { searchResult } from "./searchResult";
 import { favoriteTracks } from "./favoriteTracks";
 import { player } from "./player";
 import { spinner } from "./spinner";
+import { backgroundImage } from "./backgroundImage";
 
 export const reducer = combineReducers({
   automation,
@@ -17,4 +18,5 @@ export const reducer = combineReducers({
   favoriteTracks,
   player,
   spinner,
+  backgroundImage,
 });

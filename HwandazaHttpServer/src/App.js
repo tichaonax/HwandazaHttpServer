@@ -17,7 +17,15 @@ import Music from "./components/Music/MusicPlayer";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import Control from "./components/Control/Control";
 import Spinner from "./components/spinner/Spinner";
-import { showNavPage, setNavPage, randomToggleStatus, getStatus, resetNotifications } from "./actions";
+import {
+  showNavPage,
+  setNavPage,
+  randomToggleStatus,
+  getStatus,
+  resetNotifications,
+  getRandomBackGroundImage,
+} from "./actions";
+
 import { Utils } from './utility';
 
 class App extends Component {
@@ -29,22 +37,31 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let timer = setInterval(this.pollStatus, 2000);
-    this.setState({ timer });
+    let statusTimer = setInterval(this.pollSystemStatus, 2000);
+    this.setState({ statusTimer });
+    let randomImageTimer = setInterval(this.rotateBackgroundImage, 10000);
+    this.setState({ randomImageTimer });
     if(Utils.parseUrl(window.location.href).pathname ==='/music'){
       this.props.onSetNavPage('music');
     }
   }
 
   componentWillUnmount() {
-    if(this.state.timer){
-      this.clearInterval(this.state.timer);
+    if(this.state.statusTimer){
+      this.clearInterval(this.state.statusTimer);
+    }
+    if(this.state.randomImageTimer){
+      this.clearInterval(this.state.randomImageTimer);
     }
   }
 
-  pollStatus = () => {
+  pollSystemStatus = () => {
     //this.props.onRandomToggleStatus());
     this.props.onGetStatus();
+  }
+
+  rotateBackgroundImage = () => {
+    this.props.onGetRandomBackGroundImage();
   }
 
   drawerToggleClickHandler = () => {
@@ -84,9 +101,29 @@ class App extends Component {
     }
   }
   
+  styles = (backgroundImage) => ({
+    header: {
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      minHeight: '100%',
+      width: '100%',
+    },
+  
+    content: {
+      height: '100%',
+      width: '100%',
+      backgroundColor: 'rgba(244,246,249, 0.7)',
+      color: '#222222',
+      marginTop: '15px',
+    }
+  })
+
   render() {
     let backdrop;
-    let { shownavpage, navpage, notification } = this.props;
+    let { shownavpage, navpage, notification, backgroundImage } = this.props;
+
     if (shownavpage) {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }    
@@ -105,8 +142,13 @@ class App extends Component {
      }
     }
 
+    //let coverImage = "http://192.168.0.115:8300/picture/Album/martha/20150906_191625.jpg";
+    let coverImage = null;
+    if(backgroundImage && backgroundImage.Url){
+      coverImage = `/picture/${backgroundImage.Url}`;
+    }
+
     return (
-      
       <BrowserRouter>
         <div style={{ height: "100%" }}>
           <Spinner />
@@ -119,21 +161,23 @@ class App extends Component {
             navClickHandler={this.navClickHandler}
           />
           {backdrop}
-          <main style={{ marginTop: "64px" }}>
-            <Switch>
-               <Route exact path="/" render={(routerProps) => (<Status {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
-               <Route path="/status" render={(routerProps) => (<Status {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
-               <Route path="/lights" render={(routerProps) => (<Lights {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
-               <Route path="/control" render={(routerProps) => (<Control {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
-               <Route path="/gallery" render={(routerProps) => (<ImageGallery {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
-               <Route path="/settings" render={(routerProps) => (<Settings {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
-               <Route path="/help" render={(routerProps) => (<Help {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
-               <Route path="/about" render={(routerProps) => (<About {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
-              {/*  <Route render={(routerProps) => (<About {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/> */}
-             </Switch>
+          <div style={this.styles(coverImage).header}>
+            <main style ={this.styles(coverImage).content }>
+              <Switch>
+                <Route exact path="/" render={(routerProps) => (<Status {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+                <Route path="/status" render={(routerProps) => (<Status {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+                <Route path="/lights" render={(routerProps) => (<Lights {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+                <Route path="/control" render={(routerProps) => (<Control {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+                <Route path="/gallery" render={(routerProps) => (<ImageGallery {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+                <Route path="/settings" render={(routerProps) => (<Settings {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+                <Route path="/help" render={(routerProps) => (<Help {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+                <Route path="/about" render={(routerProps) => (<About {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
+                {/*  <Route render={(routerProps) => (<About {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/> */}
+              </Switch>
 
-            <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} browserNavigation={this.setBrowserNavigation.bind(this)}/>
-          </main>
+              <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} browserNavigation={this.setBrowserNavigation.bind(this)}/>
+            </main>
+          </div>
           <NotificationContainer/>
         </div>
       </BrowserRouter>
@@ -141,22 +185,24 @@ class App extends Component {
   }
 }
 
-
 const mapDispatchToProps = dispatch => ({
   onResetNotifications: () => dispatch(resetNotifications()),
   onGetStatus: () => dispatch(getStatus()),
   onShowNavPage: newState => dispatch(showNavPage(newState)),
   onRandomToggleStatus: () => dispatch(randomToggleStatus()),
   onSetNavPage: navtopage => dispatch(setNavPage(navtopage)),
+  onGetRandomBackGroundImage: () => dispatch(getRandomBackGroundImage()),
 });
 
 const mapStateToProps = state => {
   const navigation = state.navigation;
   const notification = state.player;
+  const backgroundImage = state.backgroundImage;
   return {
     shownavpage: (navigation ? navigation.shownavpage : null),
     navpage: navigation ? navigation.navpage : 'status',
     notification,
+    backgroundImage,
   };
 };
 

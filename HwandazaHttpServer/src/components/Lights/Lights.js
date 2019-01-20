@@ -9,7 +9,8 @@ import './Lights.css';
 
 
 const lights = props => {
-    props.dispatch(setLoadingStatus(false));
+        props.dispatch(setLoadingStatus(false));
+    //}
 
     const { lights, browserNavigation } = props;
     browserNavigation('lights');
@@ -55,7 +56,9 @@ const lights = props => {
     const l6Checked = (lights) ? getCheckedValue(lights.l6): false;
 
     return ( 
-    <div className="hwandaza-automation">
+    <div className="row">
+        <div className="columns medium-centered col-sm-9">
+            <div className="hwandaza-automation">
         <h2>Random Lights</h2> 
         <div>
             <div className="switch-header">M1</div>
@@ -116,6 +119,8 @@ const lights = props => {
                             fillColor="aqua"
                             handleChange={handleLightSwitchChangeL6}/>
             </div>
+        </div>
+   </div>
         </div>
    </div>
     );

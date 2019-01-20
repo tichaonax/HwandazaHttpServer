@@ -5,12 +5,13 @@ import "./index.css";
 import { getStore } from "../src/store/getStore";
 import { 
     getStatus, 
-    getPictures, 
-    getVideos, 
+    // getPictures, 
+    // getVideos, 
     getSongs, 
     loadMusicRootFolders, 
-    setLoadingStatus,
+    // setLoadingStatus,
     setLoadSongsOnListFinished,
+    getRandomBackGroundImage,
 } from "./actions";
 
 import App from "./App";
@@ -26,7 +27,6 @@ const Index = ()=>(
 const render = (store)=>{
     ReactDOM.render(
         <div>
-            
             <Index state={store.getState()}/>
         </div>,
         document.getElementById('hwandaza-automation'));
@@ -40,4 +40,5 @@ store.dispatch(getStatus());
 store.dispatch(getSongs());
 store.dispatch(loadMusicRootFolders());
 store.dispatch(setLoadSongsOnListFinished(true));
+store.dispatch(getRandomBackGroundImage());
 //store.dispatch(setLoadingStatus(true));

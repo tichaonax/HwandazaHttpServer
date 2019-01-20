@@ -10,3 +10,4 @@ export { musicRootFoldersSaga } from './musicRootFoldersSaga';
 export { loadFolderSongsSaga } from './loadFolderSongsSaga';
 export { favoritesSaga } from './favoritesSaga';
 export { coverSaga } from  './coverSaga';
+export { backgroundImageSaga } from './backgroundImageSaga';

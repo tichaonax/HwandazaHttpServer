@@ -100,3 +100,11 @@ export {
     RESET_NOTIFICATIONS,
     resetNotifications,
 } from "./notificationActions";
+
+export {
+    GET_RANDOM_BACKGROUND_IMAGE,
+    getRandomBackGroundImage,
+    SET_RANDOM_BACKGROUND_IMAGE,
+    setRandomBackGroundImage,
+} from "./backGroundImageActions";
+

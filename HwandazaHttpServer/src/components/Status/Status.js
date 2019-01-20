@@ -18,11 +18,15 @@ import {
 const status = props => {
   props.onSetNavPage('status');
   return(
-  <div className="hwandaza-automation">
-    <h2>System Status</h2>
-    <h3><b>Uptime</b>: {props.systemUpTime}</h3>
-    <StatusLayout props={props}/>
-  </div>
+    <div className="row">
+      <div className="columns medium-centered col-sm-9">
+        <div className="hwandaza-automation">
+          <h2>System Status</h2>
+          <h3><b>Uptime</b>: {props.systemUpTime}</h3>
+          <StatusLayout props={props}/>
+        </div>
+      </div>
+    </div>
   );
 };
 
