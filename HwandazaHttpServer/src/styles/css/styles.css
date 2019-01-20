@@ -1,6 +1,8 @@
 .hwandaza-automation {
   font-family: sans-serif;
   text-align: center;
+  margin-top: 55px;
+  height: 100%;
 }
 .hwandaza-spinner {
   position: relative;

@@ -107,8 +107,11 @@ class App extends Component {
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      minHeight: '100%',
+      height: '100%',
       width: '100%',
+      top: 0,
+      left: 0,
+      position: 'fixed',
     },
   
     content: {
@@ -116,7 +119,7 @@ class App extends Component {
       width: '100%',
       backgroundColor: 'rgba(244,246,249, 0.7)',
       color: '#222222',
-      marginTop: '15px',
+      marginTop: '55px',
     }
   })
 
