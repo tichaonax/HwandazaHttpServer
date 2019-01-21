@@ -102,7 +102,7 @@ class App extends Component {
     }
   }
   
-  styles = (backgroundImage) => ({
+  styles = (backgroundImage, navpage) => ({
     header: {
       backgroundImage: `url(${backgroundImage})`,
       backgroundPosition: 'center',
@@ -113,6 +113,7 @@ class App extends Component {
       top: 0,
       left: 0,
       position: 'fixed',
+      overflowY: 'scroll',
     },
   
     content: {
@@ -120,7 +121,7 @@ class App extends Component {
       width: '100%',
       backgroundColor: 'rgba(244,246,249, 0.7)',
       color: '#222222',
-      marginTop: '55px',
+      marginTop: navpage==='music' ? '55px' : '15px',
       overflowY: 'scroll',
     }
   })
@@ -166,8 +167,8 @@ class App extends Component {
             navClickHandler={this.navClickHandler}
           />
           {backdrop}
-          <div style={this.styles(coverImage).header}>
-            <main style ={this.styles(coverImage).content }>
+          <div style={this.styles(coverImage, navpage).header}>
+            <main style ={this.styles(coverImage, navpage).content }>
               <Switch>
                 <Route exact path="/" render={(routerProps) => (<Status {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
                 <Route path="/status" render={(routerProps) => (<Status {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
@@ -179,7 +180,6 @@ class App extends Component {
                 <Route path="/about" render={(routerProps) => (<About {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/>
                 {/*  <Route render={(routerProps) => (<About {...routerProps} browserNavigation={this.setBrowserNavigation.bind(this)} />)}/> */}
               </Switch>
-
               <Music display={navpage === "music" ? 'block' : 'none'} autoplay={true} browserNavigation={this.setBrowserNavigation.bind(this)}/>
             </main>
           </div>

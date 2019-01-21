@@ -40,9 +40,9 @@ const statuslayout = props => {
           <div><StatusBox LastUpdate={waterpumpStatus.lastUpdate} Checked={waterpumpStatus.status} Title="Water Pump" Id="1" HeaderColor="#990033" Disabled="disabled"/></div>
           <div><StatusBox LastUpdate={fishpondStatus.lastUpdate} Checked={fishpondStatus.status} Title="Fish Pond" Id="2" HeaderColor="purple" Disabled="disabled"/></div>
           <div><StatusBox LastUpdate={irrigatorStatus.lastUpdate} Checked={irrigatorStatus.status} Title="Lawn Irrigator" Id="3" HeaderColor="green" Disabled="disabled"/></div>
-        </Box>
-        <Box p={3} width={1/2}>
           <div><StatusBox Checked={m1Checked} Title="M1" Id="8" HeaderColor="#FC8144" Disabled="disabled"/></div>
+          </Box>
+        <Box p={3} width={1/2}>
           <div><StatusBox Checked={m2Checked} Title="M2" Id="9" HeaderColor="#4596FF" Disabled="disabled"/></div>
           <div><StatusBox Checked={l3Checked} Title="L3" Id="4" HeaderColor="#FF45E6" Disabled="disabled"/></div>
           <div><StatusBox Checked={l4Checked} Title="L4" Id="5" HeaderColor="#27E80E" Disabled="disabled"/></div>

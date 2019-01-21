@@ -173,10 +173,8 @@ $player-cover-height: $player-cover-width;
 
 @media (min-width: 576px) {
   .player-container {
-
     .info-and-control {
       width: $player-info-width-md;
-
       .music-info {
         text-align: start;
       }
