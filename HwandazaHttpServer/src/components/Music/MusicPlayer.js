@@ -321,6 +321,16 @@ class MusicPlayer extends Component {
             </div>
             <div className="control-container">
               <div className="mode-control">
+                <i className={`icon fa fa-${playModeClass}`} title="Shuffle / Reapeat/ Loop" style={btnStyle} onClick={this.handleChangePlayMode.bind(this)}></i>
+              </div>
+              <div className="controls controls-padding">
+                <i className="icon fa fa-step-backward" style={btnStyle} title="Previous" onClick={this.handlePrev.bind(this)}></i>
+                <i className={`icon fa fa-${this.state.play ? 'pause' : 'play'}`} title="Play / Pause" style={btnStyle} onClick={this.handleToggle.bind(this)}></i>
+                <i className="icon fa fa-step-forward" style={btnStyle} title="Next" onClick={this.handleNext.bind(this)}></i>
+              </div>
+            </div>
+            <div className="control-container">
+              <div className="mode-control">
               <div>
               <i className="icon fa fa-heart" aria-hidden="true" style={this.state.isFavorite && this.state.play ? btnStyleFavorite : btnStyle} title="Load favorites" onClick={this.handleLoadFavorites.bind(this)}></i>
               <li><h4 className="track-count"> {this.props.favorites.length}</h4></li>
@@ -336,16 +346,6 @@ class MusicPlayer extends Component {
                <div>
                   <i className="icon fa fa-download"  aria-hidden="true" style={btnStyle} title="Load songs" onClick={this.handleLoadSongs.bind(this)}></i>
                </div>
-              </div>
-            </div>
-            <div className="control-container">
-              <div className="mode-control">
-                <i className={`icon fa fa-${playModeClass}`} title="Shuffle / Reapeat/ Loop" style={btnStyle} onClick={this.handleChangePlayMode.bind(this)}></i>
-              </div>
-              <div className="controls controls-padding">
-                <i className="icon fa fa-step-backward" style={btnStyle} title="Previous" onClick={this.handlePrev.bind(this)}></i>
-                <i className={`icon fa fa-${this.state.play ? 'pause' : 'play'}`} title="Play / Pause" style={btnStyle} onClick={this.handleToggle.bind(this)}></i>
-                <i className="icon fa fa-step-forward" style={btnStyle} title="Next" onClick={this.handleNext.bind(this)}></i>
               </div>
             </div>
             <div className="control-container">
