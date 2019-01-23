@@ -56,6 +56,13 @@ class App extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.navpage !== nextProps.navpage) {
+      return true;
+    }
+    return false;
+  }
+
   pollSystemStatus = () => {
     //this.props.onRandomToggleStatus();
     this.props.onGetStatus();
