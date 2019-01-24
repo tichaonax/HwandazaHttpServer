@@ -72,7 +72,7 @@ class App extends Component {
     if (this.props.shownavpage !== nextProps.shownavpage) {
       return true;
     }
-    
+
     return false;
   }
 
