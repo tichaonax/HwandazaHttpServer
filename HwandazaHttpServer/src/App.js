@@ -60,6 +60,19 @@ class App extends Component {
     if (this.props.navpage !== nextProps.navpage) {
       return true;
     }
+
+    if (this.props.backgroundImage !== nextProps.backgroundImage) {
+      return true;
+    }
+
+    if (this.props.notification !== nextProps.notification) {
+      return true;
+    }
+    
+    if (this.props.shownavpage !== nextProps.shownavpage) {
+      return true;
+    }
+    
     return false;
   }
 
