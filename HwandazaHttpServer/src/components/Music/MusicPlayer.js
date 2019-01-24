@@ -378,7 +378,12 @@ class MusicPlayer extends Component {
     addFavoriteTrack: url => dispatch(addFavoriteTrack(url)),
     removeFavoriteTrack: url => dispatch(removeFavoriteTrack(url)),
     loadFavoriteTracks: () => dispatch(loadFavoriteTracks()),
-    onLoadingStatus: loading => dispatch(setLoadingStatus(loading)),
+    onLoadingStatus: (loading, navpage) => {
+      if(navpage === 'music') {
+        return dispatch(setLoadingStatus(loading))
+      };
+      return dispatch(setLoadingStatus(false));
+    },
     onNotifyAddFavorite: title => dispatch(setNotificationSuccess({
       title, message:'Saved to favorites',
     })),
@@ -407,6 +412,7 @@ const mapStateToProps = (state, {autoplay}) => {
     statusDate: songs.songList,
     recordCount: songs.songList.recordCount,
     totalAvailable: songs.songList.totalAvailable,
+    navpage: navigation ? navigation.navpage : 'null',
   }
 };
 
