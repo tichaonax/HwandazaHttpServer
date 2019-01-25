@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import format from "date-fns/format";
 
 import StatusLayout from "./StatusLayout";
 import { setNavPage } from "../../actions";
@@ -14,14 +15,15 @@ import {
 
  import "../../styles/css/styles.css";
  import "./Status.css";
-
+ 
+ const dateFormat = "ddd MMM DD, YYYY hh: mm A";
 const status = props => {
   props.onSetNavPage('status');
   return(
     <div className="row">
       <div className="columns medium-centered col-sm-9 status">
         <div className="hwandaza-automation">
-          <h3>Uptime: {props.systemUpTime}</h3>
+          <h3>Uptime: {format(new Date(props.systemUpTime), dateFormat)}</h3>
           <StatusLayout props={props}/>
         </div>
       </div>

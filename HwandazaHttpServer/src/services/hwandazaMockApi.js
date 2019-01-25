@@ -31,7 +31,7 @@ mock.onGet('/hwandazaautomation/status').reply(200, {
             m1: 0,
             m1LastUpdate: "2019-09-21 02:32:33 AM",
             m2: 1,
-            m2LastUpdate: "2019-09-21 02:32:33 AM",
+            m2LastUpdate: "2019-09-21 08:32:33 PM",
             l3: 0,
             l3LastUpdate: "2019-09-21 02:32:33 AM",
             l4: 0,
