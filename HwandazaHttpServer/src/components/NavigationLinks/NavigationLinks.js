@@ -8,7 +8,8 @@ import {
   MUSIC_TITLE,
   STATUS_TITLE,
   ABOUT_TITLE,
-  GALLERY_TITLE
+  GALLERY_TITLE,
+  SLIDE_SHOW,
 } from "../../constants/pageTitles";
 
 import "./NavigationLinks.css";
@@ -61,6 +62,12 @@ const navigationlinks = props => {
       <li>
         <Link to="/about" onClick={() => props.click("about", draweractive)}>
         <div className="spacer" >&nbsp;<i className="fa fa-question-circle" aria-hidden="true"></i>&nbsp;{ABOUT_TITLE}</div>
+        </Link>
+      </li>
+         
+      <li>
+        <Link to="/slideshow" onClick={() => props.click("slideshow", draweractive)}>
+        <div className="spacer" >&nbsp;<i className="fa fa-slideshare" aria-hidden="true"></i>&nbsp;{SLIDE_SHOW}</div>
         </Link>
       </li>
     </ul>

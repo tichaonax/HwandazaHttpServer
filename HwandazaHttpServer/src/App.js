@@ -139,7 +139,7 @@ class App extends Component {
     content: {
       height: '100%',
       width: '100%',
-      backgroundColor: 'rgba(244,246,249, 0.7)',
+      backgroundColor: navpage !== 'slideshow' ? 'rgba(244,246,249, 0.7)': null,
       color: '#222222',
       marginTop: navpage==='music' ? '55px' : '15px',
       overflowY: 'scroll',
