@@ -2,19 +2,23 @@ import {
     createSelector
 } from 'reselect';
 
+import { getSongTitleFromUrl } from './loadMusicFiles';
+
 export const searchSelectorProjector = createSelector(
     state => state.searchResult,
     searchResult => (searchResult && searchResult.songList ? {
-            songList : searchResult.songList.map(s => (
-                { 
+            songList : searchResult.songList.map(s => {
+                const { name } = getSongTitleFromUrl(s.Url);
+                return { 
                   value: {
-                    Name: s.Name,
+                    Name: name,
                     Url: s.Url,
                     Cover: s.Cover,
                   }, 
-                  label: s.Name,
+                  label: name,
                 }
-            ))
+            }
+            )
         } : {
             songList: [
                 { 
