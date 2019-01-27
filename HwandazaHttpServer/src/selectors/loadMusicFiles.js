@@ -1,6 +1,5 @@
 export function loadMusicFiles(songList) {
     console.log('loadMusicFiles', songList);
-    debugger;
     const songs = songList.result.map(song => {
         //localstorage data may be corrupt wrap inside a try catch
         try {
