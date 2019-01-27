@@ -1,10 +1,10 @@
-// import { modulesSelector } from "./modulesSelector";
-
 export function getSongTitleFromUrl(url){
     const parts = url.split('/');
-    const artist = unescape(parts[0]);
+    const artist = unescape(parts[0]).trim();
     let namepart = unescape(parts[parts.length-1]);
     let name = namepart.substring(0, namepart.indexOf("."));
+    //remove leading numbers and space
+    name = name.replace(/^[^.]+\./, "").trim();
     return { artist, name };
 }
 
@@ -13,10 +13,6 @@ export function loadMusicFiles(songList) {
     const songs = songList.result.map(song => {
         //localstorage data may be corrupt wrap inside a try catch
         try {
-            /* const parts = song.Url.split('/');
-            const artist = unescape(parts[0]);
-            let namepart = unescape(parts[parts.length-1]);
-            let name = namepart.substring(0, namepart.indexOf(".")); */
             const { artist, name } = getSongTitleFromUrl(song.Url);
             return ({
                 cover: `picture/${song.Cover}`,
