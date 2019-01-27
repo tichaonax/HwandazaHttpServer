@@ -96,6 +96,12 @@ return(
                 </ol>
                 <ol>
                     <li>
+                        <h3><b>Slideshow</b></h3>
+                        <p>Display a slide show of background pictures in full. These are the same dimmed pictures shown in another pages. </p>
+                    </li>
+                </ol>
+                <ol>
+                    <li>
                         <h3><b>End of Help</b></h3>
                     </li>
                 </ol>
