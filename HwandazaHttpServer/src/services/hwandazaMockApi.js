@@ -28,18 +28,30 @@ mock.onGet('/hwandazaautomation/status').reply(200, {
             }
         },
         lights: {
-            m1: 0,
-            m1LastUpdate: "2019-09-21 02:32:33 AM",
-            m2: 1,
-            m2LastUpdate: "2019-09-21 08:32:33 PM",
-            l3: 0,
-            l3LastUpdate: "2019-09-21 02:32:33 AM",
-            l4: 0,
-            l4LastUpdate: "2019-09-21 02:32:33 AM",
-            l5: 0,
-            l5LastUpdate: "2019-09-21 02:32:33 AM",
-            l6: 0,
-            l6LastUpdate: "2019-09-21 02:32:33 AM",
+            m1: {
+                power: 0,
+                lastUpdate: "2019-09-21 02:32:33 AM",
+            },
+            m2: {
+                power: 1,
+                lastUpdate: "2019-09-21 08:32:33 PM",
+            },
+            l3: {
+                power: 0,
+                lastUpdate: "2019-09-21 02:32:33 AM",
+            },
+            l4: {
+                power: 0,
+                lastUpdate: "2019-09-21 02:32:33 AM",
+            },
+            l5: {
+                power: 0,
+                lastUpdate: "2019-09-21 02:32:33 AM",
+            },
+            l6: {
+                power: 0,
+                lastUpdate: "2019-09-21 02:32:33 AM",
+            },
         }
     }
 });
