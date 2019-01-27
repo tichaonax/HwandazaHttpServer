@@ -83,6 +83,7 @@ export class Settings extends React.Component {
               <ol>
                   <li>
                       - Change system time. This will reset the device allowing the schedules to be recalculated. Select the correct time from the dropdown.
+                      <br/>****Caution**** The system will reset if time is changed and will be unresponsive during that time. All current schedues are disrupted.
                   </li>
               </ol>
             </ol>

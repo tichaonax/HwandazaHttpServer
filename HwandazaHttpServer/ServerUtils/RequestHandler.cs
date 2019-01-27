@@ -74,6 +74,7 @@ namespace HwandazaHttpServer.ServerUtils
                     case "music":
                     case "gallery":
                     case "about":
+                    case "slideshow":
                         response = await _staticFileHandler.HandleRequest("index.html");
                         break;
                     case "hwandazaautomation/status":
