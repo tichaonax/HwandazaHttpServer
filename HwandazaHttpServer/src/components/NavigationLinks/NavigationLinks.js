@@ -58,16 +58,14 @@ const navigationlinks = props => {
           <div className="spacer" >&nbsp;<i className="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;{SETTINGS_TITLE}</div>
         </Link>
       </li>
-      
-      <li>
-        <Link to="/about" onClick={() => props.click("about", draweractive)}>
-        <div className="spacer" >&nbsp;<i className="fa fa-question-circle" aria-hidden="true"></i>&nbsp;{ABOUT_TITLE}</div>
-        </Link>
-      </li>
-         
       <li>
         <Link to="/slideshow" onClick={() => props.click("slideshow", draweractive)}>
         <div className="spacer" >&nbsp;<i className="fa fa-slideshare" aria-hidden="true"></i>&nbsp;{SLIDE_SHOW}</div>
+        </Link>
+      </li>
+      <li>
+        <Link to="/about" onClick={() => props.click("about", draweractive)}>
+        <div className="spacer" >&nbsp;<i className="fa fa-question-circle" aria-hidden="true"></i>&nbsp;{ABOUT_TITLE}</div>
         </Link>
       </li>
     </ul>
