@@ -4,7 +4,7 @@ export function getSongTitleFromUrl(url){
     let namepart = unescape(parts[parts.length-1]);
     let name = namepart.substring(0, namepart.indexOf("."));
     //remove leading numbers and space
-    name = name.replace(/^[^.]+\./, "").trim();
+    name = name.replace(/^\d+\s*/, '').trim();
     return { artist, name };
 }
 
