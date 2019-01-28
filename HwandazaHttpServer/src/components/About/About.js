@@ -52,8 +52,8 @@ return(
                     <li>
                         <h3><b>Status</b></h3>
                         <p>This screen shows the status of controlled items. The switches are read only.</p>
-                        <p>The top shows the date and time since the system was restarted.</p>
-                        <p>The left controlled items have a time stamp of last status change for the controlled device.</p>
+                        <p>The bottom shows the date and time since the system was restarted.</p>
+                        <p>The controlled items have a time stamp of last status change for the controlled device.</p>
                      </li>
                 </ol>
                 <ol>

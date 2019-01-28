@@ -23,8 +23,8 @@ const status = props => {
     <div className="row">
       <div className="columns medium-centered col-sm-9 status">
         <div className="hwandaza-automation">
-          <h3>Uptime: {format(new Date(props.systemUpTime), dateFormat)}</h3>
           <StatusLayout props={props}/>
+          <h4>Uptime: {format(new Date(props.systemUpTime), dateFormat)}</h4>
         </div>
       </div>
     </div>
