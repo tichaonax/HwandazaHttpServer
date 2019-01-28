@@ -5,7 +5,6 @@ import PowerSwitch from "../PowerSwitch/PowerSwitch";
 import "./Status.css";
 
 const statusbox = props => {
-  console.log('LastUpdate', props.LastUpdate);
   return (
     <div className="status-box">
       <SwitchHeader Title={props.Title} HeaderColor={props.HeaderColor} />
