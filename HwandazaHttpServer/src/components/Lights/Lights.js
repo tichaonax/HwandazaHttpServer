@@ -7,13 +7,22 @@ import { Utils } from "../../utility";
 import "../../styles/css/styles.css";
 import './Lights.css';
 
-
 const lights = props => {
         props.dispatch(setLoadingStatus(false));
-    //}
 
     const { lights, browserNavigation } = props;
     browserNavigation('lights');
+
+    function getModuleStatus(module) {
+        const mduleStatus = {status: null, lastUpdate: null}
+        if(module){
+         if(module.power === 1){
+          mduleStatus.status ="checked"
+         }
+         mduleStatus.lastUpdate = module.lastUpdate;
+        }
+         return mduleStatus;
+      }
 
     function dispatchCommand(checked, light) {
         props.dispatch(setRandomLightStatus(
@@ -43,17 +52,13 @@ const lights = props => {
     function handleLightSwitchChangeL6(checked){
         dispatchCommand(checked, "L6");
     }
-
-    function getCheckedValue(power) {
-        return (power === 1) ? true : false;
-      }
-
-    const m1Checked = (lights) ? getCheckedValue(lights.m1): false;
-    const m2Checked = (lights) ? getCheckedValue(lights.m2): false;
-    const l3Checked = (lights) ? getCheckedValue(lights.l3): false;
-    const l4Checked = (lights) ? getCheckedValue(lights.l4): false;
-    const l5Checked = (lights) ? getCheckedValue(lights.l5): false;
-    const l6Checked = (lights) ? getCheckedValue(lights.l6): false;
+  
+    const m1 = getModuleStatus(lights.m1);
+    const m2 = getModuleStatus(lights.m2);
+    const l3 = getModuleStatus(lights.l3);
+    const l4 = getModuleStatus(lights.l4);
+    const l5 = getModuleStatus(lights.l5);
+    const l6 = getModuleStatus(lights.l6);
 
     return ( 
     <div className="row">
@@ -64,7 +69,7 @@ const lights = props => {
             <div className="switch-header">M1</div>
             <div>
                 <HwandaSwitch 
-                            power={m1Checked} 
+                            power={m1.status} 
                             textColor="orange" 
                             fillColor="red"
                             handleChange={handleLightSwitchChangeM1}/>
@@ -74,7 +79,7 @@ const lights = props => {
             <div className="switch-header">M2</div>
             <div>
                 <HwandaSwitch 
-                            power={m2Checked} 
+                            power={m2.status} 
                             textColor="orange" 
                             fillColor="yellow"
                             handleChange={handleLightSwitchChangeM2}/>
@@ -84,7 +89,7 @@ const lights = props => {
             <div className="switch-header">L3</div>
             <div>
                 <HwandaSwitch 
-                            power={l3Checked} 
+                            power={l3.status} 
                             textColor="orange" 
                             fillColor="aqua"
                             handleChange={handleLightSwitchChangeL3}/>
@@ -94,7 +99,7 @@ const lights = props => {
             <div className="switch-header">L4</div>
             <div>
                 <HwandaSwitch 
-                            power={l4Checked} 
+                            power={l4.status} 
                             textColor="orange" 
                             fillColor="aqua"
                             handleChange={handleLightSwitchChangeL4}/>
@@ -104,7 +109,7 @@ const lights = props => {
             <div className="switch-header">L5</div>
             <div>
                 <HwandaSwitch 
-                            power={l5Checked} 
+                            power={l5.status} 
                             textColor="orange" 
                             fillColor="aqua"
                             handleChange={handleLightSwitchChangeL5}/>
@@ -114,7 +119,7 @@ const lights = props => {
             <div className="switch-header">L6</div>
             <div>
                 <HwandaSwitch 
-                            power={l6Checked} 
+                            power={l6.status} 
                             textColor="orange" 
                             fillColor="aqua"
                             handleChange={handleLightSwitchChangeL6}/>
