@@ -1,7 +1,7 @@
 export { automationSelector } from './automationSelector';
 export { statusSelector } from './statusSelector';
 export { modulesSelector } from './modulesSelector';
-export { statusDateSelector } from './satusDateSelector';
+export { statusDateSelector } from './statusDateSelector';
 export { fishpondSelector } from './fishpondSelector';
 export { waterpumpSelector } from './waterpumpSelector';
 export { irrigatorSelector } from './irrigatorSelector';
