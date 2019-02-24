@@ -51,7 +51,7 @@ export class Settings extends React.Component {
     const { browserNavigation } = this.props;
     browserNavigation('settings');
     
-    const dateFormat = "DD MMM YYYY";
+    const dateFormat = "d MMM, YYYY";
     return (
       <div className="hwandaza-automation">
         <h2>System Settings</h2>

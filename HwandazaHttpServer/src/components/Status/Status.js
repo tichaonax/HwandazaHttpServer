@@ -17,7 +17,7 @@ import {
  import "./Status.css";
  
  const dateFormat = "ddd MMM DD, YYYY hh: mm A";
-const status = props => {
+ const status = props => {
   props.onSetNavPage('status');
   return(
     <div className="row">
@@ -29,7 +29,7 @@ const status = props => {
       </div>
     </div>
   );
-};
+ };
 
 const mapDispatchToProps = dispatch => ({
   onSetNavPage: navtopage => dispatch(setNavPage(navtopage)),
